@@ -21,7 +21,7 @@ import it.al.ma.model.User;
 
 
 
-
+/* controller dedicato allo user*/
 @Controller
 public class UserController {
 	
