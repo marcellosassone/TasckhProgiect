@@ -13,7 +13,7 @@ import it.al.ma.dao.UserDaoImpl;
 import it.al.ma.model.User;
 
 
-
+//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 @Controller
 public class LoginController {
 
