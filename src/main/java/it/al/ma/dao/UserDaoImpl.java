@@ -19,57 +19,50 @@ import it.al.ma.model.Country;
 import it.al.ma.model.User;
 import it.al.ma.util.HibernateUtil;
 
-
-
-
 public class UserDaoImpl implements UserDao{
-	private SessionFactory sf = HibernateUtil.getInstance().getSf();
+	private SessionFactory sf = HibernateUtil.getSf();
 	private Logger log = Logger.getLogger(UserDaoImpl.class);
-	
-	
+
 	@Override
 	public void insertUser(User user) {
 		Session session=null;
 		Transaction tx=null;
 		try {
-		session=sf.openSession();
-		tx=session.beginTransaction();
-		session.save(user);
-		tx.commit();
-	
-	} catch (HibernateException e) {
-		if (tx != null)
-			tx.rollback();
-		log.error(e.getStackTrace());
-	} finally {
-		if (session != null)
-			session.close();
+			session=sf.openSession();
+			tx=session.beginTransaction();
+			session.save(user);
+			tx.commit();
+
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			log.error(e.getStackTrace());
+		} finally {
+			if (session != null)
+				session.close();
+		}
 	}
-	}
-	
-	
-	
+
 	@Override
 	public void updateUser(User user) {
 		Session session=null;
 		Transaction tx=null;
 		try {
-		session=sf.openSession();
-		tx=session.beginTransaction();
-		
-		session.update(user);
-		tx.commit();
-	
-	} catch (HibernateException e) {
-		if (tx != null)
-			tx.rollback();
-		log.error("errore finalizza modifica: ", e);
-	} finally {
-		if (session != null)
-			session.close();
-	}
-		
-		
+			session=sf.openSession();
+			tx=session.beginTransaction();
+
+			session.update(user);
+			tx.commit();
+
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			log.error("errore finalizza modifica: ", e);
+		} finally {
+			if (session != null)
+				session.close();
+		}
+
 	}
 
 	@Override
@@ -77,20 +70,20 @@ public class UserDaoImpl implements UserDao{
 		Session session=null;
 		Transaction tx=null;
 		try {
-		session=sf.openSession();
-		tx=session.beginTransaction();
-		session.delete(user);
-		tx.commit();
-	
-	} catch (HibernateException e) {
-		if (tx != null)
-			tx.rollback();
-		log.error(e.getStackTrace());
-	} finally {
-		if (session != null)
-			session.close();
-	}
-		
+			session=sf.openSession();
+			tx=session.beginTransaction();
+			session.delete(user);
+			tx.commit();
+
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			log.error(e.getStackTrace());
+		} finally {
+			if (session != null)
+				session.close();
+		}
+
 	}
 
 	@Override
@@ -103,7 +96,7 @@ public class UserDaoImpl implements UserDao{
 			tx = session.beginTransaction();
 			Criteria cr = session.createCriteria(User.class);
 			Criterion crit1 = Restrictions.eq("id", user.getId());
-			
+
 			cr.add(crit1);
 			user1 = (User) cr.uniqueResult();
 			tx.commit();
@@ -142,7 +135,6 @@ public class UserDaoImpl implements UserDao{
 			if (session != null)
 				session.close();
 		}
-
 		return user1;
 	}
 
@@ -166,18 +158,17 @@ public class UserDaoImpl implements UserDao{
 			if (session != null)
 				session.close();
 		}
-
 		return listaUser;
-		
 	}
-	
+
+	@SuppressWarnings("unchecked")
 	public Map<Integer,String> getCountryMap(){
-		
+
 		Map<Integer,String>mapCountry=new HashMap<>();
 		Session session = null;
 		Transaction tx = null;
 		List<Country> listaCountry = null;
-		
+
 		try {
 			session = sf.openSession();
 			tx = session.beginTransaction();
@@ -193,20 +184,9 @@ public class UserDaoImpl implements UserDao{
 				session.close();
 		}
 
-		
 		for(Country c:listaCountry){
 			mapCountry.put(c.getIdcountry(), c.getCountryname());
-			
-			
 		}
-		
-		
-		
-		
 		return mapCountry;
-		
-		
-		
 	}
-
 }
