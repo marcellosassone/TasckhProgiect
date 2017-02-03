@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import it.al.ma.dao.UserDao;
 import it.al.ma.model.User;
 
-
+/* controller dedicato allo user2*/
 /* controller dedicato allo user*/
 @Controller
 public class UserController {
