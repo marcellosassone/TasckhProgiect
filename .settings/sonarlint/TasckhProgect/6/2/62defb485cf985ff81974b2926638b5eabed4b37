@@ -1,0 +1,8 @@
+
+Csquid:S1166."%Either log or rethrow this exception.(ï­£Ä8»˜Ø¦+
+Csquid:S1166="%Either log or rethrow this exception.(ï­£Ä8»˜Ø¦+
+squid:S2093"^Change this "try" to a try-with-resources. (sonar.java.source not set. Assuming 7 or greater.)(¡»¢üùÿÿÿÿ8»˜Ø¦+
+5squid:S2095"Close this "FileReader".(ŞŞÉ8»˜Ø¦+
+Fsquid:S1148/"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8»˜Ø¦+
+Fsquid:S1148>"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8»˜Ø¦+
+Xsquid:S1118":Add a private constructor to hide the implicit public one.(ùÀŸ‹8»˜Ø¦+
