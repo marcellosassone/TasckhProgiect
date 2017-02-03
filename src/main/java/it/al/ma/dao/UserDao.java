@@ -7,7 +7,7 @@ import it.al.ma.model.User;
 
 public interface UserDao {
 
-
+	//ciao
 	void insertUser(User user);
 
 	   void updateUser(User user);
