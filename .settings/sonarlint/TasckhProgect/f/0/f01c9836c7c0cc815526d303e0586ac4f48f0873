@@ -1,17 +1,19 @@
 
-Fsquid:S11480"#Use a logger to log this exception.(χή ¨ϊÿÿÿÿ8λ«”‹+
-X
-squid:S106T";Replace this usage of System.out or System.err by a logger.(ΨΌΆƒ8£««+
-Csquid:S1166/"%Either log or rethrow this exception.(ςή8ζ„«+
-Hsquid:S1166>"%Either log or rethrow this exception.(€…ο΄ϊÿÿÿÿ8ζ„«+
-X
-squid:S106W";Replace this usage of System.out or System.err by a logger.(ΨΌΆƒ8ανΓ+
-Fsquid:S1148C"#Use a logger to log this exception.(χή ¨ϊÿÿÿÿ8ζ„«+
+Csquid:S1166B"%Either log or rethrow this exception.(ςή8λ«”‹+
 X
 squid:S106?";Replace this usage of System.out or System.err by a logger.(ΰΰ’Η8£««+
+Csquid:S1166/"%Either log or rethrow this exception.(ςή8ζ„«+
+X
+squid:S106T";Replace this usage of System.out or System.err by a logger.(ΨΌΆƒ8£««+
+X
+squid:S106W";Replace this usage of System.out or System.err by a logger.(ΨΌΆƒ8ανΓ+
 X
 squid:S106Z";Replace this usage of System.out or System.err by a logger.(ΨΌΆƒ8£««+
-Csquid:S1166B"%Either log or rethrow this exception.(ςή8λ«”‹+
-Hsquid:S1166+"%Either log or rethrow this exception.(€…ο΄ϊÿÿÿÿ8ανΓ+
+lsquid:S1192"IDefine a constant instead of duplicating this literal "lastname" 3 times.(Φ†‡ϋÿÿÿÿ8Μ•΅+
+Fsquid:S1148C"#Use a logger to log this exception.(χή ¨ϊÿÿÿÿ8ζ„«+
 X
 squid:S106,";Replace this usage of System.out or System.err by a logger.(ΰΰ’Η8ζ„«+
+hsquid:S1192"JDefine a constant instead of duplicating this literal "firstname" 3 times.(―‚‹Ψ8Μ•΅+
+Fsquid:S11480"#Use a logger to log this exception.(χή ¨ϊÿÿÿÿ8λ«”‹+
+Hsquid:S1166>"%Either log or rethrow this exception.(€…ο΄ϊÿÿÿÿ8ζ„«+
+Hsquid:S1166+"%Either log or rethrow this exception.(€…ο΄ϊÿÿÿÿ8ανΓ+
