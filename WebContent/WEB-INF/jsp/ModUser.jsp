@@ -20,6 +20,7 @@
 				<form:form action="/TasckhProgect/finalizeUpdateUser" method="POST"
 					commandName="formUserMod">
 					<form:input type="hidden" path="id" />
+					<form:input type="hidden" path="admin" />
 					<div class="top-row">
 						<div class="field-wrap">
 							<label class="active"> Salutation<span class="req"></span>
@@ -59,7 +60,6 @@
 							<label class="active"> Country<span class="req"></span>
 							</label>
 							<form:select path="country" required="true" autocomplete="off">
-								<form:option value="${null}" label="--- Select ---" />
 								<form:options items="${ListaCountry}" />
 							</form:select>
 						</div>
@@ -79,7 +79,7 @@
 							path="password" />
 					</div>
 
-					<button type="submit" class="button button-block" />Save Updates</button>
+					<button type="submit" class="button button-block">Save Updates</button>
 
 				</form:form>
 

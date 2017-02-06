@@ -23,7 +23,7 @@
 	</bean>
 
 	
-	<bean id="userDAO" class="it.al.ma.dao.UserDaoImpl"></bean>
+	<bean id="userDao" class="it.al.ma.dao.UserDaoImpl"></bean>
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/user/**" />
