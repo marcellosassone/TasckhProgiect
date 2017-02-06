@@ -17,7 +17,7 @@
 			<div >
 				<h1>Update User</h1>
 
-				<form:form action="/TasckhProgect/finalizeUpdateUser" method="POST"
+				<form:form action="/TasckhProgect/admin/finalizeUpdateUser" method="POST"
 					commandName="formUserMod">
 					<form:input type="hidden" path="id" />
 					<div class="top-row">

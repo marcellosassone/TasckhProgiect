@@ -78,7 +78,7 @@ public class UserController {
 		return new ModelAndView("ModUser", "formUserMod", user1);
 	}
 
-	@RequestMapping(value="admin/ModUser", method=RequestMethod.GET)
+	@RequestMapping(value="admin/ModAdmin", method=RequestMethod.GET)
 	public ModelAndView updateUserFromAdmin(ModelMap model, HttpServletRequest req) {
 		User user=new User();
 		System.out.println(user);
@@ -89,7 +89,7 @@ public class UserController {
 		User user1=userDao.findByIdUser(user);
 		System.out.println(user);
 
-		return new ModelAndView("ModUser", "formUserMod", user1);
+		return new ModelAndView("ModAdmin", "formUserMod", user1);
 	}
 
 	@RequestMapping(value="/finalizeUpdateUser", method=RequestMethod.POST)
@@ -98,6 +98,14 @@ public class UserController {
 		req.getSession().setAttribute("firstname", user.getFirstname());
 		req.getSession().setAttribute("lastname", user.getLastname());
 		return "welcome";
+	}
+	
+	@RequestMapping(value="admin/finalizeUpdateUser", method=RequestMethod.POST)
+	public String finalizeUpdateFromAdmin(User user, ModelMap model,HttpServletRequest req) {
+		userDao.updateUser(user);
+		req.getSession().setAttribute("firstname", user.getFirstname());
+		req.getSession().setAttribute("lastname", user.getLastname());
+		return "UserList";
 	}
 
 	@RequestMapping(value="admin/load", method=RequestMethod.GET)

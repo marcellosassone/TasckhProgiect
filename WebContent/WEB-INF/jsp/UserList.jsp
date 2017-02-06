@@ -25,7 +25,12 @@
     <td>${user.password}</td>  
     <td>${user.housenumber}</td>
     <td>${user.admin}</td>  
-    <td><a href="/TasckhProgect/admin/ModUser">Edit</a></td>  
+    <td><form:form action="/TasckhProgect/admin/ModAdmin" method="GET" >
+          
+          
+          <input type="submit" value="Update"/>
+          
+          </form:form></td>  
    <!--  <td><button type="submit" onClick='confirm("Sei sicuro etcetc?")'>Delete </button></td> -->
     <td><a href="/TasckhProgect/admin/delUser"  onClick='return confirm("Sei sicuro di Voler Eliminare il Record?")'>Delete</a></td>
 	   
