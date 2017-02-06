@@ -19,7 +19,7 @@ import it.al.ma.model.User;
 public class LoginController {
 
  @Autowired
- private UserDao dao;
+ private UserDaoImpl dao;
  
  
  @RequestMapping(value = "/", method = RequestMethod.GET)
