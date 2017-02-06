@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import it.al.ma.dao.UserDao;
 import it.al.ma.dao.UserDaoImpl;
 import it.al.ma.model.User;
 
@@ -18,7 +19,7 @@ import it.al.ma.model.User;
 public class LoginController {
 
  @Autowired
- private UserDaoImpl dao;
+ private UserDao dao;
  
  
  @RequestMapping(value = "/", method = RequestMethod.GET)

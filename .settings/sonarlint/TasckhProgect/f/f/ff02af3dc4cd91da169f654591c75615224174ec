@@ -1,0 +1,6 @@
+
+Vsquid:S1213"8Move this variable to comply with Java Code Conventions.(šÑ¥ë8´ÖÂ¥ +
+|squid:S1450"^Remove the "serviceRegistry" field and declare it as a local variable in the relevant methods.(Ïý»®8´ÖÂ¥ +
+Ysquid:S1213";Move this constructor to comply with Java Code Conventions.(ã‘ËÓ8´ÖÂ¥ +
+osquid:S1450
+"QRemove the "sf" field and declare it as a local variable in the relevant methods.(ìš‹’8´ÖÂ¥ +

@@ -1,21 +1,17 @@
 
+Fsquid:S11480"#Use a logger to log this exception.(÷Ş ¨úÿÿÿÿ8ë«”‹+
 X
-squid:S106o";Replace this usage of System.out or System.err by a logger.(Ø¼¢ƒ8£««+
+squid:S106T";Replace this usage of System.out or System.err by a logger.(Ø¼¢ƒ8£««+
+Csquid:S1166/"%Either log or rethrow this exception.(òŞ8æ„«+
+Hsquid:S1166>"%Either log or rethrow this exception.(€…ï´úÿÿÿÿ8æ„«+
 X
-squid:S106R";Replace this usage of System.out or System.err by a logger.(àà’Ç8æ„«+
-Csquid:S1166U"%Either log or rethrow this exception.(òŞ8æ„«+
-Fsquid:S1148@"#Use a logger to log this exception.(÷Ş ¨úÿÿÿÿ8æ„«+
-~squid:UselessImportCheck
-"SRemove this unused import 'org.springframework.web.bind.annotation.ModelAttribute'.(®ùæé8…øßŠ+
-squid:UselessImportCheck"QRemove this unused import 'org.springframework.web.bind.annotation.PathVariable'.(¹ûñÅşÿÿÿÿ8ò÷™«+
-Jsquid:S1068",Remove this unused "REDIRECT" private field.(ßˆÚ¨8Ğ©‘«+
-Csquid:S1166?"%Either log or rethrow this exception.(òŞ8ë«”‹+
-Fsquid:S1148V"#Use a logger to log this exception.(÷Ş ¨úÿÿÿÿ8ë«”‹+
+squid:S106W";Replace this usage of System.out or System.err by a logger.(Ø¼¢ƒ8áíÃŠ+
+Fsquid:S1148C"#Use a logger to log this exception.(÷Ş ¨úÿÿÿÿ8æ„«+
 X
-squid:S106l";Replace this usage of System.out or System.err by a logger.(Ø¼¢ƒ8£««+
+squid:S106?";Replace this usage of System.out or System.err by a logger.(àà’Ç8£««+
 X
-squid:S106<";Replace this usage of System.out or System.err by a logger.(àà’Ç8áíÃŠ+
+squid:S106Z";Replace this usage of System.out or System.err by a logger.(Ø¼¢ƒ8£««+
+Csquid:S1166B"%Either log or rethrow this exception.(òŞ8ë«”‹+
+Hsquid:S1166+"%Either log or rethrow this exception.(€…ï´úÿÿÿÿ8áíÃŠ+
 X
-squid:S106i";Replace this usage of System.out or System.err by a logger.(Ø¼¢ƒ8£««+
-Hsquid:S1166;"%Either log or rethrow this exception.(€…ï´úÿÿÿÿ8æ„«+
-Hsquid:S1166Q"%Either log or rethrow this exception.(€…ï´úÿÿÿÿ8áíÃŠ+
+squid:S106,";Replace this usage of System.out or System.err by a logger.(àà’Ç8æ„«+
