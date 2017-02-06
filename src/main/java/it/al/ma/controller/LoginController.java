@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import it.al.ma.dao.UserDao;
-import it.al.ma.dao.UserDaoImpl;
 import it.al.ma.model.User;
 
 
@@ -19,12 +18,12 @@ import it.al.ma.model.User;
 public class LoginController {
 
  @Autowired
- private UserDaoImpl dao;
+ private UserDao userDao;
  
  
  @RequestMapping(value = "/", method = RequestMethod.GET)
  public ModelAndView index(ModelMap model){
-	 model.addAttribute("ListaCountry", dao.getCountryMap());
+	 model.addAttribute("ListaCountry", userDao.getCountryMap());
 	 ModelAndView mav=new ModelAndView("index","formUserSignIn", new User());
 	 mav.getModelMap().addAttribute("formUser", new User());
   return mav;
@@ -34,7 +33,7 @@ public class LoginController {
 
  @RequestMapping(value="/login", method=RequestMethod.POST)
  public ModelAndView verifyLogin(User user, ModelMap model, HttpServletRequest req) {
-  User d = dao.findByMailAndPassword(user);
+  User d = userDao.findByMailAndPassword(user);
   
   if(d == null) {
 	  model.addAttribute("errore", "Email or password error.");
@@ -48,7 +47,7 @@ public class LoginController {
 		req.getSession().setAttribute("admin", "admin");
 		return new ModelAndView("redirect:admin/load");
 	}
-  
+  req.getSession().setAttribute("admin", "user");
   req.getSession().setAttribute("firstname", d.getFirstname());
   req.getSession().setAttribute("lastname", d.getLastname());
   req.getSession().setAttribute("id", d.getId());

@@ -7,6 +7,7 @@ import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,6 +22,7 @@ public class UserController {
 
 	@Autowired
 	private UserDao userDao; 
+
 
 	@RequestMapping(value="/insertUser", method=RequestMethod.POST)
 	public String insertUser(User user, ModelMap model, HttpServletRequest req) {
@@ -51,12 +53,12 @@ public class UserController {
 
 	}
 
-	@RequestMapping(value = "admin/delUser", method = RequestMethod.GET)
-	public String delUserFromAdmin(ModelMap model, HttpServletRequest req) {
+	@RequestMapping(value = "admin/delUser/{id}", method = RequestMethod.POST)
+	public String delUserFromAdmin(@PathVariable int id) {
 		try {
 
 			User d=new User();
-			d.setId((int)req.getSession().getAttribute("id"));
+			d.setId(id);
 			userDao.deleteUser(d);
 
 		} catch (HibernateException e) {
@@ -66,47 +68,52 @@ public class UserController {
 		catch (Exception xxx) {
 			xxx.printStackTrace();
 		}
-		return "redirect:admin/load";
+		return "redirect:/admin/load";
 
 	}
 
 	@RequestMapping(value="user/ModUser", method=RequestMethod.GET)
 	public ModelAndView updateUser(ModelMap model, HttpServletRequest req) {
+		model.addAttribute("ListaCountry", userDao.getCountryMap());
 		User user=new User();
 		user.setId((int)req.getSession().getAttribute("id"));
 		User user1=userDao.findByIdUser(user);
 		return new ModelAndView("ModUser", "formUserMod", user1);
 	}
 
-	@RequestMapping(value="admin/ModAdmin", method=RequestMethod.GET)
-	public ModelAndView updateUserFromAdmin(ModelMap model, HttpServletRequest req) {
+	@RequestMapping(value="admin/ModUser/{id}", method=RequestMethod.POST)
+	public ModelAndView updateUserFromAdmin(@PathVariable int id,ModelMap model) {
+		model.addAttribute("ListaCountry", userDao.getCountryMap());
 		User user=new User();
-		System.out.println(user);
-		user.setId((int)req.getSession().getAttribute("id"));
+		user.setId(id);
 		user.setAdmin(1);
-		System.out.println(user);
+		//System.out.println(user);
 
 		User user1=userDao.findByIdUser(user);
-		System.out.println(user);
+		//System.out.println(user);
 
-		return new ModelAndView("ModAdmin", "formUserMod", user1);
+		return new ModelAndView("ModUser", "formUserMod", user1);
 	}
 
-	@RequestMapping(value="/finalizeUpdateUser", method=RequestMethod.POST)
+	@RequestMapping(value="finalizeUpdateUser", method=RequestMethod.POST)
 	public String finalizeUpdate(User user, ModelMap model,HttpServletRequest req) {
 		userDao.updateUser(user);
 		req.getSession().setAttribute("firstname", user.getFirstname());
 		req.getSession().setAttribute("lastname", user.getLastname());
+		System.out.println(req.getSession().getAttribute("admin"));
+		if (req.getSession().getAttribute("admin").equals("admin"))
+			return "redirect:/admin/load";
 		return "welcome";
+		
 	}
 	
-	@RequestMapping(value="admin/finalizeUpdateUser", method=RequestMethod.POST)
-	public String finalizeUpdateFromAdmin(User user, ModelMap model,HttpServletRequest req) {
-		userDao.updateUser(user);
-		req.getSession().setAttribute("firstname", user.getFirstname());
-		req.getSession().setAttribute("lastname", user.getLastname());
-		return "UserList";
-	}
+//	@RequestMapping(value="finalizeUpdateUser", method=RequestMethod.POST)
+//	public String finalizeUpdateFromAdmin(User user, ModelMap model,HttpServletRequest req) {
+//		userDao.updateUser(user);
+//		req.getSession().setAttribute("firstname", user.getFirstname());
+//		req.getSession().setAttribute("lastname", user.getLastname());
+//		return "UserList";
+//	}
 
 	@RequestMapping(value="admin/load", method=RequestMethod.GET)
 	public ModelAndView loadUser(ModelMap model) {
