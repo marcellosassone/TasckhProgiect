@@ -28,7 +28,7 @@
 		</form:form></td>
 	
 
-		<td><form:form action="/logout" method="GET">
+		<td><form:form action="/TasckhProgect/logout" method="GET">
 
 			<input type="submit" value="Logout" />
 
