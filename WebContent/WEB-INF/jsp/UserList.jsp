@@ -13,16 +13,16 @@
 	<table border="2" width="70%" cellpadding="2">
 		<tr>
 			<th>Id</th>
-			<th>salutation</th>
-			<th>firstname</th>
-			<th>lastname</th>
-			<th>street</th>
-			<th>city</th>
-			<th>country</th>
-			<th>email</th>
-			<th>password</th>
-			<th>housenumber</th>
-			<th>admin</th>
+			<th>Salutation</th>
+			<th>Firstname</th>
+			<th>Lastname</th>
+			<th>Street</th>
+			<th>N°</th>
+			<th>City</th>
+			<th>Country</th>
+			<th>Mail</th>
+			<th>Password</th>			
+			<th>Admin</th>
 			<th>Edit</th>
 			<th>Delete</th>
 		</tr>
@@ -33,11 +33,11 @@
 				<td>${user.firstname}</td>
 				<td>${user.lastname}</td>
 				<td>${user.street}</td>
+				<td>${user.housenumber}</td>
 				<td>${user.city}</td>
-				<td>${user.country}</td>
+				<td>${listcountry.get(user.country)}</td>
 				<td>${user.email}</td>
 				<td>${user.password}</td>
-				<td>${user.housenumber}</td>
 				<td>${user.admin}</td>
 				<td><form:form action="/TasckhProgect/admin/ModUser/${user.id}"
 						method="POST">
@@ -52,6 +52,19 @@
 		</c:forEach>
 	</table>
 	<br />
-	<a href="<c:url value="/logout" />">Logout</a>
+	<table>
+	<tr>
+	<td><form:form action="/TasckhProgect/admin/insertUser" method="GET">
+
+			<input type="submit" value="Insert" />
+
+		</form:form></td>
+		<td><form:form action="/TasckhProgect/logout" method="GET">
+
+			<input type="submit" value="Logout" />
+
+		</form:form></td>
+		</tr>
+		</table>
 </body>
 </html>

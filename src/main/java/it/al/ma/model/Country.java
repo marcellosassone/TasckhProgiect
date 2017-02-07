@@ -76,6 +76,9 @@ public class Country {
   return "Country [idcountry=" + idcountry + ", countryname=" + countryname + "]";
  }
  
+ public String toString(String countryname) {
+	  return "Country [countryName=" +  countryname + "]";
+	 }
  
  
 

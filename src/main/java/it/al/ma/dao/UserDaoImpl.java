@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.catalina.connector.Request;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -91,11 +92,13 @@ public class UserDaoImpl implements UserDao{
 		Session session = null;
 		Transaction tx = null;
 		User user1 = null;
+
 		try {
 			session = sf.openSession();
 			tx = session.beginTransaction();
 			Criteria cr = session.createCriteria(User.class);
 			Criterion crit1 = Restrictions.eq("id", user.getId());
+			
 
 			cr.add(crit1);
 			user1 = (User) cr.uniqueResult();

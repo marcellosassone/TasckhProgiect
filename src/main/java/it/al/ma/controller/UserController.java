@@ -35,6 +35,27 @@ public class UserController {
 
 		return "welcome";
 	}
+	
+	@RequestMapping(value="/insertUserFromAdmin", method=RequestMethod.POST)
+	public String insertUserFromAdmin(User user, ModelMap model, HttpServletRequest req) {
+		userDao.insertUser(user);
+		req.getSession().setAttribute("firstname", user.getFirstname());
+		req.getSession().setAttribute("lastname", user.getLastname());
+		user.setId(userDao.findByMailAndPassword(user).getId());
+		req.getSession().setAttribute("id", user.getId());
+		model.addAttribute(user.getId());
+
+		return "redirect:/admin/load";
+	}
+	
+	
+	@RequestMapping(value="admin/insertUser", method=RequestMethod.GET)
+		 public ModelAndView index(ModelMap model){
+		 model.addAttribute("ListaCountry", userDao.getCountryMap());
+		 ModelAndView mav=new ModelAndView("newUser","formUserSignIn", new User());
+		 mav.getModelMap().addAttribute("formUser", new User());
+	  return mav;
+	 }
 
 	@RequestMapping(value = "user/delUser", method = RequestMethod.GET)
 	public String delUser(ModelMap model, HttpServletRequest req) {
@@ -118,6 +139,7 @@ public class UserController {
 	@RequestMapping(value="admin/load", method=RequestMethod.GET)
 	public ModelAndView loadUser(ModelMap model) {
 		model.addAttribute("list", userDao.findAllUser());
+		model.addAttribute("listcountry", userDao.getCountryMap());
 		return new ModelAndView("UserList", "formUser", new User());
 	}
 
