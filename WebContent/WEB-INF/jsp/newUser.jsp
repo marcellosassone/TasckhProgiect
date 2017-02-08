@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -52,7 +52,7 @@
 						<div class="field-wrap">
 							<label> House Number<span class="req"></span>
 							</label>
-							<form:input type="text" value="" path="housenumber" />
+							<form:input type="number" value="" path="housenumber" />
 						</div>
 						<div class="field-wrap">
 							<label> City<span class="req"></span>
@@ -84,7 +84,7 @@
 							path="password" />
 					</div>
 
-					<button type="submit" class="button button-block" />Get Started</button>
+					<button type="submit" class="button button-block">Get Started</button>
 
 				</form:form>
 
