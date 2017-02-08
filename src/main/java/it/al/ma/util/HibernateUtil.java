@@ -25,10 +25,15 @@ public class HibernateUtil {
 		//default
 	}
 
-	public static HibernateUtil getInstance() {
-		if(instance == null) 
-			instance = new HibernateUtil();
-
-		return instance;
-	}
+	/**
+	 * Singleton application is not correct as there is no need for any instance
+	 * of the HibernateUtil class, since there are no declared instanced variables
+	 * at the moment.
+	 */
+//	public static HibernateUtil getInstance() {
+//		if(instance == null) 
+//			instance = new HibernateUtil();
+//
+//		return instance;
+//	}
 }
