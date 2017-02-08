@@ -39,7 +39,7 @@ public class DailyTime {
 	 
 	 
 	 public DailyTime() {
-		
+		// default constructor explicitly declared for framwokk purposes
 	}
 	 
 	public int getIdtime() {

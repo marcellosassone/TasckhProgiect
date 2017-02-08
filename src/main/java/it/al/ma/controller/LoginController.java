@@ -20,12 +20,14 @@ public class LoginController {
  @Autowired
  private UserDao userDao;
  
+ private static final String ADMIN = "admin";
+ private static final String FORMUSER = "formUser";
  
  @RequestMapping(value = "/", method = RequestMethod.GET)
  public ModelAndView index(ModelMap model){
 	 model.addAttribute("ListaCountry", userDao.getCountryMap());
 	 ModelAndView mav=new ModelAndView("index","formUserSignIn", new User());
-	 mav.getModelMap().addAttribute("formUser", new User());
+	 mav.getModelMap().addAttribute(FORMUSER, new User());
   return mav;
  }
  
@@ -38,23 +40,23 @@ public class LoginController {
   if(d == null) {
 	  model.addAttribute("errore", "Email or password error.");
 	  ModelAndView mav=new ModelAndView("index","formUserSignIn", new User());
-		 mav.getModelMap().addAttribute("formUser", new User());
+		 mav.getModelMap().addAttribute(FORMUSER, new User());
 	  return mav;
 	 }
   if(d.getAdmin() == 1) {
 		req.getSession().setAttribute("firstname", d.getFirstname());
 		req.getSession().setAttribute("lastname", d.getLastname());
-		req.getSession().setAttribute("admin", "admin");
+		req.getSession().setAttribute(ADMIN, ADMIN);
 		return new ModelAndView("redirect:admin/load");
 	}
-  req.getSession().setAttribute("admin", "user");
+  req.getSession().setAttribute(ADMIN, "user");
   req.getSession().setAttribute("firstname", d.getFirstname());
   req.getSession().setAttribute("lastname", d.getLastname());
   req.getSession().setAttribute("id", d.getId());
   
   model.addAttribute(d.getId());
   
- return new ModelAndView("welcome", "formUser", new User());
+ return new ModelAndView("welcome", FORMUSER, new User());
  }
  
 }

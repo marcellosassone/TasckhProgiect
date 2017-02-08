@@ -57,11 +57,11 @@ public class DailyTimeDaoImpl implements DailyTimeDao {
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
-			log.error("HibernateException during insert!", e);
+			log.error("HibernateException during update!", e);
 		} catch (Exception e) {
 			if (tx != null)
 				tx.rollback();
-			log.error("Exception during insert!", e);
+			log.error("Exception during update!", e);
 		} finally {
 			if (session != null)
 				session.close();
@@ -80,11 +80,11 @@ public class DailyTimeDaoImpl implements DailyTimeDao {
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
-			log.error("HibernateException during insert!", e);
+			log.error("HibernateException during delete!", e);
 		} catch (Exception e) {
 			if (tx != null)
 				tx.rollback();
-			log.error("Exception during insert!", e);
+			log.error("Exception during delete!", e);
 		} finally {
 			if (session != null)
 				session.close();
@@ -110,11 +110,11 @@ public class DailyTimeDaoImpl implements DailyTimeDao {
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
-			log.error("HibernateException during insert!", e);
+			log.error("HibernateException during select by UserId!", e);
 		} catch (Exception e) {
 			if (tx != null)
 				tx.rollback();
-			log.error("Exception during insert!", e);
+			log.error("Exception during select by UserId!", e);
 		} finally {
 			if (session != null)
 				session.close();
