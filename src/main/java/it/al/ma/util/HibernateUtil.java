@@ -7,33 +7,14 @@ import org.hibernate.service.ServiceRegistry;
 
 public class HibernateUtil {
 
-	private static SessionFactory sf;
-	private static ServiceRegistry serviceRegistry;
-
-	public static SessionFactory getSf() {
-	    Configuration configuration = new Configuration();
-	    configuration.configure();
-	    serviceRegistry = new StandardServiceRegistryBuilder().applySettings(
-	            configuration.getProperties()).build();
-	    sf = configuration.buildSessionFactory(serviceRegistry);
-	    return sf;
-	}
-	
-	private static HibernateUtil instance;
+	@SuppressWarnings("deprecation")
+	private static SessionFactory sf = new Configuration().configure().buildSessionFactory();
 
 	private HibernateUtil() {
-		//default
+		// default
 	}
 
-	/**
-	 * Singleton application is not correct as there is no need for any instance
-	 * of the HibernateUtil class, since there are no declared instanced variables
-	 * at the moment.
-	 */
-//	public static HibernateUtil getInstance() {
-//		if(instance == null) 
-//			instance = new HibernateUtil();
-//
-//		return instance;
-//	}
+	public static SessionFactory getSf() {
+		return sf;
+	}
 }
