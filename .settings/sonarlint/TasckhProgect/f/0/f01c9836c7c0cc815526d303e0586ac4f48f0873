@@ -1,19 +1,22 @@
 
-Csquid:S1166B"%Either log or rethrow this exception.(òŞ8ë«”‹+
+dsquid:S1192|"FDefine a constant instead of duplicating this literal "admin" 3 times.(ËÓãí8±¡Ñ½¡+
+nsquid:CommentedOutCodeLiner"<This block of commented-out lines of code should be removed.(‰ü¾üÿÿÿÿ8±¡Ñ½¡+
+Fsquid:S1148G"#Use a logger to log this exception.(÷Ş ¨úÿÿÿÿ8ë«”‹+
 X
-squid:S106?";Replace this usage of System.out or System.err by a logger.(àà’Ç8£««+
-Csquid:S1166/"%Either log or rethrow this exception.(òŞ8æ„«+
+squid:S106C";Replace this usage of System.out or System.err by a logger.(àà’Ç8±¡Ñ½¡+
+nsquid:S1132}"KMove the "admin" string literal on the left side of this string comparison.(§à‘„ùÿÿÿÿ8±¡Ñ½¡+
 X
-squid:S106T";Replace this usage of System.out or System.err by a logger.(Ø¼¢ƒ8£««+
+squid:S106V";Replace this usage of System.out or System.err by a logger.(àà’Ç8æ„«+
+ksquid:S11926"MDefine a constant instead of duplicating this literal "ListaCountry" 3 times.(Óü«8é‰»¿¡+
+nsquid:CommentedOutCodeLineo"<This block of commented-out lines of code should be removed.(‰ü¾üÿÿÿÿ8±¡Ñ½¡+
+Hsquid:S1166B"%Either log or rethrow this exception.(€…ï´úÿÿÿÿ8áíÃŠ+
 X
-squid:S106W";Replace this usage of System.out or System.err by a logger.(Ø¼¢ƒ8áíÃŠ+
-X
-squid:S106Z";Replace this usage of System.out or System.err by a logger.(Ø¼¢ƒ8£««+
-lsquid:S1192"IDefine a constant instead of duplicating this literal "lastname" 3 times.(Ö†Œ‡ûÿÿÿÿ8ŒÌ•¡+
-Fsquid:S1148C"#Use a logger to log this exception.(÷Ş ¨úÿÿÿÿ8æ„«+
-X
-squid:S106,";Replace this usage of System.out or System.err by a logger.(àà’Ç8æ„«+
-hsquid:S1192"JDefine a constant instead of duplicating this literal "firstname" 3 times.(¯‚‹Ø8ŒÌ•¡+
-Fsquid:S11480"#Use a logger to log this exception.(÷Ş ¨úÿÿÿÿ8ë«”‹+
-Hsquid:S1166>"%Either log or rethrow this exception.(€…ï´úÿÿÿÿ8æ„«+
-Hsquid:S1166+"%Either log or rethrow this exception.(€…ï´úÿÿÿÿ8áíÃŠ+
+squid:S106|";Replace this usage of System.out or System.err by a logger.(ËÓãí8£««+
+osquid:CommentedOutCodeLine„"<This block of commented-out lines of code should be removed.(ïÿµøÿÿÿÿ8±¡Ñ½¡+
+Csquid:S1166F"%Either log or rethrow this exception.(òŞ8ë«”‹+
+Csquid:S1166Y"%Either log or rethrow this exception.(òŞ8æ„«+
+Fsquid:S1148Z"#Use a logger to log this exception.(÷Ş ¨úÿÿÿÿ8æ„«+
+Hsquid:S1166U"%Either log or rethrow this exception.(€…ï´úÿÿÿÿ8æ„«+
+lsquid:S1192"IDefine a constant instead of duplicating this literal "lastname" 3 times.(Ö†Œ‡ûÿÿÿÿ8ˆµ•À¡+
+xsquid:S11920"UDefine a constant instead of duplicating this literal "redirect:/admin/load" 3 times.(£¤È´üÿÿÿÿ8‰µ•À¡+
+hsquid:S1192"JDefine a constant instead of duplicating this literal "firstname" 3 times.(¯‚‹Ø8‰µ•À¡+

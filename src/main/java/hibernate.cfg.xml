@@ -21,6 +21,6 @@
     
    <mapping class="it.al.ma.model.User" />
    <mapping class="it.al.ma.model.Country" />
-   
+    <mapping class="it.al.ma.model.DailyTime" />
   </session-factory> 
 </hibernate-configuration>
