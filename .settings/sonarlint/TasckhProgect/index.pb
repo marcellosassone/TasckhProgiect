@@ -47,3 +47,5 @@ i
 9target/TasckhProgect-0.0.1-SNAPSHOT/WEB-INF/jsp/index.jsp,6\2\62a5f159a731cfa1a9d487a3902fb557a994cde4
 W
 'src/main/java/it/al/ma/dao/UserDao.java,f\c\fc09bfdd728b0e954647bfc7272100474e14cb08
+R
+"WebContent/WEB-INF/jsp/newUser.jsp,5\0\50483a02a72d3cc829f8864b9ffdb347b9b05bda
