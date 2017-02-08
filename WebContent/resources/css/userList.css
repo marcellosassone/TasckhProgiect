@@ -2,16 +2,19 @@
 .rwd-table {
   margin: 1em 0;
   min-width: 300px;
+  border-collapse: collapse;
 }
-.rwd-table tr {
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-}
+
 .rwd-table th {
   display: none;
+    border-bottom: 1px solid #dd5;
+  
+  
 }
 .rwd-table td {
   display: block;
+  
+  border-bottom: 1px solid #dd5;
 }
 .rwd-table td:first-child {
   padding-top: .5em;
