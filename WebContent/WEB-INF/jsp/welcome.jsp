@@ -34,6 +34,11 @@
 
 		</form:form></td>
 
+		<td><form:form action="/TasckhProgect/user/compileTimesheet" method="GET">
+
+			<input type="submit" value="Compila TimeSheet" />
+
+		</form:form></td>
 		</tr>
 		</table>	
 </body>
