@@ -6,7 +6,7 @@
   
   <!-- Database connection settings -->
    <property name="connection.driver_class">com.mysql.jdbc.Driver</property> 
-   <property name="connection.url">jdbc:mysql://192.168.1.239:3306/tasckhdb?useSSL=false</property> 
+   <property name="connection.url">jdbc:mysql://192.168.1.107:3306/tasckhdb?useSSL=false</property> 
    <property name="connection.username">pippo</property> 
    <property name="connection.password">root</property> 
 
