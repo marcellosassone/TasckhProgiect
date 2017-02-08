@@ -24,6 +24,8 @@
 
 	
 	<bean id="userDao" class="it.al.ma.dao.UserDaoImpl"></bean>
+	<bean id="DailyDao" class="it.al.ma.dao.DailyTimeController"></bean>
+	
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/user/**" />
