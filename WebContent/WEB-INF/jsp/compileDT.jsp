@@ -124,9 +124,7 @@
 				<td data-th="firstshiftstop">${daily.firstshiftstop}</td>
 				<td data-th="secondshiftstart">${daily.secondshiftstart}</td>
 				<td data-th="secondshiftstop">${daily.secondshiftstop}</td>
-				<td data-th="codpermesso">${daily.codpermesso}</td>
-				
-					
+				<td data-th="codpermesso">${daily.codpermesso}</td>	
 			</tr>
 		</c:forEach>
 	</table>
