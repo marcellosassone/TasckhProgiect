@@ -73,20 +73,20 @@
 	
 	
 	<h1>Monthly Timesheet</h1>
-	<div><form method="GET" action="/TasckhProgect/user/compileTimesheet">
+	<div><form method="POST" action="/TasckhProgect/user/compileTimesheet">
 	<select name="currMonth" onchange="submit()">
-	<option value="0">January</option>
-	<option value="1">February</option>
-	<option value="2">March</option>
-	<option value="3">April</option>
-	<option value="4">May</option>
-	<option value="5">June</option>
-	<option value="6">July</option>
-	<option value="7">August</option>
-	<option value="8">September</option>
-	<option value="9">October</option>
-	<option value="10">November</option>
-	<option value="11">December</option>
+	<option value="0" <c:if test="${defaultMonth eq 0}">selected</c:if> >January</option>
+	<option value="1" <c:if test="${defaultMonth eq 1}">selected</c:if> >February</option>
+	<option value="2" <c:if test="${defaultMonth eq 2}">selected</c:if> >March</option>
+	<option value="3" <c:if test="${defaultMonth eq 3}">selected</c:if> >April</option>
+	<option value="4" <c:if test="${defaultMonth eq 4}">selected</c:if> >May</option>
+	<option value="5" <c:if test="${defaultMonth eq 5}">selected</c:if> >June</option>
+	<option value="6" <c:if test="${defaultMonth eq 6}">selected</c:if> >July</option>
+	<option value="7" <c:if test="${defaultMonth eq 7}">selected</c:if> >August</option>
+	<option value="8" <c:if test="${defaultMonth eq 8}">selected</c:if> >September</option>
+	<option value="9" <c:if test="${defaultMonth eq 9}">selected</c:if> >October</option>
+	<option value="10" <c:if test="${defaultMonth eq 10}">selected</c:if> >November</option>
+	<option value="11" <c:if test="${defaultMonth eq 11}">selected</c:if> >December</option>
 	</select>
 	</form></div>
 	
@@ -119,7 +119,7 @@
 				</tr>
 		<c:forEach var="daily" items="${listTimesheet}">
 			<tr >
-				<td data-th="date">${daily.date}</td>
+				<td data-th="date">${daily.data}</td>
 				<td data-th="firstshiftstart">${daily.firstshiftstart}</td>
 				<td data-th="firstshiftstop">${daily.firstshiftstop}</td>
 				<td data-th="secondshiftstart">${daily.secondshiftstart}</td>
