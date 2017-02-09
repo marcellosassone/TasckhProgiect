@@ -30,6 +30,11 @@ public class DailyTimeController {
 	@RequestMapping(value = "user/compileTimesheet", method = RequestMethod.GET)
 	public ModelAndView compileTimesheet(HttpServletRequest req) {
 		DailyTime daily = new DailyTime();
+		daily.setData(new Date(new java.util.Date().getTime()));
+		daily.setFirstshiftstart("09:00");
+		daily.setFirstshiftstop("13:00");
+		daily.setSecondshiftstart("14:00");
+		daily.setSecondshiftstop("18:00");
 		User user= new User();
 		user.setId((int) req.getSession().getAttribute("id"));
 		
@@ -39,6 +44,7 @@ public class DailyTimeController {
 		now.set(Calendar.DAY_OF_MONTH, now.getActualMaximum(Calendar.DAY_OF_MONTH));
 		Date end=new Date(now.toInstant().toEpochMilli());
 		
+		req.setAttribute("defaultMonth", now.get(Calendar.MONTH));
 		ModelAndView modelV= new ModelAndView("compileDT","formDailyTime", daily);
 		modelV.getModelMap().addAttribute("listTimesheet", dailyDao.findByIdUser(user, start, end));
 		return modelV;
@@ -67,6 +73,6 @@ public class DailyTimeController {
 	public String insertDaily(DailyTime daily,HttpServletRequest req) {
 		daily.setIduser((int) req.getSession().getAttribute("id"));
 		dailyDao.insertDaily(daily);
-		return "welcome";
+		return "redirect:/user/compileTimesheet";
 	}
 }
