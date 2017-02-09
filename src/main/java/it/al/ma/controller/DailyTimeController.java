@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,11 +40,12 @@ public class DailyTimeController {
 		Date end=new Date(now.toInstant().toEpochMilli());
 		
 		ModelAndView modelV= new ModelAndView("compileDT","formDailyTime", daily);
-		modelV.getModelMap().addAttribute("formListTime", dailyDao.findByIdUser(user, start, end));
+		modelV.getModelMap().addAttribute("listTimesheet", dailyDao.findByIdUser(user, start, end));
 		return modelV;
 	}
-	@RequestMapping(value = "user/compileTimesheet?currMonth={currMonth}", method = RequestMethod.GET)
-	public ModelAndView compileTimesheet(@PathVariable("currMonth") int month, HttpServletRequest req) {
+	
+	@RequestMapping(value = "user/compileTimesheet", method = RequestMethod.POST)
+	public ModelAndView compileTimesheet(@RequestParam("currMonth") int month, HttpServletRequest req) {
 		DailyTime daily = new DailyTime();
 		User user= new User();
 		user.setId((int) req.getSession().getAttribute("id"));
@@ -57,10 +57,12 @@ public class DailyTimeController {
 		now.set(Calendar.DAY_OF_MONTH, now.getActualMaximum(Calendar.DAY_OF_MONTH));
 		Date end=new Date(now.toInstant().toEpochMilli());
 		
+		req.setAttribute("defaultMonth", month);
 		ModelAndView modelV= new ModelAndView("compileDT","formDailyTime", daily);
 		modelV.getModelMap().addAttribute("listTimesheet", dailyDao.findByIdUser(user, start, end));
 		return modelV;
 	}
+	
 	@RequestMapping(value = "user/finalizeCompile", method=RequestMethod.POST)
 	public String insertDaily(DailyTime daily,HttpServletRequest req) {
 		daily.setIduser((int) req.getSession().getAttribute("id"));
