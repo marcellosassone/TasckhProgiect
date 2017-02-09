@@ -73,7 +73,7 @@
 	
 	
 	<h1>Monthly Timesheet</h1>
-	<div><form method="POST" action="/TasckhProgect/user/compileTimesheet">
+	<div><form method="GET" action="/TasckhProgect/user/compileTimesheet">
 	<select name="currMonth" onchange="submit()">
 	<option value="0">January</option>
 	<option value="1">February</option>
