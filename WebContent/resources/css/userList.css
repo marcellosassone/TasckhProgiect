@@ -3,6 +3,8 @@
   margin: 1em 0;
   min-width: 300px;
   border-collapse: collapse;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 .rwd-table th {
