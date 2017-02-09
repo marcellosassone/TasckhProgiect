@@ -22,9 +22,8 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-	
 	<bean id="userDao" class="it.al.ma.dao.UserDaoImpl"></bean>
-	<bean id="DailyDao" class="it.al.ma.dao.DailyTimeController"></bean>
+	<bean id="dailyDao" class="it.al.ma.dao.DailyTimeDaoImpl"></bean>
 	
 	<mvc:interceptors>
 		<mvc:interceptor>

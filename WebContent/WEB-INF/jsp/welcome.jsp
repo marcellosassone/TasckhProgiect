@@ -46,7 +46,7 @@
 							</li>
 							<li>
 								<img src="/TasckhProgect/resources/img/portfolio-icon.png">
-								<a href="portfolio.html">Timesheet</a>
+								<a href="/TasckhProgect/user/compileTimesheet">Timesheet</a>
 							</li>
 							<li>
 								<img src="/TasckhProgect/resources/img/followme-icon.png">

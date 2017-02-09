@@ -11,7 +11,7 @@
 </head>
 <body>
 	<h1>Compile TimeSheet</h1>
-	<form:form action="/TasckhProgect/user/finalizeCompile" method="POST"
+	<form:form action="/TasckhProgect/finalizeCompile" method="POST"
 		commandName="formDailyTime">
 
 		<div class="top-row">
@@ -53,22 +53,20 @@
 								autocomplete="off" path="secondshiftstop" /></td>
 					</tr>
 				</table>
-
 			</div>
 
 			<div class="field-wrap">
 				<label> Cod. Permesso<span class="req"></span>
 				</label>
-				<form:input type="text" path="codpermesso" />
-			</div>
 
-			<form:select path="codpermesso" required="true" autocomplete="off">
+			<form:select path="codpermesso" autocomplete="off">
 				<form:option value="" label="--- Select ---" />
 				<form:option value="P" label="Permesso (giornaliero)" />
 				<form:option value="M" label="Malattia" />
 				<form:option value="H" label="Permesso (orario)" />
 				<form:option value="F" label="Ferie" />
 			</form:select>
+			</div>
 		</div>
 
 		<button type="submit" class="button button-block">Salva Modifiche</button>
