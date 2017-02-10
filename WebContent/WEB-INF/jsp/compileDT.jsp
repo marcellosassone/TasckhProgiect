@@ -2,6 +2,9 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -114,13 +117,14 @@
 			<th><label>Permit Code <span class="req"></span>
 			</label></th>
 		</tr>
+		
 		<c:forEach var="daily" items="${listTimesheet}">
 			<tr>
-				<td data-th="date">${daily.data}</td>
-				<td data-th="firstshiftstart">${daily.firstshiftstart}</td>
-				<td data-th="firstshiftstop">${daily.firstshiftstop}</td>
-				<td data-th="secondshiftstart">${daily.secondshiftstart}</td>
-				<td data-th="secondshiftstop">${daily.secondshiftstop}</td>
+				<td data-th="date"><fmt:formatDate value="${daily.data}"  pattern="E d"/></td>
+				<td data-th="firstshiftstart"><c:out value="${fn:substring(daily.firstshiftstart, 0, 5)}" /></td>
+				<td data-th="firstshiftstop"><c:out value="${fn:substring(daily.firstshiftstop, 0, 5)}" /></td>
+				<td data-th="secondshiftstart"><c:out value="${fn:substring(daily.secondshiftstart, 0, 5)}" /></td>
+				<td data-th="secondshiftstop"><c:out value="${fn:substring(daily.secondshiftstop, 0, 5)}" /></td>
 				<td data-th="codpermesso">${daily.codpermesso}</td>
 			</tr>
 		</c:forEach>
