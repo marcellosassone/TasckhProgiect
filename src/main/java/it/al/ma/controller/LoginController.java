@@ -1,5 +1,7 @@
 package it.al.ma.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,6 @@ import it.al.ma.dao.UserDao;
 import it.al.ma.model.User;
 
 
-
 @Controller
 public class LoginController {
 
@@ -24,13 +25,13 @@ public class LoginController {
  private static final String FORMUSER = "formUser";
  
  @RequestMapping(value = "/", method = RequestMethod.GET)
- public ModelAndView index(ModelMap model){
+ public ModelAndView index(ModelMap model) throws IOException{
 	 model.addAttribute("ListaCountry", userDao.getCountryMap());
 	 ModelAndView mav=new ModelAndView("index","formUserSignIn", new User());
 	 mav.getModelMap().addAttribute(FORMUSER, new User());
+	 
   return mav;
  }
- 
 
 
  @RequestMapping(value="/login", method=RequestMethod.POST)

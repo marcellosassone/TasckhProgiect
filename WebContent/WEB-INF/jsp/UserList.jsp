@@ -26,6 +26,7 @@
 			<th>Admin</th>
 			<th>Edit</th>
 			<th>Delete</th>
+			<th>Timesheet</th>
 		</tr>
 		<c:forEach var="user" items="${list}">
 			<tr >
