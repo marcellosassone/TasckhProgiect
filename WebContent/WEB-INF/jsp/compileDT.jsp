@@ -69,7 +69,6 @@
 	<br>
 
 
-
 	<h1>Monthly Timesheet</h1>
 	<div>
 		<form method="POST" action="/TasckhProgect/user/compileTimesheet">
@@ -91,7 +90,6 @@
 			</select>
 		</form>
 	</div>
-
 
 	<table class="rwd-table">
 		<tr>
@@ -129,19 +127,8 @@
 			</tr>
 		</c:forEach>
 	</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	
+	<a href="/TasckhProgect/user/timesheetStamp"> <button>Print TimeSheet</button></a>
+	
 </body>
 </html>

@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import it.al.ma.dao.DailyTimeDao;
 import it.al.ma.model.DailyTime;
 import it.al.ma.model.User;
+import it.al.ma.util.XLSXReaderWriter;
 
 @Controller
 public class DailyTimeController {
@@ -75,4 +76,12 @@ public class DailyTimeController {
 		dailyDao.insertDaily(daily);
 		return "redirect:/user/compileTimesheet";
 	}
+	
+	@RequestMapping(value = "user/timesheetStamp", method=RequestMethod.GET)
+	public String timesheetStamp(User user,HttpServletRequest req) {
+		
+		XLSXReaderWriter.readWriteXlsx(user);
+		return "redirect:/user/compileTimesheet";
+	}
+	
 }

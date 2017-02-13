@@ -35,6 +35,7 @@
   	<url-pattern>*.gif</url-pattern>
   	<url-pattern>*.bmp</url-pattern>
   	<url-pattern>*.js</url-pattern>
+  	<url-pattern>*.xlsx</url-pattern>
   </servlet-mapping>
   
   <!--  In questo caso potrei omettere il context-param perchè uso i parametri di default per nome e percorso -->
