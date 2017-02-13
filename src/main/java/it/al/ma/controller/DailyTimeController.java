@@ -7,12 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import it.al.ma.dao.DailyTimeDao;
+import it.al.ma.dao.UserDao;
 import it.al.ma.model.DailyTime;
 import it.al.ma.model.User;
 import it.al.ma.util.XLSXReaderWriter;
@@ -23,6 +26,8 @@ public class DailyTimeController {
 	@Autowired
 	private DailyTimeDao dailyDao; 
 	
+	@Autowired
+	private UserDao userDao; 
 	/***
 	 * metodo viene richiamato la prima volta dalla pagina dell'Utente 
 	 * @param req
@@ -77,11 +82,14 @@ public class DailyTimeController {
 		return "redirect:/user/compileTimesheet";
 	}
 	
-	@RequestMapping(value = "user/timesheetStamp", method=RequestMethod.GET)
-	public String timesheetStamp(User user,HttpServletRequest req) {
-		
-		XLSXReaderWriter.readWriteXlsx(user);
-		return "redirect:/user/compileTimesheet";
+	@RequestMapping(value = "admin/timesheetStamp/{id}", method=RequestMethod.POST)
+	public String timesheetStamp(@PathVariable int id,ModelMap model) {
+		User user= new User();
+		user.setId(id);
+		User newuser=userDao.findByIdUser(user);
+		System.out.println(newuser);
+		XLSXReaderWriter.readWriteXlsx(newuser);
+		return "redirect:/admin/load";
 	}
 	
 }
