@@ -13,6 +13,13 @@
 <title>Compile TimeSheet</title>
 </head>
 <body>
+
+	
+	<div class="logo"><input type="image" SRC="/TasckhProgect/resources/img/Logo1.png" title="Back Home" style="height:20%;
+	width:20%" onClick="history.go(-1);return true;"/></div>
+
+	
+	<div class="divTop">
 	<h1>Compile TimeSheet</h1>
 	<form:form action="/TasckhProgect/user/finalizeCompile" method="POST"
 		commandName="formDailyTime">
@@ -61,16 +68,17 @@
 
 		</table>
 
-		<button type="submit" class="button button-block"
-			style="position: absolute">Save Timesheet</button>
+		<button type="submit" class="button button-block"> <img title="SAVE TIMESHEET" src="/TasckhProgect/resources/img/floppy.png">  </button>
 
 	</form:form>
+	</div>
 	<br>
 	<br>
 
-
+	<div class="divBottom">
 	<h1>Monthly Timesheet</h1>
-	<div>
+	<div id="mainselection">
+	
 		<form method="POST" action="/TasckhProgect/user/compileTimesheet">
 			<select name="currMonth" onchange="submit()">
 				<option value="0" <c:if test="${defaultMonth eq 0}">selected</c:if>>January</option>
@@ -91,6 +99,9 @@
 		</form>
 	</div>
 
+
+	<form:form action="/TasckhProgect/timesheetStamp" method="POST"
+		commandName="formDailyTime">
 	<table class="rwd-table">
 		<tr>
 			<th style="border-bottom: none"></th>
@@ -127,8 +138,9 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<button type="submit" class="button button-block"> <img title="Export Timesheet in Excel File" src="/TasckhProgect/resources/img/ms_excel.png">  </button>
 	
-	<a href="/TasckhProgect/user/timesheetStamp"> <button>Print TimeSheet</button></a>
-	
+	</form:form>
+	</div>
 </body>
 </html>
