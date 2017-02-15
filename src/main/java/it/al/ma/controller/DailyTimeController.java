@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -75,6 +74,25 @@ public class DailyTimeController {
 		return modelV;
 	}
 	
+	@RequestMapping(value = "admin/compileTimesheet/{id}", method = RequestMethod.GET)
+	public ModelAndView viewTimesheet(@PathVariable int id, HttpServletRequest req) {
+		DailyTime daily = new DailyTime();
+		User user= new User();
+		user.setId(id);
+		
+		Calendar now = Calendar.getInstance();
+		int month=now.get(Calendar.MONTH);
+		now.set(Calendar.DAY_OF_MONTH, 1);
+		now.set(Calendar.MONTH,month);
+		Date start=new Date(now.toInstant().toEpochMilli());	
+		now.set(Calendar.DAY_OF_MONTH, now.getActualMaximum(Calendar.DAY_OF_MONTH));
+		Date end=new Date(now.toInstant().toEpochMilli());
+		
+		req.setAttribute("defaultMonth", month);
+		ModelAndView modelV= new ModelAndView("compileDT","formDailyTime", daily);
+		modelV.getModelMap().addAttribute("listTimesheet", dailyDao.findByIdUser(user, start, end));
+		return modelV;
+	}
 	@RequestMapping(value = "user/finalizeCompile", method=RequestMethod.POST)
 	public String insertDaily(DailyTime daily,HttpServletRequest req) {
 		daily.setIduser((int) req.getSession().getAttribute("id"));
@@ -82,14 +100,15 @@ public class DailyTimeController {
 		return "redirect:/user/compileTimesheet";
 	}
 	
-	@RequestMapping(value = "admin/timesheetStamp/{id}", method=RequestMethod.POST)
-	public String timesheetStamp(@PathVariable int id,ModelMap model) {
+	@RequestMapping(value = "timesheetStamp/{id}", method=RequestMethod.POST)
+	public String timesheetStamp(@PathVariable int id) {
 		User user= new User();
 		user.setId(id);
 		User newuser=userDao.findByIdUser(user);
 		System.out.println(newuser);
+		System.out.println(" metodo timestamp --- "+id);
 		XLSXReaderWriter.readWriteXlsx(newuser);
-		return "redirect:/admin/load";
+		return "redirect:/admin/compileTimesheet/{id}";
 	}
 	
 }
