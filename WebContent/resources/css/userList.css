@@ -115,7 +115,7 @@ h1 {
 	
 }
 #mainselection select {
-  text-align:center;
+
   border: 0;
   color: #EEE;
   background: transparent;
@@ -128,9 +128,10 @@ h1 {
   -webkit-appearance: none;
 }
 #mainselection {
-  text-align:center;
+ display: block;
+margin: 0 auto;
   overflow: hidden;
-  width: 300px;
+  width: 350px;
   -moz-border-radius: 9px 9px 9px 9px;
   -webkit-border-radius: 9px 9px 9px 9px;
   border-radius: 9px 9px 9px 9px;
