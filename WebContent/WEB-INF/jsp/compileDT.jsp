@@ -100,7 +100,7 @@
 	</div>
 
 
-	<form:form action="/TasckhProgect/timesheetStamp" method="POST"
+	<form:form action="/TasckhProgect/timesheetStamp/${id}" method="POST"
 		commandName="formDailyTime">
 	<table class="rwd-table">
 		<tr>

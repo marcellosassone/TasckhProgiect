@@ -101,14 +101,16 @@ public class DailyTimeController {
 	}
 	
 	@RequestMapping(value = "timesheetStamp/{id}", method=RequestMethod.POST)
-	public String timesheetStamp(@PathVariable int id) {
+	public String timesheetStamp(@PathVariable int id, HttpServletRequest req) {
 		User user= new User();
 		user.setId(id);
 		User newuser=userDao.findByIdUser(user);
 		System.out.println(newuser);
 		System.out.println(" metodo timestamp --- "+id);
 		XLSXReaderWriter.readWriteXlsx(newuser);
-		return "redirect:/admin/compileTimesheet/{id}";
+		if (req.getSession().getAttribute("admin").equals("admin"))
+			return "redirect:/admin/compileTimesheet/{id}";
+		return "redirect:/user/compileTimesheet";
 	}
 	
 }
