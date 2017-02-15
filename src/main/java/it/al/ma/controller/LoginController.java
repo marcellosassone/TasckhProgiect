@@ -15,6 +15,7 @@ import it.al.ma.dao.UserDao;
 import it.al.ma.model.User;
 
 
+
 @Controller
 public class LoginController {
 
@@ -24,23 +25,30 @@ public class LoginController {
  private static final String ADMIN = "admin";
  private static final String FORMUSER = "formUser";
  
- @RequestMapping(value = "/", method = RequestMethod.GET)
- public ModelAndView index(ModelMap model) throws IOException{
-	 model.addAttribute("ListaCountry", userDao.getCountryMap());
-	 ModelAndView mav=new ModelAndView("index","formUserSignIn", new User());
-	 mav.getModelMap().addAttribute(FORMUSER, new User());
-	 
-  return mav;
- }
+// @RequestMapping(value = "/", method = RequestMethod.GET)
+// public ModelAndView index(ModelMap model) throws IOException{
+//	 model.addAttribute("ListaCountry", userDao.getCountryMap());
+//	 ModelAndView mav=new ModelAndView("index","formUserSignIn", new User());
+//	 mav.getModelMap().addAttribute(FORMUSER, new User());
+//	 
+//  return mav;
+// }
 
+ 
+ @RequestMapping(value="/", method=RequestMethod.GET)
+	public ModelAndView goToIndex() {
+	
+		return new ModelAndView("index", FORMUSER, new User());
+	}
+ 
 
  @RequestMapping(value="/login", method=RequestMethod.POST)
  public ModelAndView verifyLogin(User user, ModelMap model, HttpServletRequest req) {
   User d = userDao.findByMailAndPassword(user);
-  
+ 
   if(d == null) {
 	  model.addAttribute("errore", "Email or password error.");
-	  ModelAndView mav=new ModelAndView("index","formUserSignIn", new User());
+	  ModelAndView mav=new ModelAndView("index","formUser", new User());
 		 mav.getModelMap().addAttribute(FORMUSER, new User());
 	  return mav;
 	 }
