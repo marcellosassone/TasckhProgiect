@@ -50,8 +50,9 @@
 						method="POST">
 						<input type="submit" value="Delete" onClick='return confirm("sei sicuro di voler eliminare?")' />
 					</form:form></td>
-					<td data-th="TimeSheet"><form:form action="/TasckhProgect/timesheetStamp/${user.id}"
-						method="POST">
+					<td data-th="TimeSheet"><form:form action="/TasckhProgect/admin/compileTimesheet/${user.id}"
+						method="GET">
+						<input Type="hidden" name="currMonth" value ="${currMonth}">
 						<input type="submit" value="TimeSheet" />
 					</form:form></td>
 			</tr>
