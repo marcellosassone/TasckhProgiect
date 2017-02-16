@@ -19,10 +19,10 @@
   
 <div class="login">
   <header class="login-header"><span class="text">LOGIN</span><span class="loader"></span></header>
-  <c:out value="${errore}" />
+  <c:out  value="${errore}"/>
 				<form:form action="/TasckhProgect/login" method="POST"
 					commandName="formUser">
-					<img src="/TasckhProgect/resources/img/Logo1.png" style="width:50%;height:50%;padding-left:10px; margin-bottom:15px">
+					<img src="/TasckhProgect/resources/img/Logo1.png" style="width:70%;height:70%;padding-left:10px; margin-bottom:15px">
     <form:input class="login-input" type="text" placeholder="email" path="email"/>
     <form:input class="login-input" type="password" placeholder="password" path="password"/>
     <button class="login-btn">login</button>
