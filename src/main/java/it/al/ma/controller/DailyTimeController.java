@@ -52,6 +52,7 @@ public class DailyTimeController {
 		req.setAttribute("defaultMonth", now.get(Calendar.MONTH));
 		ModelAndView modelV= new ModelAndView("compileDT","formDailyTime", daily);
 		modelV.getModelMap().addAttribute("listTimesheet", dailyDao.findByIdUser(user, start, end));
+		modelV.getModelMap().addAttribute("currMonth", now.get(Calendar.MONTH));
 		return modelV;
 	}
 	
@@ -71,6 +72,7 @@ public class DailyTimeController {
 		req.setAttribute("defaultMonth", month);
 		ModelAndView modelV= new ModelAndView("compileDT","formDailyTime", daily);
 		modelV.getModelMap().addAttribute("listTimesheet", dailyDao.findByIdUser(user, start, end));
+		modelV.getModelMap().addAttribute("currMonth", month);
 		return modelV;
 	}
 	
@@ -91,6 +93,7 @@ public class DailyTimeController {
 		req.setAttribute("defaultMonth", month);
 		ModelAndView modelV= new ModelAndView("compileDT","formDailyTime", daily);
 		modelV.getModelMap().addAttribute("listTimesheet", dailyDao.findByIdUser(user, start, end));
+		modelV.getModelMap().addAttribute("currMonth", month);
 		return modelV;
 	}
 	@RequestMapping(value = "user/finalizeCompile", method=RequestMethod.POST)
@@ -101,13 +104,16 @@ public class DailyTimeController {
 	}
 	
 	@RequestMapping(value = "timesheetStamp/{id}", method=RequestMethod.POST)
-	public String timesheetStamp(@PathVariable int id, HttpServletRequest req) {
+	public String timesheetStamp(@RequestParam("currMonth") int month, @PathVariable int id, HttpServletRequest req) {
 		User user= new User();
 		user.setId(id);
 		User newuser=userDao.findByIdUser(user);
 		System.out.println(newuser);
+		System.out.println("MESE - "+ month);
 		System.out.println(" metodo timestamp --- "+id);
-		XLSXReaderWriter.readWriteXlsx(newuser);
+		XLSXReaderWriter.writeXlsx(newuser,month);
+		XLSXReaderWriter.readXlsx(month);
+		System.out.println(req.getSession().getAttribute("admin"));
 		if (req.getSession().getAttribute("admin").equals("admin"))
 			return "redirect:/admin/compileTimesheet/{id}";
 		return "redirect:/user/compileTimesheet";

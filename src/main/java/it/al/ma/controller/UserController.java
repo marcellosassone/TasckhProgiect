@@ -140,6 +140,7 @@ public class UserController {
 	public ModelAndView loadUser(ModelMap model) {
 		model.addAttribute("list", userDao.findAllUser());
 		model.addAttribute("listcountry", userDao.getCountryMap());
+		model.addAttribute("currMonth", 0);
 		return new ModelAndView("UserList", "formUser", new User());
 	}
 

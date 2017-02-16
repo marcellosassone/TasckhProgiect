@@ -102,6 +102,7 @@
 
 	<form:form action="/TasckhProgect/timesheetStamp/${id}" method="POST"
 		commandName="formDailyTime">
+		<input Type="hidden" name="currMonth" value ="${currMonth}">
 	<table class="rwd-table">
 		<tr>
 			<th style="border-bottom: none"></th>
