@@ -31,7 +31,7 @@
 </head>
 <body >
 <div class="logo"><input type="image" SRC="/TasckhProgect/resources/img/Logo1.png" title="Back Home" style="height:20%;
-	width:20%; margin-bottom:30px; margin-top:10px" onClick="history.go(-1);return true;"/></div>
+	width:20%; margin-bottom:30px; margin-top:10px; margin-left:20px" onClick="history.go(-1);return true;"/></div>
 	<div class="container">
 	<div class="container topbottom">
 		<div class="row-fluid">
@@ -43,19 +43,19 @@
 					<div>
 						<ul>
 							<li>
-								<img src="/TasckhProgect/resources/img/about-icon.png">
-								<a href="/TasckhProgect/user/ModUser">Edit Profile</a>
+								<img src="/TasckhProgect/resources/img/profile.png">
+								<a href="/TasckhProgect/user/ModUser">Modifica Profilo</a>
 							</li>
 							<li>
-								<img src="/TasckhProgect/resources/img/portfolio-icon.png">
+								<img src="/TasckhProgect/resources/img/time.png">
 								<a href="/TasckhProgect/user/compileTimesheet">Timesheet</a>
 							</li>
 							<li>
-								<img src="/TasckhProgect/resources/img/followme-icon.png">
-								<a href="follow.html">Follow Me</a>
+								<img src="/TasckhProgect/resources/img/upload.png">
+								<a href="follow.html">Gestione Documentale</a>
 							</li>
 							<li>
-								<img src="/TasckhProgect/resources/img/contact-icon.png">
+								<img src="/TasckhProgect/resources/img/contact.png">
 								<a href="contact.html">Contact</a>
 							</li>
 							<li>
