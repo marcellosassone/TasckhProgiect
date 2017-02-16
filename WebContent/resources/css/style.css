@@ -3,7 +3,7 @@ body{
 	font-size: 18px;
 	color: #383838;
 	line-height: 30px;
-	background: #ff8800;
+	background: #ffffff;
 	line-height: 1.5;
 }
 
@@ -403,4 +403,19 @@ font-size: 14px;
 text-align: center;
 padding: 10px auto;
 color: red;
+}
+
+.container{
+	
+	display: block;
+margin: 0 auto;
+  overflow: hidden;
+  
+  -moz-border-radius: 9px 9px 9px 9px;
+  -webkit-border-radius: 9px 9px 9px 9px;
+  border-radius: 9px 9px 9px 9px;
+  box-shadow: 1px 1px 11px #330033;
+	
+	
+	
 }

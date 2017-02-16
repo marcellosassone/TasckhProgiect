@@ -30,7 +30,9 @@
 	<![endif]-->
 </head>
 <body >
-
+<div class="logo"><input type="image" SRC="/TasckhProgect/resources/img/Logo1.png" title="Back Home" style="height:20%;
+	width:20%; margin-bottom:30px; margin-top:10px" onClick="history.go(-1);return true;"/></div>
+	<div class="container">
 	<div class="container topbottom">
 		<div class="row-fluid">
 
@@ -103,6 +105,7 @@
 			</div>
 
 		</div>
+	</div>
 	</div>
 	<script src="/TasckhProgect/resources/js/jquery-1.7.1.min.js" type="text/javascript"></script>
 	<script src="/TasckhProgect/resources/js/jqbar.js" type="text/javascript"></script>
