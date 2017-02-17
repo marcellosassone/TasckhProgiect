@@ -52,7 +52,7 @@
 							</li>
 							<li>
 								<img src="/TasckhProgect/resources/img/upload.png">
-								<a href="/TasckhProgect/user/loadDoc">Gestione Documentale</a>
+								<a href="/TasckhProgect/user/loadDoc">Gestione Documenti</a>
 							</li>
 							<li>
 								<img src="/TasckhProgect/resources/img/contact.png">
