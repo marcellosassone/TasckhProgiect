@@ -123,7 +123,7 @@ public class DocumentoController {
 			documentoDao.inserisciDoc(doc);
 		}
 
-		return  "welcome";
+		return  "redirect:/user/loadDoc";
 	}
 
 	@RequestMapping(value = "/user/deleteDoc/{id}")
