@@ -1,18 +1,28 @@
 package it.al.ma.model;
 
+import java.util.Set;
+import java.util.TreeSet;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
+
+
+
+
 
 @Entity
 @Table(name = "user")
 public class User {
 
  @Id
- @Column(name = "id")
+ @Column(name = "id", nullable=false)
  @GeneratedValue(strategy = GenerationType.IDENTITY)
  private int id;
  @Column(name = "salutation")
@@ -35,6 +45,9 @@ public class User {
  private String password;
  @Column(name = "admin")
  private int admin;
+ @OneToMany(fetch=FetchType.LAZY, mappedBy="user")
+	@OrderBy("data DESC")
+	private Set<Documento> documenti;
 
  public User() {
   super();
@@ -153,6 +166,14 @@ public class User {
  public void setAdmin(int admin) {
   this.admin = admin;
  }
+ 
+ public Set<Documento> getDocumenti() {
+		return documenti;
+	}
+
+	public void setDocumenti(Set<Documento> documenti) {
+		this.documenti = documenti;
+	}
 
  @Override
  public int hashCode() {
@@ -235,7 +256,12 @@ public class User {
  }
 
 
- 
+ @Override
+	public Object clone() throws CloneNotSupportedException {
+		User cloned = (User) super.clone();
+		cloned.setDocumenti(new TreeSet<Documento>(this.getDocumenti()));
+		return cloned;
+	}
  
  
 
