@@ -24,6 +24,7 @@
 
 	<bean id="userDao" class="it.al.ma.dao.UserDaoImpl"></bean>
 	<bean id="dailyDao" class="it.al.ma.dao.DailyTimeDaoImpl"></bean>
+	<bean id="documentoDao" class="it.al.ma.dao.DocumentoDAOImpl"></bean>
 	
 	<mvc:interceptors>
 		<mvc:interceptor>
