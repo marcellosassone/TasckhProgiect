@@ -4,23 +4,17 @@ import java.io.File;
 import java.io.FileInputStream; 
 import java.io.FileNotFoundException; 
 import java.io.FileOutputStream; 
-import java.io.IOException; 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap; 
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map; 
-import java.util.Set; 
 import org.apache.poi.ss.usermodel.Cell; 
 import org.apache.poi.ss.usermodel.Row; 
 import org.apache.poi.xssf.usermodel.XSSFSheet; 
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.hamcrest.core.SubstringMatcher;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import it.al.ma.dao.DailyTimeDao;
 import it.al.ma.dao.DailyTimeDaoImpl;
 import it.al.ma.model.DailyTime;
 import it.al.ma.model.User; 
@@ -28,16 +22,24 @@ import it.al.ma.model.User;
 
 public class XLSXReaderWriter { 
 
-	private static final String EXCEL_FILE_LOCATION = "WEB-INF/Timesheet_2017.xls";
+	private static final String EXCEL_FILE_LOCATION = "WEB-INF/Timesheet_2017.xlsx";
 	private static String EXCEL_FILE_OUTPUT = null;
-
 	private XLSXReaderWriter() {
 	}
 
 	static{
 
 		File excel = new File(EXCEL_FILE_LOCATION);
-		EXCEL_FILE_OUTPUT = new String(excel.getParent() +"//"+ "Pippo_" + excel.getName());
+		Calendar dataFile = Calendar.getInstance();
+		//cal.get(Calendar.DAY_OF_MONTH);
+		Integer day = dataFile.get(Calendar.DAY_OF_MONTH);
+		Integer mese = dataFile.get(Calendar.MONTH);
+		Integer anno = dataFile.get(Calendar.YEAR);
+		Integer ora = dataFile.get(Calendar.HOUR_OF_DAY);
+		Integer minuti = dataFile.get(Calendar.MINUTE);
+		Integer second = dataFile.get(Calendar.SECOND);
+		String namedata= anno.toString() +mese.toString()+day.toString()+"_"+ora.toString()+minuti.toString()+second.toString();
+		EXCEL_FILE_OUTPUT = new String(excel.getParent() +"//"+ namedata +"_"+ excel.getName());
 	}
 
 	public static void readXlsx(int mounth) { 
@@ -115,7 +117,10 @@ public class XLSXReaderWriter {
 			// writing data into XLSX file
 
 			Calendar cal = Calendar.getInstance();
-			int year = cal.get(Calendar.YEAR);
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+			Calendar oreLav = sdf.getCalendar();
+			//int year = cal.get(Calendar.YEAR);
 			//int month = cal.get(Calendar.MONTH);
 
 			int r=7;
@@ -123,58 +128,56 @@ public class XLSXReaderWriter {
 				NEWELEMENT:
 				for (r=7;r<40;r++){
 					cal.setTime(dT.getData());
+					oreLav.setTime(dT.getData());
 					Double day = (double) cal.get(Calendar.DAY_OF_MONTH);
-					int c=1;
+					int col=1;
 					Row row = sheet.getRow(r);
 
-					Cell cell = row.getCell(c);
-					System.out.println(day);
-					System.out.println(cell.getNumericCellValue());
+					Cell cell = row.getCell(col);
+					//System.out.println(day);
+					//System.out.println(cell.getNumericCellValue());
 					if (day.equals(cell.getNumericCellValue()))
 					{
 						System.out.println("SONO NEL CICLO COLONNE");
-						c++;
-						cell = row.getCell(c);c++;
-						System.out.println("TIPO - " + cell.getDateCellValue());
-						System.out.println("TIPO - " + cell.getNumericCellValue());
-						cell.setCellValue(dT.getFirstshiftstart().substring(0, 5));
-						//cell.setCellType(Cell.CELL_TYPE_NUMERIC);
-						cell = row.getCell(c);c++;
-						cell.setCellValue((dT.getFirstshiftstop().substring(0, 5)));
-						//cell.setCellType(Cell.CELL_TYPE_NUMERIC);
-						cell = row.getCell(c);c++;
-						cell.setCellValue((dT.getSecondshiftstart().substring(0, 5)));
-						//cell.setCellType(Cell.CELL_TYPE_NUMERIC);
-						cell = row.getCell(c);c++;
-						cell.setCellValue((dT.getSecondshiftstop().substring(0, 5)));
-						//cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+						col++;
+						cell = row.getCell(col);col++;
+						//System.out.println(dT.getFirstshiftstart().substring(1, 2) + " FSooooSS "+dT.getSecondshiftstart().substring(0, 2));
+
+						int ora = (Integer.parseInt(dT.getFirstshiftstart().substring(0, 2))>=10) ? Integer.parseInt(dT.getFirstshiftstart().substring(0, 2)) : Integer.parseInt(dT.getFirstshiftstart().substring(1, 2));						
+						cal.set(Calendar.HOUR,ora);
+						cal.set(Calendar.MINUTE,0);
+						cal.set(Calendar.SECOND,0);	
+						cell.setCellValue(cal.getTime());
+						
+						oreLav.set(Calendar.SECOND,0);
+						oreLav.set(Calendar.MINUTE,0);
+						oreLav.set(Calendar.HOUR,Integer.parseInt(dT.getFirstshiftstop().substring(0, 2)));					
+						//System.out.println(Integer.parseInt(dT.getFirstshiftstop().substring(0, 2)));
+						
+						cell = row.getCell(col);col++;
+						cell.setCellValue(oreLav.getTime());
+						System.out.println(oreLav.getTime());
+						
+						oreLav.set(Calendar.HOUR,Integer.parseInt(dT.getSecondshiftstart().substring(0, 2))-12);
+						//System.out.println(Integer.parseInt(dT.getSecondshiftstart().substring(0, 2)));
+						cell = row.getCell(col);col++;
+						//System.out.println(oreLav.getTime());
+						cell.setCellValue(oreLav.getTime());
+
+						
+						oreLav.set(Calendar.HOUR,Integer.parseInt(dT.getSecondshiftstop().substring(0, 2))-12);
+						//System.out.println(Integer.parseInt(dT.getSecondshiftstop().substring(0, 2)));
+						cell = row.getCell(col);col++;
+						//System.out.println(oreLav.getTime());
+						cell.setCellValue(oreLav.getTime());
+
+						cell = row.getCell(10);
+						cell.setCellValue(dT.getCodpermesso());
 						break NEWELEMENT;
 					}
 				}
 			}
 
-			Map<String, Object[]> newData = new HashMap<String, Object[]>(); 
-			newData.put("7", new Object[] { 7d, "Sonya", "75K", "SALES", "Rupert" }); 
-			newData.put("8", new Object[] { 8d, "Kris", "85K", "SALES", "Rupert" }); 
-			newData.put("9", new Object[] { 9d, "Dave", "90K", "SALES", "Rupert" }); 
-			Set<String> newRows = newData.keySet(); 
-			int rownum = sheet.getLastRowNum(); 
-			for (String key : newRows) { 
-				Row row = sheet.createRow(rownum++); 
-				Object[] objArr = newData.get(key); 
-				int cellnum = 0; 
-				for (Object obj : objArr) { 
-					Cell cell = row.createCell(cellnum++); 
-					if (obj instanceof String) { 
-						cell.setCellValue((String) obj); } 
-					else if (obj instanceof Boolean) { 
-						cell.setCellValue((Boolean) obj); } 
-					else if (obj instanceof Date) { 
-						cell.setCellValue((Date) obj); } 
-					else if (obj instanceof Double) { 
-						cell.setCellValue((Double) obj); } 
-				} 
-			}
 			//Scrivo il Cognome e il Nome nella cella indicata
 			Row row = sheet.getRow(2);
 			Cell cell = row.getCell(11);
