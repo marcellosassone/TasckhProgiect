@@ -143,15 +143,15 @@ public class DocumentoController {
 		
 		model.addAttribute("listaDoc", documentoDao.listaPrivata(user));
 		
-//		List<Documento> myOrdyyyList = new ArrayList<>(documentoDao.listaPrivata(user));
-//		Collections.sort(myOrdyyyList, new Comparator<Documento>() {
-//
-//			@Override
-//			public int compare(Documento arg0, Documento arg1) {
-//				return arg0.getNome().compareTo(arg1.getNome());
-//			}
-//
-//		});
+		List<Documento> myOrdyyyList = new ArrayList<>(documentoDao.listaPrivata(user));
+		Collections.sort(myOrdyyyList, new Comparator<Documento>() {
+
+			@Override
+			public int compare(Documento arg0, Documento arg1) {
+				return arg0.getNome().compareTo(arg1.getNome());
+			}
+
+		});
 		
 		return new ModelAndView("gestioneDoc", "formDoc", new Documento());
 	}
