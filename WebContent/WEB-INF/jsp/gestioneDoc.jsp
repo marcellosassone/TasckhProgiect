@@ -57,10 +57,10 @@
 								<c:out value="${doc.descrizione}" />
 							</c:otherwise>
 						</c:choose></td>
-					<td><a href="/TasckhProgect/user/downloadDoc/${doc.id}">Download</a></td>
-					<td><a href="/TasckhProgect/user/updateDoc/${doc.id}">Modifica</a></td>
+					<td><a href="/TasckhProgect/user/downloadDoc/${doc.id}"><img src="/TasckhProgect/resources/img/download.png" title="Download"></a></td>
+					<td><a href="/TasckhProgect/user/updateDoc/${doc.id}"><img src="/TasckhProgect/resources/img/update.png" title="Update"></a></td>
 					<td><a href="/TasckhProgect/user/deleteDoc/${doc.id}"
-						onClick='return confirm("Sei sicuro di Voler Eliminare il Record?")'>Elimina</a></td>
+						onClick='return confirm("Sei sicuro di Voler Eliminare il Record?")'><img src="/TasckhProgect/resources/img/delete.png" title="Cancella"></a></td>
 				</tr>
 			</c:forEach>
 		</table>
