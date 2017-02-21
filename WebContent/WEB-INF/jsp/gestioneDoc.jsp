@@ -13,13 +13,30 @@
 </head>
 
 <body>
-<div class="logo"><input type="image" SRC="/TasckhProgect/resources/img/Logo1.png" title="Back Home" style="height:60%;
-	width:60%" onClick="history.go(-1);return true;"/></div>
-	
+<div class="logo"><img src="/TasckhProgect/resources/img/Logo1.png"  style="height:60%;
+	width:60%"/></div>
+	<div class="container">
+	<div class="navbar">
+								
+								<a href="/TasckhProgect/user/ModUser"><img src="/TasckhProgect/resources/img/profilo.png" title="Modifica profilo"></a>
+							
+								
+								<a href="/TasckhProgect/user/compileTimesheet"><img src="/TasckhProgect/resources/img/timesheet-bg.png" title="Timesheet"></a>
+							
+								
+													
+								
+								<a href="contact.html"><img src="/TasckhProgect/resources/img/contact-bg.png" title="Contatti"></a>
+							
+								
+								<a href="/TasckhProgect/logout"><img src="/TasckhProgect/resources/img/logout-bg.png" title=""></a>
+							</div>
+	<div class="container2">
 	<h1>Gestione Documenti</h1>
 	<div class="divTop">
 	<form method="POST"
 		action="/TasckhProgect/user/filtraDocumenti">
+		
 		
 		<table class="rwd-table">
 			<tr>
@@ -30,7 +47,7 @@
 	</form>
 
 	<form method="POST" action="/TasckhProgect/user/finalizzaModificaDoc">
-
+		
 		<table class="rwd-table">
 			<tr>
 				
@@ -39,9 +56,9 @@
 				<th>Nome<a
 					href="/TasckhProgect/user/sortDoc/name/${nameSort eq null or nameSort eq true ? 'ASC' : 'DESC'}"><img Title="Ordina" src="/TasckhProgect/resources/img/sort.png"></a></th>
 				<th>Descrizione</th>
-				<th>Download</th>
-				<th>Modifica</th>
-				<th>Cancella</th>
+				<th style="width:50px"></th>
+				<th style="width:50px"></th>
+				<th style="width:50px"></th>
 				
 			</tr>
 			
@@ -75,20 +92,21 @@
 	<div class="divBottom">
 	<form:form method="POST" commandName="formDoc"
 		action="/TasckhProgect/user/inserisciDoc" enctype="multipart/form-data">
-		<table class="rwd-table">
-			<tr>
-				<td><form:label path="descrizione">Upload </form:label><input type="file" name="file" /></td>
+		<form:label path="descrizione">Upload </form:label><input type="file" name="file" />
 			
-			</tr>
-			<tr>
-				<td><form:label path="descrizione">Descrizione  </form:label><form:input path="descrizione" /></td>
-				<td><input type="submit" value="Inserisci" /></td>
-			</tr>
-		</table>
+			
+			
+			<form:label path="descrizione">Descrizione  </form:label><form:input path="descrizione" />
+				
+				<button type="submit" class="button button-block"> <img title="Upload" src="/TasckhProgect/resources/img/upload2.png">  </button>
+			
+		
 		<br>
 		<br>
 		
 	</form:form>
+	</div>
+	</div>
 	</div>
 </body>
 </html>

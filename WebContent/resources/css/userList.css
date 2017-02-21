@@ -5,7 +5,7 @@
   border-collapse: collapse;
   margin-left:auto;
   margin-right:auto;
-  
+  text-align:center;
 }
 
 .rwd-table th {
@@ -13,24 +13,29 @@
   border-bottom: 1px solid #dd5;
   padding:1px;
   white-space:nowrap;
+  text-align:center;
 }
 .rwd-table td {
   display: block;
   border-bottom: 1px solid #dd5;
   padding:1px;
   white-space:nowrap;
+  text-align:center;
 }
 .rwd-table td:first-child {
   padding-top: .5em;
+  text-align:center;
 }
 .rwd-table td:last-child {
   padding-bottom: .5em;
+  text-align:center;
 }
 .rwd-table td:before {
   content: attr(data-th) ": ";
   font-weight: bold;
   width: 6.5em;
   display: inline-block;
+  text-align:center;
 }
 @media (min-width: 480px) {
   .rwd-table td:before {
@@ -38,7 +43,8 @@
   }
 }
 .rwd-table th, .rwd-table td {
-  text-align: left;
+  
+  text-align:center;
 }
 @media (min-width: 480px) {
   .rwd-table th, .rwd-table td {
@@ -150,4 +156,73 @@ margin: 0 auto;
 }
 
   
-  
+ .container2{
+	
+	margin:0 auto;
+  width:750px;
+  -moz-border-radius: 9px 9px 9px 9px;
+  -webkit-border-radius: 9px 9px 9px 9px;
+  border-radius: 9px 9px 9px 9px;
+  box-shadow: 1px 1px 11px #330033;
+	
+	
+	
+} 
+.container{
+	
+	margin:0 auto;
+	
+	
+	
+	
+	
+	
+}
+
+.containerDT{
+	
+	margin-bottom:40px;
+	margin:0 auto;
+  width:1100px;
+  -moz-border-radius: 9px 9px 9px 9px;
+  -webkit-border-radius: 9px 9px 9px 9px;
+  border-radius: 9px 9px 9px 9px;
+  box-shadow: 1px 1px 11px #330033;
+	
+	
+	
+} 
+
+
+
+
+.navbar{
+	
+	text-align:center;
+	float:right;
+	position:fixed;
+	width:50px;
+	height: 200px;
+	-moz-border-radius: 9px 9px 9px 9px;
+  -webkit-border-radius: 9px 9px 9px 9px;
+  border-radius: 9px 9px 9px 9px;
+  box-shadow: 1px 1px 11px #330033;
+	
+}
+
+#profilo {
+	
+	background-image: url(/TasckhProgect/resources/img/profilo.png);
+	width:48px;
+	height:48px;
+	
+}
+
+#profilo:hover{
+	
+	
+		background-image: url(/TasckhProgect/resources/img/profilo_hover.png);
+	
+	
+}
+a:link img { border: none }
