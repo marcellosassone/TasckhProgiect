@@ -13,12 +13,13 @@
 </head>
 
 <body>
-<div class="logo"><input type="image" SRC="/TasckhProgect/resources/img/Logo1.png" title="Back Home" style="height:20%;
-	width:20%" onClick="history.go(-1);return true;"/></div>
+<div class="logo"><input type="image" SRC="/TasckhProgect/resources/img/Logo1.png" title="Back Home" style="height:60%;
+	width:60%" onClick="history.go(-1);return true;"/></div>
+	
 	<h1>Gestione Documenti</h1>
 	<div class="divTop">
 	<form method="POST"
-		action="${initParam['TimesheetRoot']}/user/filtraDocumenti">
+		action="/TasckhProgect/user/filtraDocumenti">
 		
 		<table class="rwd-table">
 			<tr>
@@ -86,7 +87,7 @@
 		</table>
 		<br>
 		<br>
-		<a href="redirect:/TasckhProgect/login">Torna al Main</a>
+		
 	</form:form>
 	</div>
 </body>

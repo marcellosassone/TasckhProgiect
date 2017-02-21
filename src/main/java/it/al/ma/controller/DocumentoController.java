@@ -11,9 +11,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-
+import java.util.HashSet;
 import java.util.List;
-
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -241,23 +241,23 @@ public class DocumentoController {
 		return "redirect:/user/loadDoc";
 	}
 
-//	@RequestMapping(value = "/user/filtraDocumenti", method = RequestMethod.POST)
-//	public ModelAndView filtaDocumenti(@RequestParam("ricerca") String ricerca, HttpSession session, ModelMap model) {
-//		int id = (int) session.getAttribute("id");
-//		User user=new User();
-//		user.setId(id);
-//		Set<Documento> unfilteredDocuments = documentoDao.listaPrivata(user);
-//		Set<Documento> filteredDocuments = new HashSet<>();
-//		for (Documento doc : unfilteredDocuments) {
-//			if (doc.getNome().contains(ricerca) || doc.getDescrizione().contains(ricerca)) {
-//				filteredDocuments.add(doc);
-//			}
-//		}
-//
-//		model.addAttribute("listaDoc", filteredDocuments);
-//		return new ModelAndView("gestioneDoc", "formDoc", new Documento());
-//	}
-//	
+	@RequestMapping(value = "/user/filtraDocumenti", method = RequestMethod.POST)
+	public ModelAndView filtaDocumenti(@RequestParam("ricerca") String ricerca, HttpSession session, ModelMap model) {
+		int id = (int) session.getAttribute("id");
+		User user=new User();
+		user.setId(id);
+		Set<Documento> unfilteredDocuments = documentoDao.listaPrivata(user);
+		Set<Documento> filteredDocuments = new HashSet<>();
+		for (Documento doc : unfilteredDocuments) {
+			if (doc.getNome().contains(ricerca) || doc.getDescrizione().contains(ricerca)) {
+				filteredDocuments.add(doc);
+			}
+		}
+
+		model.addAttribute("listaDoc", filteredDocuments);
+		return new ModelAndView("gestioneDoc", "formDoc", new Documento());
+	}
+	
 	@RequestMapping(value="/admin/dammiDoc/{id}", method=RequestMethod.GET)
 	public String dammiDoc(@PathVariable("id") int id, ModelMap model) {
 		
