@@ -110,10 +110,13 @@ h1 {
 	
 	
 	position:left;
-	
+	width:400px;
 	
 	
 }
+
+
+
 #mainselection select {
 
   border: 0;
