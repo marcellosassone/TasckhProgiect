@@ -15,10 +15,26 @@
 <body>
 
 	
-	<div class="logo"><input type="image" SRC="/TasckhProgect/resources/img/Logo1.png" title="Back Home" style="height:20%;
-	width:20%" onClick="history.go(-1);return true;"/></div>
-
+	<div class="logo"><input type="image" SRC="/TasckhProgect/resources/img/Logo1.png" title="Back Home" style="height:60%;
+	width:60%"/></div>
+	<div class="container">
+	<div class="navbar">
+								
+								<a href="/TasckhProgect/user/ModUser"><img src="/TasckhProgect/resources/img/profilo.png" title="Modifica profilo"></a>
+							
+								
+								<a href="/TasckhProgect/user/compileTimesheet"><img src="/TasckhProgect/resources/img/timesheet-bg.png" title="Timesheet"></a>
+							
+								
+													
+								
+								<a href="contact.html"><img src="/TasckhProgect/resources/img/contact-bg.png" title="Contatti"></a>
+							
+								
+								<a href="/TasckhProgect/logout"><img src="/TasckhProgect/resources/img/logout-bg.png" title="Logout"></a>
+							</div>
 	
+	<div class="containerDT">
 	<div class="divTop">
 	<h1>Compile TimeSheet</h1>
 	<form:form action="/TasckhProgect/user/finalizeCompile" method="POST"
@@ -142,6 +158,8 @@
 	<button type="submit" class="button button-block"> <img title="Export Timesheet in Excel File" src="/TasckhProgect/resources/img/ms_excel.png">  </button>
 	
 	</form:form>
+	</div>
+	</div>
 	</div>
 </body>
 </html>
