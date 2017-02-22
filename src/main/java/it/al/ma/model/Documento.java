@@ -30,14 +30,14 @@ public class Documento {
 	private Blob file;
 	
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="id_user")
 	private User user;
 	
 	
 	
 	public Documento() {
-		//default
+		//default 
 	}
 	
 	public Documento(int id, Date data, String nome, String descrizione) {

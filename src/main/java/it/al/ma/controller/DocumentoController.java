@@ -19,10 +19,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,7 +36,7 @@ import it.al.ma.dao.DocumentoDAO;
 import it.al.ma.dao.UserDao;
 import it.al.ma.model.Documento;
 import it.al.ma.model.User;
-
+import it.al.ma.util.XLSXReaderWriter;
 
 
 @Controller
@@ -47,59 +49,151 @@ public class DocumentoController {
 	
 	private Logger log = Logger.getLogger(DocumentoController.class);
 
+//	@RequestMapping(value = "/user/downloadDoc/{id}", method = RequestMethod.GET)
+//	public void downloadDoc(@PathVariable int id, HttpServletRequest req, HttpServletResponse res) {
+//		Documento d = new Documento();
+//		d.setId(id);
+//		Documento doc = documentoDao.cercaDoc(d);
+//
+//		String mimeType = req.getServletContext().getMimeType(doc.getNome());
+//		if (mimeType == null) {
+//			mimeType = "application/octet-stream";
+//		}
+//
+//		res.setContentType(mimeType);
+//		try {
+//			res.setContentLength((int) doc.getFile().length());
+//		} catch (SQLException e) {
+//			log.error(e.getStackTrace());
+//		}
+//
+//		// set headers for the response
+//		String headerKey = "Content-Disposition";
+//		String headerValue = String.format("attachment; filename=\"%s\"", doc.getNome());
+//		res.setHeader(headerKey, headerValue);
+//		InputStream is = null;
+//		OutputStream os = null;
+//		try {
+//			is = (ByteArrayInputStream) doc.getFile().getBinaryStream();
+//
+//			os = res.getOutputStream();
+//
+//			byte[] buffer = new byte[4096];
+//			int bytesRead = -1;
+//			while ((bytesRead = is.read(buffer)) != -1) {
+//				os.write(buffer, 0, bytesRead);
+//			}
+//		} catch (SQLException | IOException e) {
+//			log.error("Download failed", e);
+//		} finally {
+//			if (is != null)
+//				try {
+//					is.close();
+//				} catch (IOException e) {
+//					log.error(e.getStackTrace());
+//				}
+//
+//			if (os != null)
+//				try {
+//					os.close();
+//				} catch (IOException e) {
+//					log.error(e.getStackTrace());
+//				}
+//		}
+//	}
+	
+//	@RequestMapping(value = "/user/downloadDoc/{id}", method = RequestMethod.GET)
+//	public void downloadDoc(@PathVariable int id, HttpServletRequest req, HttpServletResponse res) {
+//		Documento d = new Documento();
+//		d.setId(id);
+//		Documento doc = documentoDao.cercaDoc(d);
+//
+//		String mimeType = req.getServletContext().getMimeType(doc.getNome());
+//		if (mimeType == null) {
+//			mimeType = "application/octet-stream";
+//		}
+//
+//		res.setContentType(mimeType);
+//		try {
+//			res.setContentLength((int) doc.getFile().length());
+//		} catch (SQLException e) {
+//			log.error(e.getStackTrace());
+//		}
+//
+//		// set headers for the response
+//		String headerKey = "Content-Disposition";
+//		String headerValue = String.format("attachment; filename=\"%s\"", doc.getNome());
+//		res.setHeader(headerKey, headerValue);
+//		InputStream is = null;
+//		OutputStream os = null;
+//		try {
+//			is = (ByteArrayInputStream) doc.getFile().getBinaryStream();
+//
+//			os = res.getOutputStream();
+//
+//			byte[] buffer = new byte[4096];
+//			int bytesRead = -1;
+//		    // write bytes read from the input stream into the output stream
+//			while ((bytesRead = is.read(buffer)) != -1) {
+//				os.write(buffer, 0, bytesRead);
+//			}
+//		} catch (SQLException | IOException e) {
+//			log.error("Download failed", e);
+//		} finally {
+//			if (is != null)
+//				try {
+//					is.close();
+//				} catch (IOException e) {
+//					log.error(e.getStackTrace());
+//				}
+//
+//			if (os != null)
+//				try {
+//					os.close();
+//				} catch (IOException e) {
+//					log.error(e.getStackTrace());
+//				}
+//		}
+//	}
+
 	@RequestMapping(value = "/user/downloadDoc/{id}", method = RequestMethod.GET)
-	public void downloadDoc(@PathVariable int id, HttpServletRequest req, HttpServletResponse res) {
+	public String downloadDoc(@PathVariable int id, HttpServletRequest req, HttpServletResponse res) {	
+		
 		Documento d = new Documento();
 		d.setId(id);
 		Documento doc = documentoDao.cercaDoc(d);
-
-		String mimeType = req.getServletContext().getMimeType(doc.getNome());
-		if (mimeType == null) {
-			mimeType = "application/octet-stream";
-		}
-
-		res.setContentType(mimeType);
+		System.out.println("USER "+ doc.getUser());
 		try {
-			res.setContentLength((int) doc.getFile().length());
+			
+			
+			res.setHeader("Content-Disposition", "inline;filename=\"" + doc.getNome()+ "\"");
+	
+			//OutputStream out = response.getOutputStream();
+			InputStream is = doc.getFile().getBinaryStream();
+			OutputStream out=null;
+			
+			//Se è unfile di timesheet lo popolo
+			if (doc.getDescrizione().equals("TIME"))
+				out = XLSXReaderWriter.writeXlsx(is,res.getOutputStream(),doc.getUser());
+			
+			out = res.getOutputStream();
+			res.setContentType(doc.getNome());
+			IOUtils.copy(is, out);
+			//IOUtils.copy(doc.getFile().getBinaryStream(), out);
+			
+			out.flush();
+			out.close();
+		
+		} catch (IOException e) {
+			e.printStackTrace();
 		} catch (SQLException e) {
-			log.error(e.getStackTrace());
+			e.printStackTrace();
 		}
-
-		// set headers for the response
-		String headerKey = "Content-Disposition";
-		String headerValue = String.format("attachment; filename=\"%s\"", doc.getNome());
-		res.setHeader(headerKey, headerValue);
-		InputStream is = null;
-		OutputStream os = null;
-		try {
-			is = (ByteArrayInputStream) doc.getFile().getBinaryStream();
-
-			os = res.getOutputStream();
-
-			byte[] buffer = new byte[4096];
-			int bytesRead = -1;
-			while ((bytesRead = is.read(buffer)) != -1) {
-				os.write(buffer, 0, bytesRead);
-			}
-		} catch (SQLException | IOException e) {
-			log.error("Download failed", e);
-		} finally {
-			if (is != null)
-				try {
-					is.close();
-				} catch (IOException e) {
-					log.error(e.getStackTrace());
-				}
-
-			if (os != null)
-				try {
-					os.close();
-				} catch (IOException e) {
-					log.error(e.getStackTrace());
-				}
-		}
+		
+		
+		return null;
 	}
-
+	
 	@RequestMapping(value = "/user/inserisciDoc", method = RequestMethod.POST)
 	public String inserisciDoc(@RequestParam("file") MultipartFile file, Documento doc, HttpServletRequest req) {
 		if (!file.isEmpty()) {
