@@ -5,11 +5,14 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException; 
 import java.io.FileOutputStream; 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
+
 import org.apache.poi.ss.usermodel.Cell; 
 import org.apache.poi.ss.usermodel.Row; 
 import org.apache.poi.xssf.usermodel.XSSFSheet; 
@@ -199,8 +202,119 @@ public class XLSXReaderWriter {
 		catch (IOException ie) { 
 			ie.printStackTrace(); } 
 	} 
+	
+	
+	public static OutputStream writeXlsx(InputStream is, OutputStream os,User user) { 
 
+		try { 
+			
+			XSSFWorkbook book = new XSSFWorkbook(is); 
+			//setto il foglio sul numero 2
+			XSSFSheet sheet = book.getSheetAt(1); 
+
+			Calendar now = Calendar.getInstance();
+			now.set(Calendar.MONTH,0);
+			now.set(Calendar.DAY_OF_MONTH, 1);
+			java.sql.Date start=new java.sql.Date(now.toInstant().toEpochMilli());
+			now.set(Calendar.MONTH,11);
+			now.set(Calendar.DAY_OF_MONTH, now.getActualMaximum(Calendar.DAY_OF_MONTH));
+			java.sql.Date end=new java.sql.Date(now.toInstant().toEpochMilli());
+
+//			User user= new User();
+//			user.setId(17);
+//			user.setFirstname("Gianni");
+//			user.setLastname("Esposito");
+			
+			DailyTimeDaoImpl dailyDao = new DailyTimeDaoImpl();
+			List<DailyTime> listTime=new ArrayList<DailyTime>(dailyDao.findByIdUser(user, start, end));
+			// writing data into XLSX file
+			Calendar cal = Calendar.getInstance();
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+			Calendar oreLav = sdf.getCalendar();
+			//int year = cal.get(Calendar.YEAR);
+			//int month = cal.get(Calendar.MONTH);
+
+			int r=7;
+			for(DailyTime dT:listTime){
+				sheet = book.getSheetAt(dT.getData().getMonth()); 
+				NEWELEMENT:
+				for (r=7;r<40;r++){
+					cal.setTime(dT.getData());
+					oreLav.setTime(dT.getData());
+					Double day = (double) cal.get(Calendar.DAY_OF_MONTH);
+					int col=1;
+					Row row = sheet.getRow(r);
+					Cell cell = row.getCell(col);
+					if (day.equals(cell.getNumericCellValue()))
+					{
+						System.out.println("SONO NEL CICLO COLONNE");
+						col++;
+						cell = row.getCell(col);col++;
+						//System.out.println(dT.getFirstshiftstart().substring(1, 2) + " FSooooSS "+dT.getSecondshiftstart().substring(0, 2));
+
+						int ora = (Integer.parseInt(dT.getFirstshiftstart().substring(0, 2))>=10) ? Integer.parseInt(dT.getFirstshiftstart().substring(0, 2)) : Integer.parseInt(dT.getFirstshiftstart().substring(1, 2));						
+						cal.set(Calendar.HOUR,ora);
+						cal.set(Calendar.MINUTE,0);
+						cal.set(Calendar.SECOND,0);	
+						cell.setCellValue(cal.getTime());
+						
+						oreLav.set(Calendar.SECOND,0);
+						oreLav.set(Calendar.MINUTE,0);
+						oreLav.set(Calendar.HOUR,Integer.parseInt(dT.getFirstshiftstop().substring(0, 2)));					
+						//System.out.println(Integer.parseInt(dT.getFirstshiftstop().substring(0, 2)));
+						
+						cell = row.getCell(col);col++;
+						cell.setCellValue(oreLav.getTime());
+						
+						oreLav.set(Calendar.HOUR,Integer.parseInt(dT.getSecondshiftstart().substring(0, 2))-12);
+						cell = row.getCell(col);col++;
+						cell.setCellValue(oreLav.getTime());
+						
+						oreLav.set(Calendar.HOUR,Integer.parseInt(dT.getSecondshiftstop().substring(0, 2))-12);
+						cell = row.getCell(col);col++;
+						cell.setCellValue(oreLav.getTime());
+
+						cell = row.getCell(10);
+						cell.setCellValue(dT.getCodpermesso());
+						break NEWELEMENT;
+					}
+				}
+				Row rowName = sheet.getRow(2);
+				Cell cellName = rowName.getCell(11);
+				if (cellName == null)
+					cellName = rowName.createCell(11);
+				cellName.setCellValue(user.getFirstname()+" "+ user.getLastname());
+			}
+
+			//Scrivo il Cognome e il Nome nella cella indicata
+//			Row row = sheet.getRow(2);
+//			Cell cell = row.getCell(11);
+//			if (cell == null)
+//				cell = row.createCell(11);
+//			cell.setCellValue(user.getFirstname()+" "+ user.getLastname());
+
+			// open an OutputStream to save written data into Excel file 
+			//OutputStream Newos = os;
+			
+			book.write(os); 
+			System.out.println("Writing on Excel file Finished ..."); 
+			// Close workbook, OutputStream and Excel file to prevent leak 
+			
+			os.close(); 
+			book.close(); 
+			is.close();
+			return os;
+		} 
+		catch (FileNotFoundException fe) { 
+			fe.printStackTrace(); } 
+		catch (IOException ie) { 
+			ie.printStackTrace(); }
+		return null; 
+	} 
 }
+
+
 
 
 
