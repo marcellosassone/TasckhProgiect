@@ -20,18 +20,22 @@
 	<div class="container">
 	<div class="navbar">
 								
-								<a href="/TasckhProgect/user/ModUser"><img src="/TasckhProgect/resources/img/profilo.png" title="Modifica profilo"></a>
+								<form action="/TasckhProgect/login" method="post">
+  									<button type="submit" title="Dashboard" class="btn-link-profile"></button>
+								</form>
+								
 							
+								<form action="/TasckhProgect/user/loadDoc" method="get">
+  									<button type="submit" title="Gestione Documenti" class="btn-link-document"></button>
+								</form>
+									
+								<form action="" method="post">
+  									<button type="submit" title="Contact" class="btn-link-contact"></button>
+								</form>
 								
-								<a href="/TasckhProgect/user/compileTimesheet"><img src="/TasckhProgect/resources/img/timesheet-bg.png" title="Timesheet"></a>
-							
-								
-													
-								
-								<a href="contact.html"><img src="/TasckhProgect/resources/img/contact-bg.png" title="Contatti"></a>
-							
-								
-								<a href="/TasckhProgect/logout"><img src="/TasckhProgect/resources/img/logout-bg.png" title="Logout"></a>
+								<form action="/TasckhProgect/logout" method="post">
+  									<button type="submit" title="Logout" class="btn-link-logout"></button>
+								</form>		
 							</div>
 	
 	<div class="containerDT">

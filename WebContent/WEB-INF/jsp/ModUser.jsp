@@ -10,12 +10,39 @@
 <link rel="stylesheet" href="/TasckhProgect/resources/css/stile.css">
 </head>
 <body>
+<div class="logo"><img src="/TasckhProgect/resources/img/Logo1.png"  style="height:60%;
+	width:60%"/></div>
+	<div class="container">
+	<div class="navbar">
+								<form action="/TasckhProgect/login" method="post">
+  									<button type="submit" title="Dashboard" class="btn-link-profile"></button>
+								</form>
+								
+							
+								<form action="/TasckhProgect/user/compileTimesheet" method="get">
+  									<button type="submit" title="Timesheet"  class="btn-link-timesheet"></button>
+								</form>
+								
+								<form action="/TasckhProgect/user/loadDoc" method="get">
+  									<button type="submit" title="Gestione Documenti" class="btn-link-document"></button>
+								</form>
+									
+								<form action="" method="get">
+  									<button type="submit" title="Contact" class="btn-link-contact"></button>
+								</form>
+								
+								<form action="/TasckhProgect/logout" method="get">
+  									<button type="submit" title="Logout" class="btn-link-logout"></button>
+								</form>							
+								
+							</div>
+	<div class="container2">						
 	<div class="form">
 
 		
 		<div >
 			<div >
-				<h1>Update User</h1>
+				<h1>Modifica Profilo</h1>
 
 				<form:form action="/TasckhProgect/finalizeUpdateUser" method="POST"
 					commandName="formUserMod">
@@ -28,36 +55,36 @@
 							<form:input type="text" path="salutation" />
 						</div>
 						<div class="field-wrap">
-							<label class="active"> First Name<span class="req">*</span>
+							<label class="active"> Nome <span class="req">*</span>
 							</label>
 							<form:input type="text" required="true" autocomplete="off"
 								path="firstname" />
 						</div>
 
 						<div class="field-wrap">
-							<label class="active"> Last Name<span class="req">*</span>
+							<label class="active"> Cognome <span class="req">*</span>
 							</label>
 							<form:input type="text" required="true" autocomplete="off"
 								path="lastname" />
 						</div>
 
 						<div class="field-wrap">
-							<label class="active"> Street<span class="req"></span>
+							<label class="active"> Indirizzo <span class="req"></span>
 							</label>
 							<form:input type="text" path="street" />
 						</div>
 						<div class="field-wrap">
-							<label class="active"> House Number<span class="req"></span>
+							<label class="active"> N° civico <span class="req"></span>
 							</label>
 							<form:input type="number" path="housenumber" />
 						</div>
 						<div class="field-wrap">
-							<label class="active"> City<span class="req"></span>
+							<label class="active"> Città <span class="req"></span>
 							</label>
 							<form:input type="text" path="city" />
 						</div>
 						<div class="field-wrap">
-							<label class="active"> Country<span class="req"></span>
+							<label class="active"> Nazione <span class="req"></span>
 							</label>
 							<form:select path="country" required="true" autocomplete="off">
 								<form:options items="${ListaCountry}" />
@@ -66,25 +93,26 @@
 					</div>
 
 					<div class="field-wrap">
-						<label class="active"> Email Address<span class="req">*</span>
+						<label class="active"> Email <span class="req">*</span>
 						</label>
 						<form:input type="email" required="true" autocomplete="off"
 							path="email" />
 					</div>
 
 					<div class="field-wrap">
-						<label class="active"> Set A Password<span class="req">*</span>
+						<label class="active"> Password<span class="req">*</span>
 						</label>
 						<form:input type="password" required="true" autocomplete="off"
 							path="password" />
 					</div>
 
-					<button type="submit" class="button button-block">Save Updates</button>
+					<button type="submit" class="button button-block">Salva Modifiche</button>
 
 				</form:form>
-
+				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
