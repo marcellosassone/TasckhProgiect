@@ -37,7 +37,7 @@ public class Documento {
 	
 	
 	public Documento() {
-		//default
+		//default 
 	}
 	
 	public Documento(int id, Date data, String nome, String descrizione) {

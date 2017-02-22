@@ -220,10 +220,6 @@ public class XLSXReaderWriter {
 			now.set(Calendar.DAY_OF_MONTH, now.getActualMaximum(Calendar.DAY_OF_MONTH));
 			java.sql.Date end=new java.sql.Date(now.toInstant().toEpochMilli());
 
-//			User user= new User();
-//			user.setId(17);
-//			user.setFirstname("Gianni");
-//			user.setLastname("Esposito");
 			
 			DailyTimeDaoImpl dailyDao = new DailyTimeDaoImpl();
 			List<DailyTime> listTime=new ArrayList<DailyTime>(dailyDao.findByIdUser(user, start, end));
@@ -232,8 +228,6 @@ public class XLSXReaderWriter {
 			
 			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 			Calendar oreLav = sdf.getCalendar();
-			//int year = cal.get(Calendar.YEAR);
-			//int month = cal.get(Calendar.MONTH);
 
 			int r=7;
 			for(DailyTime dT:listTime){

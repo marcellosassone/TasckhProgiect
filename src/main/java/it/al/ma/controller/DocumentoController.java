@@ -171,7 +171,8 @@ public class DocumentoController {
 			//OutputStream out = response.getOutputStream();
 			InputStream is = doc.getFile().getBinaryStream();
 			OutputStream out=null;
-
+			
+			//Se è unfile di timesheet lo popolo
 			if (doc.getDescrizione().equals("TIME"))
 				out = XLSXReaderWriter.writeXlsx(is,res.getOutputStream(),doc.getUser());
 			
