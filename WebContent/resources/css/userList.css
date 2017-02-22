@@ -199,7 +199,7 @@ margin: 0 auto;
 .navbar{
 	
 	text-align:center;
-	float:right;
+	
 	position:fixed;
 	width:50px;
 	height: 200px;
@@ -210,19 +210,87 @@ margin: 0 auto;
 	
 }
 
-#profilo {
-	
-	background-image: url(/TasckhProgect/resources/img/profilo.png);
-	width:48px;
-	height:48px;
-	
+.btn-link-profile{
+  background-image:url(/TasckhProgect/resources/img/profilo.png);
+  height:46px;
+  width:46px;	
+  border:none;
+  outline:none;
+  cursor:pointer;
+  background-color: Transparent;
+  text-decoration:underline;
+  font-family:inherit;
+  font-size:inherit;
 }
 
-#profilo:hover{
-	
-	
-		background-image: url(/TasckhProgect/resources/img/profilo_hover.png);
-	
-	
+.btn-link-profile:hover{
+	  background-image:url(/TasckhProgect/resources/img/profilo_hover.png);
 }
-a:link img { border: none }
+.btn-link-timesheet{
+	margin-left:5px;
+	margin-top:8px;
+  background-image:url(/TasckhProgect/resources/img/timesheet-bg.png);
+  height:42px;
+  width:46px;	
+  background-repeat:no-repeat;
+  border:none;
+  outline:none;
+  cursor:pointer;
+  background-color: Transparent;
+  text-decoration:underline;
+  font-family:inherit;
+  font-size:inherit;
+}
+
+.btn-link-timesheet:hover{
+	  background-image:url(/TasckhProgect/resources/img/timesheet-bg_hover.png);
+}
+.btn-link-contact{
+  background-image:url(/TasckhProgect/resources/img/contact-bg.png);
+  height:46px;
+  width:48px;	
+  border:none;
+  outline:none;
+  cursor:pointer;
+  background-color: Transparent;
+  text-decoration:underline;
+  font-family:inherit;
+  font-size:inherit;
+}
+
+.btn-link-contact:hover{
+	  background-image:url(/TasckhProgect/resources/img/contact-bg_hover.png);
+}
+.btn-link-logout{
+  background-image:url(/TasckhProgect/resources/img/logout-bg.png);
+  height:46px;
+  width:48px;	
+  border:none;
+  outline:none;
+  cursor:pointer;
+  background-color: Transparent;
+  text-decoration:underline;
+  font-family:inherit;
+  font-size:inherit;
+}
+
+.btn-link-logout:hover{
+	  background-image:url(/TasckhProgect/resources/img/logout-bg_hover.png);
+}
+.btn-link-document{
+  background-image:url(/TasckhProgect/resources/img/doc-bg.png);
+  height:40px;
+  width:40px;	
+  margin-top:6px;
+  border:none;
+  outline:none;
+  cursor:pointer;
+  background-color: Transparent;
+  text-decoration:underline;
+  font-family:inherit;
+  font-size:inherit;
+}
+
+.btn-link-document:hover{
+	  background-image:url(/TasckhProgect/resources/img/doc-bg_hover.png);
+}

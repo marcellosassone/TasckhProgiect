@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  background: #c1bdba;
+  background: #eee;
   font-family: 'Titillium Web', sans-serif;
 }
 
@@ -22,12 +22,17 @@ a:hover {
 }
 
 .form {
-  background: rgba(19, 35, 47, 0.9);
+  background: trasparent;
   padding: 40px;
-  max-width: 600px;
+  max-width: 700px;
   margin: 40px auto;
   border-radius: 4px;
   box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+  -webkit-appearance: none;
+  -moz-border-radius: 9px 9px 9px 9px;
+  -webkit-border-radius: 9px 9px 9px 9px;
+  border-radius: 9px 9px 9px 9px;
+  box-shadow: 1px 1px 11px #330033;
 }
 
 .tab-group {
@@ -45,7 +50,7 @@ a:hover {
   text-decoration: none;
   padding: 15px;
   background: rgba(160, 179, 176, 0.25);
-  color: #a0b3b0;
+  color: #400040;
   font-size: 20px;
   float: left;
   width: 50%;
@@ -56,11 +61,11 @@ a:hover {
 }
 .tab-group li a:hover {
   background: #179b77;
-  color: #ffffff;
+  color: #400040;
 }
 .tab-group .active a {
   background: #1ab188;
-  color: #ffffff;
+  color: #400040;
 }
 
 .tab-content > div:last-child {
@@ -69,7 +74,7 @@ a:hover {
 
 h1 {
   text-align: center;
-  color: #ffffff;
+  color: #400040;
   font-weight: 300;
   margin: 0 0 40px;
 }
@@ -79,7 +84,7 @@ label {
   -webkit-transform: translateY(6px);
           transform: translateY(6px);
   left: 13px;
-  color: rgba(255, 255, 255, 0.5);
+  color: #400040;
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
   -webkit-backface-visibility: hidden;
@@ -88,7 +93,7 @@ label {
 }
 label .req {
   margin: 2px;
-  color: #1ab188;
+  color: #400040;
 }
 
 label.active {
@@ -102,7 +107,7 @@ label.active .req {
 }
 
 label.highlight {
-  color: #ffffff;
+  color: #400040;
 }
 
 input, textarea {
@@ -114,8 +119,8 @@ input, textarea {
   background: none;
   background-image: none;
   border: 1px solid #a0b3b0;
-  color: #ffffff;
-  border-radius: 0;
+  color: #400040;
+  border-radius: 9px 9px 9px 9px;
   -webkit-transition: border-color .25s ease, box-shadow .25s ease;
   transition: border-color .25s ease, box-shadow .25s ease;
 }
@@ -133,8 +138,8 @@ select, textarea {
   background: none;
   background-image: none;
   border: 1px solid #a0b3b0;
-  color: #a0b3b0;
-  border-radius: 0;
+  color: #400040;
+  border-radius: 9px 9px 9px 9px;
   -webkit-transition: border-color .25s ease, box-shadow .25s ease;
   transition: border-color .25s ease, box-shadow .25s ease;
 }
@@ -177,23 +182,28 @@ textarea {
   outline: none;
   border-radius: 0;
   padding: 15px 0;
-  font-size: 2rem;
-  font-weight: 600;
-  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-left:20%;
   letter-spacing: .1em;
-  background: #1ab188;
+  background: #ff8000;
   color: #ffffff;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   -webkit-appearance: none;
+  -moz-border-radius: 9px 9px 9px 9px;
+  -webkit-border-radius: 9px 9px 9px 9px;
+  border-radius: 9px 9px 9px 9px;
+  box-shadow: 1px 1px 11px #330033;
 }
 .button:hover, .button:focus {
-  background: #179b77;
+  background: #fdbf2f;
 }
 
 .button-block {
   display: block;
-  width: 100%;
+  width: 60%;
+  float:center;
 }
 
 .forgot {
@@ -207,4 +217,121 @@ input[type=number]::-webkit-outer-spin-button {
     -moz-appearance: none;
     appearance: none;
     margin: 0; 
+}
+.container{	
+	margin:0 auto;
+	}
+.container2{
+	
+	margin:0 auto;
+  width:750px;
+  
+	
+	
+} 
+.navbar{
+	
+  text-align:center;
+	margin-left:3%;
+	position:fixed;
+	width:50px;
+	height: 250px;
+	-moz-border-radius: 9px 9px 9px 9px;
+  -webkit-border-radius: 9px 9px 9px 9px;
+  border-radius: 9px 9px 9px 9px;
+  box-shadow: 1px 1px 11px #330033;
+	
+}
+
+.btn-link-profile{
+  background-image:url(/TasckhProgect/resources/img/profilo.png);
+  height:46px;
+  width:46px;	
+  border:none;
+  outline:none;
+  cursor:pointer;
+  background-color: Transparent;
+  text-decoration:underline;
+  font-family:inherit;
+  font-size:inherit;
+}
+
+.btn-link-profile:hover{
+	  background-image:url(/TasckhProgect/resources/img/profilo_hover.png);
+}
+.btn-link-timesheet{
+	margin-left:5px;
+	margin-top:8px;
+  background-image:url(/TasckhProgect/resources/img/timesheet-bg.png);
+  height:42px;
+  width:46px;	
+  background-repeat:no-repeat;
+  border:none;
+  outline:none;
+  cursor:pointer;
+  background-color: Transparent;
+  text-decoration:underline;
+  font-family:inherit;
+  font-size:inherit;
+}
+
+.btn-link-timesheet:hover{
+	  background-image:url(/TasckhProgect/resources/img/timesheet-bg_hover.png);
+}
+.btn-link-contact{
+  background-image:url(/TasckhProgect/resources/img/contact-bg.png);
+  height:46px;
+  width:48px;	
+  border:none;
+  outline:none;
+  cursor:pointer;
+  background-color: Transparent;
+  text-decoration:underline;
+  font-family:inherit;
+  font-size:inherit;
+}
+
+.btn-link-contact:hover{
+	  background-image:url(/TasckhProgect/resources/img/contact-bg_hover.png);
+}
+.btn-link-logout{
+  background-image:url(/TasckhProgect/resources/img/logout-bg.png);
+  height:46px;
+  width:48px;	
+  border:none;
+  outline:none;
+  cursor:pointer;
+  background-color: Transparent;
+  text-decoration:underline;
+  font-family:inherit;
+  font-size:inherit;
+}
+
+.btn-link-logout:hover{
+	  background-image:url(/TasckhProgect/resources/img/logout-bg_hover.png);
+}
+.btn-link-document{
+  background-image:url(/TasckhProgect/resources/img/doc-bg.png);
+  height:40px;
+  width:40px;	
+  margin-top:6px;
+  border:none;
+  outline:none;
+  cursor:pointer;
+  background-color: Transparent;
+  text-decoration:underline;
+  font-family:inherit;
+  font-size:inherit;
+}
+
+.btn-link-document:hover{
+	  background-image:url(/TasckhProgect/resources/img/doc-bg_hover.png);
+}
+.logo{
+	
+	margin-left:2%;
+	position:left;
+	width:400px;
+	
+	
 }

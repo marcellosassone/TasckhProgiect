@@ -17,19 +17,23 @@
 	width:60%"/></div>
 	<div class="container">
 	<div class="navbar">
+								<form action="/TasckhProgect/login" method="post">
+  									<button type="submit" title="Dashboard" class="btn-link-profile"></button>
+								</form>
 								
-								<a href="/TasckhProgect/user/ModUser"><img src="/TasckhProgect/resources/img/profilo.png" title="Modifica profilo"></a>
 							
+								<form action="/TasckhProgect/user/compileTimesheet" method="get">
+  									<button type="submit" title="Timesheet"  class="btn-link-timesheet"></button>
+								</form>
+									
+								<form action="" method="get">
+  									<button type="submit" title="Contact" class="btn-link-contact"></button>
+								</form>
 								
-								<a href="/TasckhProgect/user/compileTimesheet"><img src="/TasckhProgect/resources/img/timesheet-bg.png" title="Timesheet"></a>
-							
+								<form action="/TasckhProgect/logout" method="get">
+  									<button type="submit" title="Logout" class="btn-link-logout"></button>
+								</form>							
 								
-													
-								
-								<a href="contact.html"><img src="/TasckhProgect/resources/img/contact-bg.png" title="Contatti"></a>
-							
-								
-								<a href="/TasckhProgect/logout"><img src="/TasckhProgect/resources/img/logout-bg.png" title=""></a>
 							</div>
 	<div class="container2">
 	<h1>Gestione Documenti</h1>
@@ -76,7 +80,7 @@
 							</c:otherwise>
 						</c:choose></td>
 					<td><a href="/TasckhProgect/user/downloadDoc/${doc.id}"><img src="/TasckhProgect/resources/img/download.png" title="Download"></a></td>
-					<td><a href="/TasckhProgect/user/updateDoc/${doc.id}"><img src="/TasckhProgect/resources/img/update.png" title="Update"></a></td>
+					<td><a href="/TasckhProgect/user/updateDoc/${doc.id}"><img src="/TasckhProgect/resources/img/update.png" title="Modifica"></a></td>
 					<td><a href="/TasckhProgect/user/deleteDoc/${doc.id}"
 						onClick='return confirm("Sei sicuro di Voler Eliminare il file?")'><img src="/TasckhProgect/resources/img/delete.png" title="Cancella"></a></td>
 				</tr>

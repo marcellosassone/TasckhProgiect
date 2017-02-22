@@ -44,8 +44,11 @@ public class LoginController {
 
  @RequestMapping(value="/login", method=RequestMethod.POST)
  public ModelAndView verifyLogin(User user, ModelMap model, HttpServletRequest req) {
-  User d = userDao.findByMailAndPassword(user);
- 
+  if (req.getSession().getAttribute("id")==null){
+	  
+  
+	 User d = userDao.findByMailAndPassword(user);
+  
   if(d == null) {
 	  model.addAttribute("errore", "Email or password error.");
 	  ModelAndView mav=new ModelAndView("index","formUser", new User());
@@ -64,7 +67,7 @@ public class LoginController {
   req.getSession().setAttribute("id", d.getId());
   
   model.addAttribute(d.getId());
-  
+  }
  return new ModelAndView("welcome", FORMUSER, new User());
  }
  
