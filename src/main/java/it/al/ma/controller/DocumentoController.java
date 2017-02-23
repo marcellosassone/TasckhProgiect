@@ -249,7 +249,28 @@ public class DocumentoController {
 		
 		return new ModelAndView("gestioneDoc", "formDoc", new Documento());
 	}
+	@RequestMapping(value = "/admin/loadDoc/{id}", method = RequestMethod.GET)
+	public ModelAndView loadAdminDoc(@PathVariable int id, ModelMap model, HttpServletRequest req) {
 
+		User user=new User();
+		user.setId(id);
+		System.out.println("id utente" + user.getId());
+		
+		model.addAttribute("listaDoc", documentoDao.listaPrivata(user));
+		
+		List<Documento> myOrdyyyList = new ArrayList<>(documentoDao.listaPrivata(user));
+		Collections.sort(myOrdyyyList, new Comparator<Documento>() {
+
+			@Override
+			public int compare(Documento arg0, Documento arg1) {
+				return arg0.getNome().compareTo(arg1.getNome());
+			}
+
+		});
+		
+		return new ModelAndView("gestioneDoc", "formDoc", new Documento());
+	}
+	
 	@RequestMapping(value = "/user/sortDoc/name/{flag}", method = RequestMethod.GET)
 	public ModelAndView sortDocName(@PathVariable("flag") String flag, ModelMap model, HttpSession session) {
 
