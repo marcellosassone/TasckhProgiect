@@ -58,8 +58,9 @@ public class LoginController {
   if(d.getAdmin() == 1) {
 		req.getSession().setAttribute("firstname", d.getFirstname());
 		req.getSession().setAttribute("lastname", d.getLastname());
+		req.getSession().setAttribute("salutation", d.getSalutation());
 		req.getSession().setAttribute(ADMIN, ADMIN);
-		return new ModelAndView("redirect:admin/load");
+		return new ModelAndView("welcomeAdmin", FORMUSER, new User());
 	}
   req.getSession().setAttribute(ADMIN, "user");
   req.getSession().setAttribute("firstname", d.getFirstname());
