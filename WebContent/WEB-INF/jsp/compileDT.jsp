@@ -39,7 +39,8 @@
 							</div>
 	
 	<div class="containerDT">
-	<div class="divTop">
+	
+	<div class="divTop" style="display:${hide ? 'none' : 'block'}">
 	<h1>Compile TimeSheet</h1>
 	<form:form action="/TasckhProgect/user/finalizeCompile" method="POST"
 		commandName="formDailyTime">
@@ -118,8 +119,6 @@
 			</select>
 		</form>
 	</div>
-
-
 	<form:form action="/TasckhProgect/timesheetStamp/${id}" method="POST"
 		commandName="formDailyTime">
 		<input Type="hidden" name="currMonth" value ="${currMonth}">

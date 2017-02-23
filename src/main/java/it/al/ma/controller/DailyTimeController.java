@@ -73,6 +73,7 @@ public class DailyTimeController {
 		ModelAndView modelV= new ModelAndView("compileDT","formDailyTime", daily);
 		modelV.getModelMap().addAttribute("listTimesheet", dailyDao.findByIdUser(user, start, end));
 		modelV.getModelMap().addAttribute("currMonth", month);
+		modelV.getModelMap().addAttribute("hide","False");
 		return modelV;
 	}
 	
@@ -94,6 +95,7 @@ public class DailyTimeController {
 		ModelAndView modelV= new ModelAndView("compileDT","formDailyTime", daily);
 		modelV.getModelMap().addAttribute("listTimesheet", dailyDao.findByIdUser(user, start, end));
 		modelV.getModelMap().addAttribute("currMonth", month);
+		modelV.getModelMap().addAttribute("hide","True");
 		return modelV;
 	}
 	@RequestMapping(value = "user/finalizeCompile", method=RequestMethod.POST)
