@@ -33,7 +33,7 @@
   									<button type="submit" title="Contact" class="btn-link-contact"></button>
 								</form>
 								
-								<form action="/TasckhProgect/logout" method="post">
+								<form action="/TasckhProgect/logout" method="get">
   									<button type="submit" title="Logout" class="btn-link-logout"></button>
 								</form>		
 							</div>

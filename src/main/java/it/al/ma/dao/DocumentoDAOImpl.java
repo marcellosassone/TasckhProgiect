@@ -4,16 +4,13 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Criterion;
 
-import org.hibernate.criterion.Restrictions;
 
 
 import it.al.ma.model.Documento;
@@ -132,7 +129,6 @@ public class DocumentoDAOImpl implements DocumentoDAO{
 		return documenti;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public Set<Documento> listaPrivata(User user) {
 		Session session = null;
