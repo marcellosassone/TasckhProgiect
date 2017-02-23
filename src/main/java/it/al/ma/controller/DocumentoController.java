@@ -1,6 +1,5 @@
 package it.al.ma.controller;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,7 +23,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -162,11 +160,11 @@ public class DocumentoController {
 		Documento d = new Documento();
 		d.setId(id);
 		Documento doc = documentoDao.cercaDoc(d);
-		System.out.println("USER "+ doc.getUser());
+		//System.out.println("USER "+ doc.getUser());
 		try {
 			
 			
-			res.setHeader("Content-Disposition", "inline;filename=\"" + doc.getNome()+ "\"");
+			res.setHeader("Content-Disposition", "inline;filename=\"" +doc.getUser().getLastname()+ "_" + doc.getNome()+ "\"");
 	
 			//OutputStream out = response.getOutputStream();
 			InputStream is = doc.getFile().getBinaryStream();
@@ -175,6 +173,7 @@ public class DocumentoController {
 			//Se è unfile di timesheet lo popolo
 			if (doc.getDescrizione().equals("TIME"))
 				out = XLSXReaderWriter.writeXlsx(is,res.getOutputStream(),doc.getUser());
+			
 			
 			out = res.getOutputStream();
 			res.setContentType(doc.getNome());

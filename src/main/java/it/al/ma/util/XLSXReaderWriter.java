@@ -120,7 +120,7 @@ public class XLSXReaderWriter {
 			// writing data into XLSX file
 
 			Calendar cal = Calendar.getInstance();
-			
+
 			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 			Calendar oreLav = sdf.getCalendar();
 			//int year = cal.get(Calendar.YEAR);
@@ -129,56 +129,56 @@ public class XLSXReaderWriter {
 			int r=7;
 			for(DailyTime dT:listTime){
 				NEWELEMENT:
-				for (r=7;r<40;r++){
-					cal.setTime(dT.getData());
-					oreLav.setTime(dT.getData());
-					Double day = (double) cal.get(Calendar.DAY_OF_MONTH);
-					int col=1;
-					Row row = sheet.getRow(r);
+					for (r=7;r<40;r++){
+						cal.setTime(dT.getData());
+						oreLav.setTime(dT.getData());
+						Double day = (double) cal.get(Calendar.DAY_OF_MONTH);
+						int col=1;
+						Row row = sheet.getRow(r);
 
-					Cell cell = row.getCell(col);
-					//System.out.println(day);
-					//System.out.println(cell.getNumericCellValue());
-					if (day.equals(cell.getNumericCellValue()))
-					{
-						System.out.println("SONO NEL CICLO COLONNE");
-						col++;
-						cell = row.getCell(col);col++;
-						//System.out.println(dT.getFirstshiftstart().substring(1, 2) + " FSooooSS "+dT.getSecondshiftstart().substring(0, 2));
+						Cell cell = row.getCell(col);
+						//System.out.println(day);
+						//System.out.println(cell.getNumericCellValue());
+						if (day.equals(cell.getNumericCellValue()))
+						{
+							System.out.println("SONO NEL CICLO COLONNE");
+							col++;
+							cell = row.getCell(col);col++;
+							//System.out.println(dT.getFirstshiftstart().substring(1, 2) + " FSooooSS "+dT.getSecondshiftstart().substring(0, 2));
 
-						int ora = (Integer.parseInt(dT.getFirstshiftstart().substring(0, 2))>=10) ? Integer.parseInt(dT.getFirstshiftstart().substring(0, 2)) : Integer.parseInt(dT.getFirstshiftstart().substring(1, 2));						
-						cal.set(Calendar.HOUR,ora);
-						cal.set(Calendar.MINUTE,0);
-						cal.set(Calendar.SECOND,0);	
-						cell.setCellValue(cal.getTime());
-						
-						oreLav.set(Calendar.SECOND,0);
-						oreLav.set(Calendar.MINUTE,0);
-						oreLav.set(Calendar.HOUR,Integer.parseInt(dT.getFirstshiftstop().substring(0, 2)));					
-						//System.out.println(Integer.parseInt(dT.getFirstshiftstop().substring(0, 2)));
-						
-						cell = row.getCell(col);col++;
-						cell.setCellValue(oreLav.getTime());
-						System.out.println(oreLav.getTime());
-						
-						oreLav.set(Calendar.HOUR,Integer.parseInt(dT.getSecondshiftstart().substring(0, 2))-12);
-						//System.out.println(Integer.parseInt(dT.getSecondshiftstart().substring(0, 2)));
-						cell = row.getCell(col);col++;
-						//System.out.println(oreLav.getTime());
-						cell.setCellValue(oreLav.getTime());
+							int ora = (Integer.parseInt(dT.getFirstshiftstart().substring(0, 2))>=10) ? Integer.parseInt(dT.getFirstshiftstart().substring(0, 2)) : Integer.parseInt(dT.getFirstshiftstart().substring(1, 2));						
+							cal.set(Calendar.HOUR,ora);
+							cal.set(Calendar.MINUTE,0);
+							cal.set(Calendar.SECOND,0);	
+							cell.setCellValue(cal.getTime());
 
-						
-						oreLav.set(Calendar.HOUR,Integer.parseInt(dT.getSecondshiftstop().substring(0, 2))-12);
-						//System.out.println(Integer.parseInt(dT.getSecondshiftstop().substring(0, 2)));
-						cell = row.getCell(col);col++;
-						//System.out.println(oreLav.getTime());
-						cell.setCellValue(oreLav.getTime());
+							oreLav.set(Calendar.SECOND,0);
+							oreLav.set(Calendar.MINUTE,0);
+							oreLav.set(Calendar.HOUR,Integer.parseInt(dT.getFirstshiftstop().substring(0, 2)));					
+							//System.out.println(Integer.parseInt(dT.getFirstshiftstop().substring(0, 2)));
 
-						cell = row.getCell(10);
-						cell.setCellValue(dT.getCodpermesso());
-						break NEWELEMENT;
+							cell = row.getCell(col);col++;
+							cell.setCellValue(oreLav.getTime());
+							System.out.println(oreLav.getTime());
+
+							oreLav.set(Calendar.HOUR,Integer.parseInt(dT.getSecondshiftstart().substring(0, 2))-12);
+							//System.out.println(Integer.parseInt(dT.getSecondshiftstart().substring(0, 2)));
+							cell = row.getCell(col);col++;
+							//System.out.println(oreLav.getTime());
+							cell.setCellValue(oreLav.getTime());
+
+
+							oreLav.set(Calendar.HOUR,Integer.parseInt(dT.getSecondshiftstop().substring(0, 2))-12);
+							//System.out.println(Integer.parseInt(dT.getSecondshiftstop().substring(0, 2)));
+							cell = row.getCell(col);col++;
+							//System.out.println(oreLav.getTime());
+							cell.setCellValue(oreLav.getTime());
+
+							cell = row.getCell(10);
+							cell.setCellValue(dT.getCodpermesso());
+							break NEWELEMENT;
+						}
 					}
-				}
 			}
 
 			//Scrivo il Cognome e il Nome nella cella indicata
@@ -191,7 +191,7 @@ public class XLSXReaderWriter {
 			// open an OutputStream to save written data into Excel file 
 			FileOutputStream os = new FileOutputStream(excelOut); 
 			book.write(os); 
-			System.out.println("Writing on Excel file Finished ..."); 
+			//System.out.println("Writing on Excel file Finished ..."); 
 			// Close workbook, OutputStream and Excel file to prevent leak 
 			os.close(); 
 			book.close(); 
@@ -202,15 +202,16 @@ public class XLSXReaderWriter {
 		catch (IOException ie) { 
 			ie.printStackTrace(); } 
 	} 
-	
-	
+
+
+	@SuppressWarnings("deprecation")
 	public static OutputStream writeXlsx(InputStream is, OutputStream os,User user) { 
 
 		try { 
-			
+
 			XSSFWorkbook book = new XSSFWorkbook(is); 
 			//setto il foglio sul numero 2
-			XSSFSheet sheet = book.getSheetAt(1); 
+			XSSFSheet sheet; 
 
 			Calendar now = Calendar.getInstance();
 			now.set(Calendar.MONTH,0);
@@ -220,60 +221,63 @@ public class XLSXReaderWriter {
 			now.set(Calendar.DAY_OF_MONTH, now.getActualMaximum(Calendar.DAY_OF_MONTH));
 			java.sql.Date end=new java.sql.Date(now.toInstant().toEpochMilli());
 
-			
 			DailyTimeDaoImpl dailyDao = new DailyTimeDaoImpl();
-			List<DailyTime> listTime=new ArrayList<DailyTime>(dailyDao.findByIdUser(user, start, end));
+			List<DailyTime> listTime=new ArrayList<>(dailyDao.findByIdUser(user, start, end));
 			// writing data into XLSX file
 			Calendar cal = Calendar.getInstance();
-			
+
 			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 			Calendar oreLav = sdf.getCalendar();
 
-			int r=7;
 			for(DailyTime dT:listTime){
 				sheet = book.getSheetAt(dT.getData().getMonth()); 
 				NEWELEMENT:
-				for (r=7;r<40;r++){
-					cal.setTime(dT.getData());
-					oreLav.setTime(dT.getData());
-					Double day = (double) cal.get(Calendar.DAY_OF_MONTH);
-					int col=1;
-					Row row = sheet.getRow(r);
-					Cell cell = row.getCell(col);
-					if (day.equals(cell.getNumericCellValue()))
-					{
-						System.out.println("SONO NEL CICLO COLONNE");
-						col++;
-						cell = row.getCell(col);col++;
-						//System.out.println(dT.getFirstshiftstart().substring(1, 2) + " FSooooSS "+dT.getSecondshiftstart().substring(0, 2));
+					for (int r=7;r<40;r++){
+						cal.setTime(dT.getData());
+						oreLav.setTime(dT.getData());
+						Double day = (double) cal.get(Calendar.DAY_OF_MONTH);
+						int col=1;
+						Row row = sheet.getRow(r);
+						Cell cell = row.getCell(col);
+						if (day.equals(cell.getNumericCellValue()))
+						{
+							//System.out.println("SONO NEL CICLO COLONNE");
+							col++;
+							cell = row.getCell(col);
+							col++;
+							//System.out.println(dT.getFirstshiftstart().substring(1, 2) + " FSooooSS "+dT.getSecondshiftstart().substring(0, 2));
 
-						int ora = (Integer.parseInt(dT.getFirstshiftstart().substring(0, 2))>=10) ? Integer.parseInt(dT.getFirstshiftstart().substring(0, 2)) : Integer.parseInt(dT.getFirstshiftstart().substring(1, 2));						
-						cal.set(Calendar.HOUR,ora);
-						cal.set(Calendar.MINUTE,0);
-						cal.set(Calendar.SECOND,0);	
-						cell.setCellValue(cal.getTime());
-						
-						oreLav.set(Calendar.SECOND,0);
-						oreLav.set(Calendar.MINUTE,0);
-						oreLav.set(Calendar.HOUR,Integer.parseInt(dT.getFirstshiftstop().substring(0, 2)));					
-						//System.out.println(Integer.parseInt(dT.getFirstshiftstop().substring(0, 2)));
-						
-						cell = row.getCell(col);col++;
-						cell.setCellValue(oreLav.getTime());
-						
-						oreLav.set(Calendar.HOUR,Integer.parseInt(dT.getSecondshiftstart().substring(0, 2))-12);
-						cell = row.getCell(col);col++;
-						cell.setCellValue(oreLav.getTime());
-						
-						oreLav.set(Calendar.HOUR,Integer.parseInt(dT.getSecondshiftstop().substring(0, 2))-12);
-						cell = row.getCell(col);col++;
-						cell.setCellValue(oreLav.getTime());
+							int ora = (Integer.parseInt(dT.getFirstshiftstart().substring(0, 2))>=10) ? Integer.parseInt(dT.getFirstshiftstart().substring(0, 2)) : Integer.parseInt(dT.getFirstshiftstart().substring(1, 2));						
+							cal.set(Calendar.HOUR,ora);
+							cal.set(Calendar.MINUTE,0);
+							cal.set(Calendar.SECOND,0);	
+							cell.setCellValue(cal.getTime());
 
-						cell = row.getCell(10);
-						cell.setCellValue(dT.getCodpermesso());
-						break NEWELEMENT;
+							oreLav.set(Calendar.SECOND,0);
+							oreLav.set(Calendar.MINUTE,0);
+							oreLav.set(Calendar.HOUR,Integer.parseInt(dT.getFirstshiftstop().substring(0, 2)));					
+							//System.out.println(Integer.parseInt(dT.getFirstshiftstop().substring(0, 2)));
+
+							cell = row.getCell(col);
+							col++;
+							cell.setCellValue(oreLav.getTime());
+
+							oreLav.set(Calendar.HOUR,Integer.parseInt(dT.getSecondshiftstart().substring(0, 2))-12);
+							cell = row.getCell(col);
+							col++;
+							cell.setCellValue(oreLav.getTime());
+
+							oreLav.set(Calendar.HOUR,Integer.parseInt(dT.getSecondshiftstop().substring(0, 2))-12);
+							cell = row.getCell(col);
+							
+							cell.setCellValue(oreLav.getTime());
+
+							cell = row.getCell(10);
+							cell.setCellValue(dT.getCodpermesso());
+							break NEWELEMENT;
+						}
 					}
-				}
+				//Scrivo il Cognome e il Nome nella cella indicata
 				Row rowName = sheet.getRow(2);
 				Cell cellName = rowName.getCell(11);
 				if (cellName == null)
@@ -281,20 +285,9 @@ public class XLSXReaderWriter {
 				cellName.setCellValue(user.getFirstname()+" "+ user.getLastname());
 			}
 
-			//Scrivo il Cognome e il Nome nella cella indicata
-//			Row row = sheet.getRow(2);
-//			Cell cell = row.getCell(11);
-//			if (cell == null)
-//				cell = row.createCell(11);
-//			cell.setCellValue(user.getFirstname()+" "+ user.getLastname());
-
-			// open an OutputStream to save written data into Excel file 
-			//OutputStream Newos = os;
-			
 			book.write(os); 
-			System.out.println("Writing on Excel file Finished ..."); 
-			// Close workbook, OutputStream and Excel file to prevent leak 
 			
+			// Close workbook, OutputStream and Excel file to prevent leak 
 			os.close(); 
 			book.close(); 
 			is.close();

@@ -17,7 +17,6 @@ import it.al.ma.dao.DailyTimeDao;
 import it.al.ma.dao.UserDao;
 import it.al.ma.model.DailyTime;
 import it.al.ma.model.User;
-import it.al.ma.util.XLSXReaderWriter;
 
 @Controller
 public class DailyTimeController {
@@ -113,8 +112,8 @@ public class DailyTimeController {
 		System.out.println(newuser);
 		System.out.println("MESE - "+ month);
 		System.out.println(" metodo timestamp --- "+id);
-		XLSXReaderWriter.writeXlsx(newuser,month);
-		XLSXReaderWriter.readXlsx(month);
+//		XLSXReaderWriter.writeXlsx(newuser,month);
+//		XLSXReaderWriter.readXlsx(month);
 		System.out.println(req.getSession().getAttribute("admin"));
 		if (req.getSession().getAttribute("admin").equals("admin"))
 			return "redirect:/admin/compileTimesheet/{id}";
