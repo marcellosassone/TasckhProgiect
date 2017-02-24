@@ -50,7 +50,7 @@
 					<form:input type="hidden" path="admin" />
 					<div class="top-row">
 						<div class="field-wrap">
-							<label class="active"> Salutation<span class="req"></span>
+							<label class="active"> Posizione<span class="req"></span>
 							</label>
 							<form:input type="text" path="salutation" />
 						</div>
@@ -67,7 +67,14 @@
 							<form:input type="text" required="true" autocomplete="off"
 								path="lastname" />
 						</div>
+						<div class="field-wrap">
+							<label class="active"> Codice fiscale<span class="req">*</span>
+							</label>
+							<form:input type="text" required="true" autocomplete="off"
+								path="cf" pattern="^[a-zA-Z]{6}[0-9]{2}[a-zA-Z][0-9]{2}[a-zA-Z][0-9]{3}[a-zA-Z]$" oninvalid="this.setCustomValidity('Codice fiscale non corretto')"/>
+								
 
+						</div>
 						<div class="field-wrap">
 							<label class="active"> Indirizzo <span class="req"></span>
 							</label>
@@ -77,6 +84,13 @@
 							<label class="active"> N° civico <span class="req"></span>
 							</label>
 							<form:input type="number" path="housenumber" />
+						</div>
+						<div class="field-wrap">
+							<label class="active"> CAP<span class="req">*</span>
+							</label>
+							<form:input type="text" required="true" autocomplete="off"
+								path="cap" />
+								
 						</div>
 						<div class="field-wrap">
 							<label class="active"> Città <span class="req"></span>
