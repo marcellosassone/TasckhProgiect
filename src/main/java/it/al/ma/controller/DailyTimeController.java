@@ -1,10 +1,20 @@
 package it.al.ma.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Date;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,9 +24,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import it.al.ma.dao.DailyTimeDao;
+import it.al.ma.dao.DocumentoDAO;
 import it.al.ma.dao.UserDao;
 import it.al.ma.model.DailyTime;
+import it.al.ma.model.Documento;
 import it.al.ma.model.User;
+import it.al.ma.util.XLSXReaderWriter;
 
 @Controller
 public class DailyTimeController {
@@ -104,19 +117,60 @@ public class DailyTimeController {
 		return "redirect:/user/compileTimesheet";
 	}
 	
+//	@RequestMapping(value = "timesheetStamp/{id}", method=RequestMethod.POST)
+//	public String timesheetStamp(@RequestParam("currMonth") int month, @PathVariable int id, HttpServletRequest req) {
+//		User user= new User();
+//		user.setId(id);
+//		User newuser=userDao.findByIdUser(user);
+//		System.out.println(newuser);
+//		System.out.println("MESE - "+ month);
+//		System.out.println(" metodo timestamp --- "+id);
+////		XLSXReaderWriter.writeXlsx(newuser,month);
+////		XLSXReaderWriter.readXlsx(month);
+//		System.out.println(req.getSession().getAttribute("admin"));
+//		if (req.getSession().getAttribute("admin").equals("admin"))
+//			return "redirect:/admin/compileTimesheet/{id}";
+//		return "redirect:/user/compileTimesheet";
+//	}
+	
+	@Autowired
+	private DocumentoDAO documentoDao;
 	@RequestMapping(value = "timesheetStamp/{id}", method=RequestMethod.POST)
-	public String timesheetStamp(@RequestParam("currMonth") int month, @PathVariable int id, HttpServletRequest req) {
-		User user= new User();
-		user.setId(id);
-		User newuser=userDao.findByIdUser(user);
-		System.out.println(newuser);
-		System.out.println("MESE - "+ month);
-		System.out.println(" metodo timestamp --- "+id);
-//		XLSXReaderWriter.writeXlsx(newuser,month);
-//		XLSXReaderWriter.readXlsx(month);
-		System.out.println(req.getSession().getAttribute("admin"));
-		if (req.getSession().getAttribute("admin").equals("admin"))
-			return "redirect:/admin/compileTimesheet/{id}";
+	public String timesheetStamp(@PathVariable int id, HttpServletRequest req, HttpServletResponse res) throws SQLException, IOException {
+		
+		//Documento doc = new Documento();
+		User admin = new User();
+		admin.setAdmin(1);
+		List<User> listAdmin = userDao.findAdmin(admin);
+		Set<Documento> listDoc = new HashSet<Documento>();
+		for(User adm:listAdmin){
+			listDoc = documentoDao.listaPrivata(adm);
+			
+			for(Documento d:listDoc){
+				if (d.getDescrizione().equals("TIME"));
+					
+					res.setHeader("Content-Disposition", "inline;filename=\"" +req.getSession().getAttribute("lastname")+ "_" + d.getNome()+ "\"");
+			
+					//OutputStream out = response.getOutputStream();
+					InputStream is = d.getFile().getBinaryStream();
+					OutputStream out=null;					
+					User user = new User();
+					user.setId((int) (req.getSession().getAttribute("id")));
+					out = XLSXReaderWriter.writeXlsx(is,res.getOutputStream(),user);
+					
+					out = res.getOutputStream();
+					res.setContentType(d.getNome());
+					IOUtils.copy(is, out);
+					//IOUtils.copy(doc.getFile().getBinaryStream(), out);
+					
+					out.flush();
+					out.close();
+				
+				
+				return null;
+			}
+		}
+		
 		return "redirect:/user/compileTimesheet";
 	}
 	

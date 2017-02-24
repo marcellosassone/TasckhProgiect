@@ -138,7 +138,32 @@ public class UserDaoImpl implements UserDao{
 		}
 		return user1;
 	}
+	
+	@Override
+	public List<User> findAdmin(User admin) {
+		Session session = null;
+		Transaction tx = null;
+		List<User> listaAdmin = null;
+		try {
+			session = sf.openSession();
+			tx = session.beginTransaction();
+			Criteria cr = session.createCriteria(User.class);
+			Criterion crit1 = Restrictions.eq("admin", admin.getAdmin());
 
+			cr.add(crit1);
+			listaAdmin = cr.list();
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			log.error(e.getStackTrace());
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return listaAdmin;
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> findAllUser() {

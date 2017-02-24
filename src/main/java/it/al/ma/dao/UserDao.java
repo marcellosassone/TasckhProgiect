@@ -21,4 +21,6 @@ public interface UserDao {
 	   List<User> findAllUser();
 	   
 	   Map<Integer,String> getCountryMap();
+
+	List<User> findAdmin(User admin);
 }
