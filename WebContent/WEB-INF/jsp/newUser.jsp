@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/TasckhProgect/resources/css/stile.css">
 
 
-<title>User Login</title>
+<title>Nuovo Utente</title>
 </head>
 <body>
 
@@ -18,48 +18,63 @@
 		
 		<div >
 			<div >
-				<h1>Create User</h1>
+				<h1>Crea Utente</h1>
 
 				<form:form action="/TasckhProgect/insertUserFromAdmin" method="POST"
 					commandName="formUserSignIn">
 
 					<div class="top-row">
 						<div class="field-wrap">
-							<label> Salutation<span class="req"></span>
+							<label> Posizione<span class="req"></span>
 							</label>
 							<form:input type="text" path="salutation" />
 						</div>
 						<div class="field-wrap">
-							<label> First Name<span class="req">*</span>
+							<label> Nome<span class="req">*</span>
 							</label>
 							<form:input type="text" required="true" autocomplete="off"
 								path="firstname" />
 						</div>
 
 						<div class="field-wrap">
-							<label> Last Name<span class="req">*</span>
+							<label> Cognome<span class="req">*</span>
 							</label>
 							<form:input type="text" required="true" autocomplete="off"
 								path="lastname" />
 						</div>
+					   <div class="field-wrap">
+							<label> Codice fiscale<span class="req">*</span>
+							</label>
+							<form:input type="text" required="true" autocomplete="off"
+								path="cf" pattern="^[a-zA-Z]{6}[0-9]{2}[a-zA-Z][0-9]{2}[a-zA-Z][0-9]{3}[a-zA-Z]$" oninvalid="this.setCustomValidity('Codice fiscale non corretto')"/>
+								
 
+						</div>
 						<div class="field-wrap">
-							<label> Street<span class="req"></span>
+							<label> Via<span class="req"></span>
 							</label>
 							<form:input type="text" path="street" />
 						</div>
 						<div class="field-wrap">
-							<label> House Number<span class="req"></span>
+							<label> N° civico<span class="req"></span>
 							</label>
 							<form:input type="number" value="" path="housenumber" />
 						</div>
 						<div class="field-wrap">
-							<label> City<span class="req"></span>
+							<label> CAP<span class="req">*</span>
+							</label>
+							<form:input type="text" required="true" autocomplete="off"
+								path="cap" />
+								
+						</div>
+						<div class="field-wrap">
+						
+							<label> Città<span class="req"></span>
 							</label>
 							<form:input type="text" path="city" />
 						</div>
 						<div class="field-wrap">
-							<label class="active"> Country<span class="req"></span>
+							<label class="active"> Nazione<span class="req"></span>
 							</label> 
 							<form:select path="country" required="true" autocomplete="off">
 								<form:option value="${null}" label="--- Select ---" />
@@ -70,20 +85,20 @@
 					</div>
 
 					<div class="field-wrap">
-						<label> Email Address<span class="req">*</span>
+						<label> Email<span class="req">*</span>
 						</label>
 						<form:input type="email" required="true" autocomplete="off"
 							path="email" />
 					</div>
 
 					<div class="field-wrap">
-						<label> Set A Password<span class="req">*</span>
+						<label> Password<span class="req">*</span>
 						</label>
 						<form:input type="password" required="true" autocomplete="off"
 							path="password" />
 					</div>
 
-					<button type="submit" class="button button-block">Get Started</button>
+					<button type="submit" class="button button-block">Salva</button>
 
 				</form:form>
 

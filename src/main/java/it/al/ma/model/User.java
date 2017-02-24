@@ -31,10 +31,14 @@ public class User {
  private String firstname;
  @Column(name = "lastname")
  private String lastname;
+ @Column(name = "cf")
+ private String cf;
  @Column(name = "street")
  private String street;
  @Column(name = "housenumber")
  private Integer housenumber;
+ @Column(name = "cap")
+ private String cap;
  @Column(name = "city")
  private String city;
  @Column(name = "country")
@@ -53,21 +57,23 @@ public class User {
   super();
  }
 
- public User(String salutation, String firstname, String lastname, String street, Integer housenumber, String city,
-   int country, String email, String password, int admin) {
-  super();
-
-  this.salutation = salutation;
-  this.firstname = firstname;
-  this.lastname = lastname;
-  this.street = street;
-  this.housenumber = housenumber;
-  this.city = city;
-  this.country = country;
-  this.email = email;
-  this.password = password;
-  this.admin = admin;
- }
+// public User(String salutation, String firstname, String lastname, String cf, String street, Integer housenumber, int cap, String city,
+//   int country, String email, String password, int admin) {
+//  super();
+//
+//  this.salutation = salutation;
+//  this.firstname = firstname;
+//  this.lastname = lastname;
+//  this.street = street;
+//  this.housenumber = housenumber;
+//  this.city = city;
+//  this.country = country;
+//  this.email = email;
+//  this.password = password;
+//  this.admin = admin;
+//  this.cf=cf;
+//  this.cap=cap;
+// }
 
  public User(String email, String password) {
   super();
@@ -175,78 +181,44 @@ public class User {
 		this.documenti = documenti;
 	}
 
- @Override
- public int hashCode() {
-  final int prime = 31;
-  int result = 1;
-  result = prime * result + admin;
-  result = prime * result + ((city == null) ? 0 : city.hashCode());
-  result = prime * result + country;
-  result = prime * result + ((email == null) ? 0 : email.hashCode());
-  result = prime * result + ((firstname == null) ? 0 : firstname.hashCode());
-  result = prime * result + housenumber;
-  result = prime * result + id;
-  result = prime * result + ((lastname == null) ? 0 : lastname.hashCode());
-  result = prime * result + ((password == null) ? 0 : password.hashCode());
-  result = prime * result + ((salutation == null) ? 0 : salutation.hashCode());
-  result = prime * result + ((street == null) ? 0 : street.hashCode());
-  return result;
- }
+ public String getCf() {
+		return cf;
+	}
 
- @Override
- public boolean equals(Object obj) {
-  if (this == obj)
-   return true;
-  if (obj == null)
-   return false;
-  if (getClass() != obj.getClass())
-   return false;
-  User other = (User) obj;
-  if (admin != other.admin)
-   return false;
-  if (city == null) {
-   if (other.city != null)
-    return false;
-  } else if (!city.equals(other.city))
-   return false;
-  if (country != other.country)
-   return false;
-  if (email == null) {
-   if (other.email != null)
-    return false;
-  } else if (!email.equals(other.email))
-   return false;
-  if (firstname == null) {
-   if (other.firstname != null)
-    return false;
-  } else if (!firstname.equals(other.firstname))
-   return false;
-  if (housenumber != other.housenumber)
-   return false;
-  if (id != other.id)
-   return false;
-  if (lastname == null) {
-   if (other.lastname != null)
-    return false;
-  } else if (!lastname.equals(other.lastname))
-   return false;
-  if (password == null) {
-   if (other.password != null)
-    return false;
-  } else if (!password.equals(other.password))
-   return false;
-  if (salutation == null) {
-   if (other.salutation != null)
-    return false;
-  } else if (!salutation.equals(other.salutation))
-   return false;
-  if (street == null) {
-   if (other.street != null)
-    return false;
-  } else if (!street.equals(other.street))
-   return false;
-  return true;
- }
+	public void setCf(String cf) {
+		this.cf = cf;
+	}
+
+	public String getCap() {
+		return cap;
+	}
+
+	public void setCap(String cap) {
+		this.cap = cap;
+	}
+
+@Override
+public int hashCode() {
+	final int prime = 31;
+	int result = 1;
+	result = prime * result + admin;
+	result = prime * result + ((cap == null) ? 0 : cap.hashCode());
+	result = prime * result + ((cf == null) ? 0 : cf.hashCode());
+	result = prime * result + ((city == null) ? 0 : city.hashCode());
+	result = prime * result + country;
+	result = prime * result + ((documenti == null) ? 0 : documenti.hashCode());
+	result = prime * result + ((email == null) ? 0 : email.hashCode());
+	result = prime * result + ((firstname == null) ? 0 : firstname.hashCode());
+	result = prime * result + ((housenumber == null) ? 0 : housenumber.hashCode());
+	result = prime * result + id;
+	result = prime * result + ((lastname == null) ? 0 : lastname.hashCode());
+	result = prime * result + ((password == null) ? 0 : password.hashCode());
+	result = prime * result + ((salutation == null) ? 0 : salutation.hashCode());
+	result = prime * result + ((street == null) ? 0 : street.hashCode());
+	return result;
+}
+
+
 
  @Override
  public String toString() {
