@@ -118,9 +118,8 @@
 							</c:otherwise>
 						</c:choose></td>
 					<td><a href="/TasckhProgect/user/downloadDoc/${doc.id}"><img src="/TasckhProgect/resources/img/download.png" title="Download"></a></td>
-					<td><a href="/TasckhProgect/user/updateDoc/${doc.id}"><img src="/TasckhProgect/resources/img/update.png" title="Modifica"></a></td>
-					<td><a href="/TasckhProgect/user/deleteDoc/${doc.id}"
-						onClick='return confirm("Sei sicuro di Voler Eliminare il file?")'><img src="/TasckhProgect/resources/img/delete.png" title="Cancella"></a></td>
+					<td><a href=""><img src="/TasckhProgect/resources/img/update.png" title="Non è possibile Modificare"></a></td>
+					<td><a href=""><img src="/TasckhProgect/resources/img/delete.png" title="Non e possibile Cancellare"></a></td>
 				</tr>
 			</c:forEach>
 		</table>

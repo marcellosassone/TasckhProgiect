@@ -32,10 +32,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import it.al.ma.dao.DocumentoDAO;
 import it.al.ma.dao.UserDao;
-import it.al.ma.dao.UserDaoImpl;
 import it.al.ma.model.Documento;
 import it.al.ma.model.User;
-import it.al.ma.util.XLSXReaderWriter;
 
 
 @Controller
@@ -164,19 +162,19 @@ public class DocumentoController {
 		//System.out.println("USER "+ doc.getUser());
 		try {
 			
-			res.setHeader("Content-Disposition", "inline;filename=\"" +req.getSession().getAttribute("lastname")+ "_" + doc.getNome()+ "\"");
+			res.setHeader("Content-Disposition", "inline;filename=\"" + doc.getNome()+ "\"");
 	
 			//OutputStream out = response.getOutputStream();
 			InputStream is = doc.getFile().getBinaryStream();
 			OutputStream out=null;
 			
-			//Se è un file di timesheet lo popolo
-			if (doc.getDescrizione().equals("TIME")){
-				User user = new User();
-				user.setId((int) req.getSession().getAttribute("id"));
-				user = userDao.findByIdUser(user);
-				out = XLSXReaderWriter.writeXlsx(is,res.getOutputStream(),user);
-			}
+//			//Se è un file di timesheet lo popolo
+//			if (doc.getDescrizione().equals("TIME")){
+//				User user = new User();
+//				user.setId((int) req.getSession().getAttribute("id"));
+//				user = userDao.findByIdUser(user);
+//				out = XLSXReaderWriter.writeXlsx(is,res.getOutputStream(),user);
+//			}
 			
 			out = res.getOutputStream();
 			res.setContentType(doc.getNome());
@@ -243,6 +241,7 @@ public class DocumentoController {
 		
 		List<User> listAdmin = userDao.findAdmin(admin);
 		
+		//da testare con più Admin
 		for(User adm:listAdmin){
 			model.addAttribute("listaDocAdmin", documentoDao.listaPrivata(adm));
 		}

@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
@@ -135,43 +134,39 @@ public class DailyTimeController {
 	
 	@Autowired
 	private DocumentoDAO documentoDao;
-	@RequestMapping(value = "timesheetStamp/{id}", method=RequestMethod.POST)
+	@RequestMapping(value = "timesheetDownload/{id}", method=RequestMethod.POST)
 	public String timesheetStamp(@PathVariable int id, HttpServletRequest req, HttpServletResponse res) throws SQLException, IOException {
-		
-		//Documento doc = new Documento();
+		//System.out.println("timesheetdownl ID"+ id);
+		User user = new User();
+		user.setId(id);
+		user= userDao.findByIdUser(user);
 		User admin = new User();
 		admin.setAdmin(1);
 		List<User> listAdmin = userDao.findAdmin(admin);
 		Set<Documento> listDoc = new HashSet<Documento>();
 		for(User adm:listAdmin){
 			listDoc = documentoDao.listaPrivata(adm);
-			
 			for(Documento d:listDoc){
-				if (d.getDescrizione().equals("TIME"));
+				if (d.getDescrizione().equals("TIME")){
 					
-					res.setHeader("Content-Disposition", "inline;filename=\"" +req.getSession().getAttribute("lastname")+ "_" + d.getNome()+ "\"");
+					res.setHeader("Content-Disposition", "inline;filename=\"" +user.getLastname()+ "_" + d.getNome()+ "\"");
 			
-					//OutputStream out = response.getOutputStream();
 					InputStream is = d.getFile().getBinaryStream();
-					OutputStream out=null;					
-					User user = new User();
-					user.setId((int) (req.getSession().getAttribute("id")));
+					OutputStream out=null;
+					
 					out = XLSXReaderWriter.writeXlsx(is,res.getOutputStream(),user);
 					
 					out = res.getOutputStream();
 					res.setContentType(d.getNome());
 					IOUtils.copy(is, out);
-					//IOUtils.copy(doc.getFile().getBinaryStream(), out);
 					
 					out.flush();
 					out.close();
-				
-				
+				}	
 				return null;
 			}
-		}
-		
-		return "redirect:/user/compileTimesheet";
+			return null;
+		}		
+		return null;
 	}
-	
 }

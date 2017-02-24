@@ -119,7 +119,7 @@
 			</select>
 		</form>
 	</div>
-	<form:form action="/TasckhProgect/timesheetStamp/${id}" method="POST"
+	<form:form action="/TasckhProgect/timesheetDownload/${id}" method="POST"
 		commandName="formDailyTime">
 		<input Type="hidden" name="currMonth" value ="${currMonth}">
 	<table class="rwd-table">
