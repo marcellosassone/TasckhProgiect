@@ -16,7 +16,7 @@
 <div class="logo"><img src="/TasckhProgect/resources/img/Logo1.png"  style="height:60%;
 	width:60%"/></div>
 	<div class="container">
-	<div class="navbar" style="height:150px">
+	<div class="navbar" style="height:150px; display:${hide ? 'block' : 'none'}">
 								<form action="/TasckhProgect/login" method="post">
   									<button type="submit" title="Dashboard" class="btn-link-profile"></button>
 								</form>
@@ -26,8 +26,27 @@
   									<button type="submit" title="Timesheet"  class="btn-link-timesheet"></button>
 								</form> --%>
 									
-								<form action="" method="get">
-  									<button type="submit" title="Contact" class="btn-link-contact"></button>
+								<form action="/TasckhProgect/admin/load" method="get">
+  									<button type="submit" title="Lista Utenti" class="btn-link-contact"></button>
+								</form>
+								
+								<form action="/TasckhProgect/logout" method="get">
+  									<button type="submit" title="Logout" class="btn-link-logout"></button>
+								</form>							
+								
+							</div>
+	<div class="navbar" style="display:${hide ? 'none' : 'block'}" >
+								<form action="/TasckhProgect/login" method="post">
+  									<button type="submit" title="Dashboard" class="btn-link-profile"></button>
+								</form>
+								
+							
+								<form action="/TasckhProgect/user/compileTimesheet" method="get">
+  									<button type="submit" title="Timesheet"  class="btn-link-timesheet"></button>
+								</form>
+									
+								<form action="/TasckhProgect/admin/load" method="get">
+  									<button type="submit" title="Lista Utenti" class="btn-link-contact"></button>
 								</form>
 								
 								<form action="/TasckhProgect/logout" method="get">
@@ -102,8 +121,7 @@
 					href="/TasckhProgect/user/sortDoc/name/${nameSort eq null or nameSort eq true ? 'ASC' : 'DESC'}"><img Title="Ordina" src="/TasckhProgect/resources/img/sort.png"></a></th>
 				<th>Descrizione</th>
 				<th style="width:50px"></th>
-				<th style="width:50px"></th>
-				<th style="width:50px"></th>
+				
 				
 			</tr>
 			
@@ -121,8 +139,7 @@
 							</c:otherwise>
 						</c:choose></td>
 					<td><a href="/TasckhProgect/user/downloadDoc/${doc.id}"><img src="/TasckhProgect/resources/img/download.png" title="Download"></a></td>
-					<td ><a href=""><img src="/TasckhProgect/resources/img/update.png" title="Non è possibile Modificare"></a></td>
-					<td><a href=""><img src="/TasckhProgect/resources/img/delete.png" title="Non e possibile Cancellare"></a></td>
+					
 				</tr>
 			</c:forEach>
 		</table>
