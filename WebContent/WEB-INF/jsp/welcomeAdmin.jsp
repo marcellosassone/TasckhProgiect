@@ -46,10 +46,7 @@
 								<img src="/TasckhProgect/resources/img/upload.png">
 								<a href="/TasckhProgect/user/loadDoc">Gestione Documenti Globale</a>
 							</li>
-							<li>
-								<img src="/TasckhProgect/resources/img/time.png">
-								<a href="/TasckhProgect/user/compileTimesheet">Timesheet</a>
-							</li>
+							
 							<li>
 								<img src="/TasckhProgect/resources/img/lista_user.png">
 								<a href="/TasckhProgect/admin/load">Lista Utenti</a>

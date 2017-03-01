@@ -41,29 +41,29 @@
 	<div class="containerDT">
 	
 	<div class="divTop" style="display:${hide ? 'none' : 'block'}">
-	<h1>Compile TimeSheet</h1>
+	<h1>Compilazione TimeSheet</h1>
 	<form:form action="/TasckhProgect/user/finalizeCompile" method="POST"
 		commandName="formDailyTime">
 		<table class="rwd-table">
 			<tr>
 				<th style="border-bottom: none"></th>
-				<th colspan="2" style="border-bottom: none"><label> First Shift<span
+				<th colspan="2" style="border-bottom: none"><label> Primo turno<span
 						class="req">*</span>
 				</label></th>
-				<th colspan="2" style="border-bottom: none"><label> Second Shift<span
+				<th colspan="2" style="border-bottom: none"><label> Secondo turno<span
 						class="req">*</span>
 				</label></th>
 				<th style="border-bottom: none"></th>
 				<th style="border-bottom: none"></th>
 			</tr>
 			<tr>
-				<th><label> Date<span class="req">*</span>
+				<th><label> Data<span class="req">*</span>
 				</label></th>
 				<th>Start</th>
 				<th>End</th>
 				<th>Start</th>
 				<th>End</th>
-				<th><label>Permit Code <span class="req"></span>
+				<th><label>Codice Permesso <span class="req"></span>
 				</label></th>
 			</tr>
 
@@ -97,7 +97,7 @@
 	<br>
 
 	<div class="divBottom">
-	<h1>Monthly Timesheet</h1>
+	<h1>Timesheet Mensile</h1>
 	<div id="mainselection">
 	
 		<form method="POST" action="/TasckhProgect/user/compileTimesheet">
