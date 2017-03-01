@@ -16,15 +16,15 @@
 <div class="logo"><img src="/TasckhProgect/resources/img/Logo1.png"  style="height:60%;
 	width:60%"/></div>
 	<div class="container">
-	<div class="navbar">
+	<div class="navbar" style="height:150px">
 								<form action="/TasckhProgect/login" method="post">
   									<button type="submit" title="Dashboard" class="btn-link-profile"></button>
 								</form>
 								
 							
-								<form action="/TasckhProgect/user/compileTimesheet" method="get">
+								<%-- <form action="/TasckhProgect/user/compileTimesheet" method="get">
   									<button type="submit" title="Timesheet"  class="btn-link-timesheet"></button>
-								</form>
+								</form> --%>
 									
 								<form action="" method="get">
   									<button type="submit" title="Contact" class="btn-link-contact"></button>
@@ -89,8 +89,11 @@
 		
 		<input type="hidden" name="id_editabile" value="${id_editable}" />
 		 <button type="submit" class="button button-block"> <img title="Salva Modifiche" src="/TasckhProgect/resources/img/saveUpdate.png">  </button>
+</form>
 
-		<table class="rwd-table">
+	<div class="divBottom" style="display:${hide ? 'none' : 'block'}">
+	<h1>Documenti Globali</h1>
+		<table class="rwd-table" >
 			<tr>
 				
 				<th>Data<a
@@ -118,13 +121,13 @@
 							</c:otherwise>
 						</c:choose></td>
 					<td><a href="/TasckhProgect/user/downloadDoc/${doc.id}"><img src="/TasckhProgect/resources/img/download.png" title="Download"></a></td>
-					<td><a href=""><img src="/TasckhProgect/resources/img/update.png" title="Non è possibile Modificare"></a></td>
+					<td ><a href=""><img src="/TasckhProgect/resources/img/update.png" title="Non è possibile Modificare"></a></td>
 					<td><a href=""><img src="/TasckhProgect/resources/img/delete.png" title="Non e possibile Cancellare"></a></td>
 				</tr>
 			</c:forEach>
 		</table>
-
-	</form>
+</div>
+	
 	</div>
 	
 	<h1>Upload file</h1>
