@@ -241,7 +241,8 @@ public class DocumentoController {
 		model.addAttribute("hide","True");
 		req.getSession().setAttribute("admin", "admin");
 		}
-		
+		else
+			model.addAttribute("hide","False");
 		model.addAttribute("listaDoc", documentoDao.listaPrivata(user));
 		
 		List<User> listAdmin = userDao.findAdmin(admin);
