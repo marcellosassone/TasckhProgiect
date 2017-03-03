@@ -43,168 +43,168 @@ public class DocumentoController {
 
 	@Autowired
 	private UserDao userDao;
-	
+
 	private Logger log = Logger.getLogger(DocumentoController.class);
 
-//	@RequestMapping(value = "/user/downloadDoc/{id}", method = RequestMethod.GET)
-//	public void downloadDoc(@PathVariable int id, HttpServletRequest req, HttpServletResponse res) {
-//		Documento d = new Documento();
-//		d.setId(id);
-//		Documento doc = documentoDao.cercaDoc(d);
-//
-//		String mimeType = req.getServletContext().getMimeType(doc.getNome());
-//		if (mimeType == null) {
-//			mimeType = "application/octet-stream";
-//		}
-//
-//		res.setContentType(mimeType);
-//		try {
-//			res.setContentLength((int) doc.getFile().length());
-//		} catch (SQLException e) {
-//			log.error(e.getStackTrace());
-//		}
-//
-//		// set headers for the response
-//		String headerKey = "Content-Disposition";
-//		String headerValue = String.format("attachment; filename=\"%s\"", doc.getNome());
-//		res.setHeader(headerKey, headerValue);
-//		InputStream is = null;
-//		OutputStream os = null;
-//		try {
-//			is = (ByteArrayInputStream) doc.getFile().getBinaryStream();
-//
-//			os = res.getOutputStream();
-//
-//			byte[] buffer = new byte[4096];
-//			int bytesRead = -1;
-//			while ((bytesRead = is.read(buffer)) != -1) {
-//				os.write(buffer, 0, bytesRead);
-//			}
-//		} catch (SQLException | IOException e) {
-//			log.error("Download failed", e);
-//		} finally {
-//			if (is != null)
-//				try {
-//					is.close();
-//				} catch (IOException e) {
-//					log.error(e.getStackTrace());
-//				}
-//
-//			if (os != null)
-//				try {
-//					os.close();
-//				} catch (IOException e) {
-//					log.error(e.getStackTrace());
-//				}
-//		}
-//	}
-	
-//	@RequestMapping(value = "/user/downloadDoc/{id}", method = RequestMethod.GET)
-//	public void downloadDoc(@PathVariable int id, HttpServletRequest req, HttpServletResponse res) {
-//		Documento d = new Documento();
-//		d.setId(id);
-//		Documento doc = documentoDao.cercaDoc(d);
-//
-//		String mimeType = req.getServletContext().getMimeType(doc.getNome());
-//		if (mimeType == null) {
-//			mimeType = "application/octet-stream";
-//		}
-//
-//		res.setContentType(mimeType);
-//		try {
-//			res.setContentLength((int) doc.getFile().length());
-//		} catch (SQLException e) {
-//			log.error(e.getStackTrace());
-//		}
-//
-//		// set headers for the response
-//		String headerKey = "Content-Disposition";
-//		String headerValue = String.format("attachment; filename=\"%s\"", doc.getNome());
-//		res.setHeader(headerKey, headerValue);
-//		InputStream is = null;
-//		OutputStream os = null;
-//		try {
-//			is = (ByteArrayInputStream) doc.getFile().getBinaryStream();
-//
-//			os = res.getOutputStream();
-//
-//			byte[] buffer = new byte[4096];
-//			int bytesRead = -1;
-//		    // write bytes read from the input stream into the output stream
-//			while ((bytesRead = is.read(buffer)) != -1) {
-//				os.write(buffer, 0, bytesRead);
-//			}
-//		} catch (SQLException | IOException e) {
-//			log.error("Download failed", e);
-//		} finally {
-//			if (is != null)
-//				try {
-//					is.close();
-//				} catch (IOException e) {
-//					log.error(e.getStackTrace());
-//				}
-//
-//			if (os != null)
-//				try {
-//					os.close();
-//				} catch (IOException e) {
-//					log.error(e.getStackTrace());
-//				}
-//		}
-//	}
+	//	@RequestMapping(value = "/user/downloadDoc/{id}", method = RequestMethod.GET)
+	//	public void downloadDoc(@PathVariable int id, HttpServletRequest req, HttpServletResponse res) {
+	//		Documento d = new Documento();
+	//		d.setId(id);
+	//		Documento doc = documentoDao.cercaDoc(d);
+	//
+	//		String mimeType = req.getServletContext().getMimeType(doc.getNome());
+	//		if (mimeType == null) {
+	//			mimeType = "application/octet-stream";
+	//		}
+	//
+	//		res.setContentType(mimeType);
+	//		try {
+	//			res.setContentLength((int) doc.getFile().length());
+	//		} catch (SQLException e) {
+	//			log.error(e.getStackTrace());
+	//		}
+	//
+	//		// set headers for the response
+	//		String headerKey = "Content-Disposition";
+	//		String headerValue = String.format("attachment; filename=\"%s\"", doc.getNome());
+	//		res.setHeader(headerKey, headerValue);
+	//		InputStream is = null;
+	//		OutputStream os = null;
+	//		try {
+	//			is = (ByteArrayInputStream) doc.getFile().getBinaryStream();
+	//
+	//			os = res.getOutputStream();
+	//
+	//			byte[] buffer = new byte[4096];
+	//			int bytesRead = -1;
+	//			while ((bytesRead = is.read(buffer)) != -1) {
+	//				os.write(buffer, 0, bytesRead);
+	//			}
+	//		} catch (SQLException | IOException e) {
+	//			log.error("Download failed", e);
+	//		} finally {
+	//			if (is != null)
+	//				try {
+	//					is.close();
+	//				} catch (IOException e) {
+	//					log.error(e.getStackTrace());
+	//				}
+	//
+	//			if (os != null)
+	//				try {
+	//					os.close();
+	//				} catch (IOException e) {
+	//					log.error(e.getStackTrace());
+	//				}
+	//		}
+	//	}
+
+	//	@RequestMapping(value = "/user/downloadDoc/{id}", method = RequestMethod.GET)
+	//	public void downloadDoc(@PathVariable int id, HttpServletRequest req, HttpServletResponse res) {
+	//		Documento d = new Documento();
+	//		d.setId(id);
+	//		Documento doc = documentoDao.cercaDoc(d);
+	//
+	//		String mimeType = req.getServletContext().getMimeType(doc.getNome());
+	//		if (mimeType == null) {
+	//			mimeType = "application/octet-stream";
+	//		}
+	//
+	//		res.setContentType(mimeType);
+	//		try {
+	//			res.setContentLength((int) doc.getFile().length());
+	//		} catch (SQLException e) {
+	//			log.error(e.getStackTrace());
+	//		}
+	//
+	//		// set headers for the response
+	//		String headerKey = "Content-Disposition";
+	//		String headerValue = String.format("attachment; filename=\"%s\"", doc.getNome());
+	//		res.setHeader(headerKey, headerValue);
+	//		InputStream is = null;
+	//		OutputStream os = null;
+	//		try {
+	//			is = (ByteArrayInputStream) doc.getFile().getBinaryStream();
+	//
+	//			os = res.getOutputStream();
+	//
+	//			byte[] buffer = new byte[4096];
+	//			int bytesRead = -1;
+	//		    // write bytes read from the input stream into the output stream
+	//			while ((bytesRead = is.read(buffer)) != -1) {
+	//				os.write(buffer, 0, bytesRead);
+	//			}
+	//		} catch (SQLException | IOException e) {
+	//			log.error("Download failed", e);
+	//		} finally {
+	//			if (is != null)
+	//				try {
+	//					is.close();
+	//				} catch (IOException e) {
+	//					log.error(e.getStackTrace());
+	//				}
+	//
+	//			if (os != null)
+	//				try {
+	//					os.close();
+	//				} catch (IOException e) {
+	//					log.error(e.getStackTrace());
+	//				}
+	//		}
+	//	}
 
 	@RequestMapping(value = "/user/downloadDoc/{id}", method = RequestMethod.GET)
 	public String downloadDoc(@PathVariable int id, HttpServletRequest req, HttpServletResponse res) {	
-		
+
 		Documento d = new Documento();
 		d.setId(id);
 		Documento doc = documentoDao.cercaDoc(d);
 		//System.out.println("USER "+ doc.getUser());
 		try {
-			
+
 			res.setHeader("Content-Disposition", "inline;filename=\"" + doc.getNome()+ "\"");
-	
+
 			//OutputStream out = response.getOutputStream();
 			InputStream is = doc.getFile().getBinaryStream();
 			OutputStream out=null;
-			
-//			//Se è un file di timesheet lo popolo
-//			if (doc.getDescrizione().equals("TIME")){
-//				User user = new User();
-//				user.setId((int) req.getSession().getAttribute("id"));
-//				user = userDao.findByIdUser(user);
-//				out = XLSXReaderWriter.writeXlsx(is,res.getOutputStream(),user);
-//			}
-			
+
+			//			//Se è un file di timesheet lo popolo
+			//			if (doc.getDescrizione().equals("TIME")){
+			//				User user = new User();
+			//				user.setId((int) req.getSession().getAttribute("id"));
+			//				user = userDao.findByIdUser(user);
+			//				out = XLSXReaderWriter.writeXlsx(is,res.getOutputStream(),user);
+			//			}
+
 			out = res.getOutputStream();
 			res.setContentType(doc.getNome());
 			IOUtils.copy(is, out);
 			//IOUtils.copy(doc.getFile().getBinaryStream(), out);
-			
+
 			out.flush();
 			out.close();
-		
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return null;
 	}
-	
+
 	@RequestMapping(value = "/user/inserisciDoc", method = RequestMethod.POST)
 	public String inserisciDoc(@RequestParam("file") MultipartFile file, @RequestParam(value= "idUser",required=false) int idUser, Documento doc, HttpServletRequest req) {
 		if (!file.isEmpty()) {
 			File myFile = new File(file.getOriginalFilename());
 			doc.setNome(myFile.getName());
-			
+
 			User user = new User();
 			if (idUser==0)
 				idUser = (int)req.getSession().getAttribute("id");
 			user.setId(idUser);
 			doc.setUser(user);
-			
+
 			try {
 				Blob blob = new javax.sql.rowset.serial.SerialBlob(file.getBytes());
 				doc.setFile(blob);
@@ -235,54 +235,60 @@ public class DocumentoController {
 		User user=new User();
 		User admin = new User();
 		admin.setAdmin(1);
-		
+
 		user.setId((int)req.getSession().getAttribute("id"));
 		if(req.getSession().getAttribute("admin").equals("admin")){
-		user.setAdmin(1);
-		model.addAttribute("hide","True");
-		req.getSession().setAttribute("admin", "admin");
+			user.setAdmin(1);
+			model.addAttribute("hide","True");
+			req.getSession().setAttribute("admin", "admin");
 		}
 		else
 			model.addAttribute("hide","False");
 		model.addAttribute("listaDoc", documentoDao.listaPrivata(user));
-		
+
 		List<User> listAdmin = userDao.findAdmin(admin);
-		
 		Set<Documento> listaDocAdm= new HashSet<>();
-		//da testare con più Admin
+		
 		for(User adm:listAdmin){
 			listaDocAdm.addAll(documentoDao.listaPrivata(adm));
 		}
-		model.addAttribute("listaDocAdmin", listaDocAdm);
 		
+		model.addAttribute("listaDocAdmin", listaDocAdm);
+
 		List<Documento> myOrdyyyList = new ArrayList<>(documentoDao.listaPrivata(user));
 		Collections.sort(myOrdyyyList, new Comparator<Documento>() {
-
 			@Override
 			public int compare(Documento arg0, Documento arg1) {
 				return arg0.getNome().compareTo(arg1.getNome());
 			}
-
+		});
+		
+		List<Documento> myOrdyyyListAdm = new ArrayList<>(listaDocAdm);
+		Collections.sort(myOrdyyyListAdm, new Comparator<Documento>() {
+			@Override
+			public int compare(Documento arg0, Documento arg1) {
+				return arg0.getNome().compareTo(arg1.getNome());
+			}
 		});
 		
 		return new ModelAndView("gestioneDoc", "formDoc", new Documento());
 	}
-	
+
 	@RequestMapping(value = "/admin/loadDoc/{id}", method = RequestMethod.POST)
 	public ModelAndView loadAdminDoc(@PathVariable int id, ModelMap model, HttpServletRequest req) {
 
 		User user=new User();
 		//User admin = new User();
-		
+
 		user.setId(id);
 		model.addAttribute("hide","True");
-		
+
 		user=userDao.findByIdUser(user);
 		Set<Documento> listaDocAdm= new HashSet<>(documentoDao.listaPrivata(user));	
 		model.addAttribute("listaDoc", listaDocAdm);
 		model.addAttribute("idUser",id);
 		model.addAttribute("nomeCognome",user.getFirstname()+" " +user.getLastname());
-		
+
 		List<Documento> myOrdyyyList = new ArrayList<>(listaDocAdm);
 		Collections.sort(myOrdyyyList, new Comparator<Documento>() {
 
@@ -292,35 +298,89 @@ public class DocumentoController {
 			}
 
 		});
-		
+
 		return new ModelAndView("gestioneDoc", "formDoc", new Documento());
 	}
-	
+
 	@RequestMapping(value = "/user/sortDoc/name/{flag}", method = RequestMethod.GET)
-	public ModelAndView sortDocName(@PathVariable("flag") String flag, ModelMap model, HttpSession session) {
+	public ModelAndView sortDocName(@PathVariable("flag") String flag, ModelMap model,HttpServletRequest req , HttpSession session) {
 
 		int id = (int) session.getAttribute("id");
 		User user=new User();
 		user.setId(id);
+		
 		List<Documento> myOrdyyyList = new ArrayList<>(documentoDao.listaPrivata(user));
-		Collections.sort(myOrdyyyList, new Comparator<Documento>() {
+		myOrdyyyList = ordinaLista(myOrdyyyList, flag,"nome");
+//		Collections.sort(myOrdyyyList, new Comparator<Documento>() {
+//			@Override
+//			public int compare(Documento arg0, Documento arg1) {
+//				if (flag.equalsIgnoreCase("ASC")) {
+//					model.addAttribute("nameSort", false);
+//					return arg0.getNome().compareTo(arg1.getNome());
+//				} else if(flag.equalsIgnoreCase("DESC")) {
+//					model.addAttribute("nameSort", true);
+//					return -arg0.getNome().compareTo(arg1.getNome());
+//				}
+//				return -1;
+//			}
+//		});
+		model.addAttribute("listaDoc", myOrdyyyList);
+		
+		//lista Documenti per Admin
+		User admin = new User();
+		admin.setAdmin(1);
+		List<User> listAdmin = userDao.findAdmin(admin);
+		Set<Documento> listaDocAdm= new HashSet<>();
+		
+		for(User adm:listAdmin){
+			listaDocAdm.addAll(documentoDao.listaPrivata(adm));
+		}
+				
+		List<Documento> myOrdyyyListAdm = new ArrayList<>(listaDocAdm);
+		myOrdyyyListAdm = ordinaLista(myOrdyyyListAdm, flag,"nome");
+		if (flag.equalsIgnoreCase("ASC")) {
+			model.addAttribute("nameSort", false);
+		} else if(flag.equalsIgnoreCase("DESC")) {
+			model.addAttribute("nameSort", true);
+		}
+//		Collections.sort(myOrdyyyListAdm, new Comparator<Documento>() {
+//			@Override
+//			public int compare(Documento arg0, Documento arg1) {
+//				if (flag.equalsIgnoreCase("ASC")) {
+//					model.addAttribute("nameSort", false);
+//					return arg0.getNome().compareTo(arg1.getNome());
+//				} else if(flag.equalsIgnoreCase("DESC")) {
+//					model.addAttribute("nameSort", true);
+//					return -arg0.getNome().compareTo(arg1.getNome());
+//				}
+//				return -1;
+//			}
+//		});
+		model.addAttribute("listaDocAdmin", myOrdyyyListAdm);
+		
+		return new ModelAndView("gestioneDoc", "formDoc", new Documento());
+	}
 
+	public List<Documento> ordinaLista(List<Documento> lsDoc ,String flag, String column ){
+		Collections.sort(lsDoc, new Comparator<Documento>() {
 			@Override
 			public int compare(Documento arg0, Documento arg1) {
-				if (flag.equalsIgnoreCase("ASC")) {
-					model.addAttribute("nameSort", false);
-					return arg0.getNome().compareTo(arg1.getNome());
-				} else if(flag.equalsIgnoreCase("DESC")) {
-					model.addAttribute("nameSort", true);
-					return -arg0.getNome().compareTo(arg1.getNome());
+				if (flag.equals("ASC")) {
+					if (column.equals("nome"))
+						return arg0.getNome().compareTo(arg1.getNome());
+					if (column.equals("data"))
+						return arg0.getData().compareTo(arg1.getData());
+				} else if(flag.equals("DESC")) {
+					if (column.equals("nome"))
+						return -arg0.getNome().compareTo(arg1.getNome());
+					if (column.equals("data"))
+						return -arg0.getData().compareTo(arg1.getData());
+					
 				}
-				
 				return -1;
 			}
-
 		});
-		model.addAttribute("listaDoc", myOrdyyyList);
-		return new ModelAndView("gestioneDoc", "formDoc", new Documento());
+		return lsDoc;
 	}
 	
 	@RequestMapping(value = "/user/sortDoc/date/{flag}", method = RequestMethod.GET)
@@ -332,21 +392,36 @@ public class DocumentoController {
 		List<Documento> myOrdyyyList = null;
 		if(flag.equalsIgnoreCase("ASC")) {
 			model.addAttribute("dateSort", false);
-			myOrdyyyList = new ArrayList<>(documentoDao.listaPrivata(user));
+			//myOrdyyyList = new ArrayList<>(documentoDao.listaPrivata(user));
 		} else if(flag.equalsIgnoreCase("DESC")) {
 			model.addAttribute("dateSort", true);
-			myOrdyyyList = new ArrayList<>(documentoDao.listaPrivata(user));
-			Collections.sort(myOrdyyyList, new Comparator<Documento>() {
-
-				@Override
-				public int compare(Documento arg0, Documento arg1) {
-						return arg0.getData().compareTo(arg1.getData());
-				}
-
-			});
 		}
+			myOrdyyyList = new ArrayList<>(documentoDao.listaPrivata(user));
+			myOrdyyyList= ordinaLista(myOrdyyyList, flag, "data");
+			model.addAttribute("listaDoc", myOrdyyyList);
+			
+			// lista Documenti Admin
+			User admin = new User();
+			admin.setAdmin(1);
+			List<User> listAdmin = userDao.findAdmin(admin);
+			Set<Documento> listaDocAdm= new HashSet<>();
+			
+			for(User adm:listAdmin){
+				listaDocAdm.addAll(documentoDao.listaPrivata(adm));
+			}
+					
+			List<Documento> myOrdyyyListAdm = new ArrayList<>(listaDocAdm);
+			myOrdyyyListAdm = ordinaLista(myOrdyyyListAdm, flag,"data");
+			model.addAttribute("listaDocAdmin", myOrdyyyListAdm);
+//			Collections.sort(myOrdyyyList, new Comparator<Documento>() {
+//
+//				@Override
+//				public int compare(Documento arg0, Documento arg1) {
+//					return arg0.getData().compareTo(arg1.getData());
+//				}
+//
+//			});
 		
-		model.addAttribute("listaDoc", myOrdyyyList);
 		return new ModelAndView("gestioneDoc", "formDoc", new Documento());
 	}
 
@@ -362,8 +437,8 @@ public class DocumentoController {
 		return new ModelAndView("gestioneDoc", "formDoc", new Documento());
 	}
 
-	
-	
+
+
 	@RequestMapping(value = "/user/finalizzaModificaDoc", method = RequestMethod.POST)
 	public String finalizzaModifica(@RequestParam("descr") String descrizione, @RequestParam("id_editabile") int id,
 			HttpServletRequest req) {
@@ -397,16 +472,16 @@ public class DocumentoController {
 		model.addAttribute("listaDoc", filteredDocuments);
 		return new ModelAndView("gestioneDoc", "formDoc", new Documento());
 	}
-	
+
 	@RequestMapping(value="/admin/dammiDoc/{id}", method=RequestMethod.GET)
 	public String dammiDoc(@PathVariable("id") int id, ModelMap model) {
-		
+
 		User user=new User();
 		user.setId(id);
 		User theRealUser = userDao.findByIdUser(user);
 		model.addAttribute("dipendente", theRealUser);
 		model.addAttribute("listaDoc", documentoDao.listaPrivata(user));
-		
+
 		return "leggiDocs";
 	}
 
