@@ -190,20 +190,21 @@ public class DocumentoController {
 			e.printStackTrace();
 		}
 		
-		
 		return null;
 	}
 	
 	@RequestMapping(value = "/user/inserisciDoc", method = RequestMethod.POST)
-	public String inserisciDoc(@RequestParam("file") MultipartFile file, Documento doc, HttpServletRequest req) {
+	public String inserisciDoc(@RequestParam("file") MultipartFile file, @RequestParam(value= "idUser",required=false) int idUser, Documento doc, HttpServletRequest req) {
 		if (!file.isEmpty()) {
 			File myFile = new File(file.getOriginalFilename());
 			doc.setNome(myFile.getName());
 			
 			User user = new User();
-			user.setId((int)req.getSession().getAttribute("id"));
-			
+			if (idUser==0)
+				idUser = (int)req.getSession().getAttribute("id");
+			user.setId(idUser);
 			doc.setUser(user);
+			
 			try {
 				Blob blob = new javax.sql.rowset.serial.SerialBlob(file.getBytes());
 				doc.setFile(blob);
@@ -247,10 +248,12 @@ public class DocumentoController {
 		
 		List<User> listAdmin = userDao.findAdmin(admin);
 		
+		Set<Documento> listaDocAdm= new HashSet<>();
 		//da testare con più Admin
 		for(User adm:listAdmin){
-			model.addAttribute("listaDocAdmin", documentoDao.listaPrivata(adm));
+			listaDocAdm.addAll(documentoDao.listaPrivata(adm));
 		}
+		model.addAttribute("listaDocAdmin", listaDocAdm);
 		
 		List<Documento> myOrdyyyList = new ArrayList<>(documentoDao.listaPrivata(user));
 		Collections.sort(myOrdyyyList, new Comparator<Documento>() {
@@ -265,24 +268,22 @@ public class DocumentoController {
 		return new ModelAndView("gestioneDoc", "formDoc", new Documento());
 	}
 	
-	@RequestMapping(value = "/admin/loadDoc/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/loadDoc/{id}", method = RequestMethod.POST)
 	public ModelAndView loadAdminDoc(@PathVariable int id, ModelMap model, HttpServletRequest req) {
 
 		User user=new User();
 		//User admin = new User();
 		
 		user.setId(id);
+		model.addAttribute("hide","True");
 		
-		model.addAttribute("listaDoc", documentoDao.listaPrivata(user));
+		user=userDao.findByIdUser(user);
+		Set<Documento> listaDocAdm= new HashSet<>(documentoDao.listaPrivata(user));	
+		model.addAttribute("listaDoc", listaDocAdm);
+		model.addAttribute("idUser",id);
+		model.addAttribute("nomeCognome",user.getFirstname()+" " +user.getLastname());
 		
-//		List<User> listAdmin = userDao.findAdmin(admin);
-//		System.out.println("listaAdmin "+listAdmin);
-//		for(User adm:listAdmin){
-//			model.addAttribute("listaDocAdmin", adm.getDocumenti());
-//			System.out.println("listaDocAdmin "+adm.getDocumenti().toString());
-//		}
-		
-		List<Documento> myOrdyyyList = new ArrayList<>(documentoDao.listaPrivata(user));
+		List<Documento> myOrdyyyList = new ArrayList<>(listaDocAdm);
 		Collections.sort(myOrdyyyList, new Comparator<Documento>() {
 
 			@Override

@@ -13,14 +13,9 @@
 <div class="logo"><img src="/TasckhProgect/resources/img/Logo1.png"  style="height:60%;
 	width:60%"/></div>
 	<div class="container">
-	<div class="navbar">
+	<div class="navbar" style="height:150px">
 								<form action="/TasckhProgect/login" method="post">
   									<button type="submit" title="Dashboard" class="btn-link-profile"></button>
-								</form>
-								
-							
-								<form action="/TasckhProgect/user/compileTimesheet" method="get">
-  									<button type="submit" title="Timesheet"  class="btn-link-timesheet"></button>
 								</form>
 									
 								<form action="/TasckhProgect/user/loadDoc" method="get">
@@ -63,7 +58,7 @@
 						<input Type="hidden" name="currMonth" value ="${currMonth}">
 						<input type="submit" value="TimeSheet" />
 					</form:form></td>
-				<td data-th="Gestione Doc"><form:form action="/TasckhProgect/admin/loadDoc/${id}"
+				<td data-th="Gestione Doc"><form:form action="/TasckhProgect/admin/loadDoc/${user.id}"
 						method="POST">
 						<input type="submit" value="Documenti" />
 					</form:form></td>
