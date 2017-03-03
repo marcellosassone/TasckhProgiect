@@ -15,6 +15,7 @@
 <body>
 <div class="logo"><img src="/TasckhProgect/resources/img/Logo1.png"  style="height:60%;
 	width:60%"/></div>
+	<div><span class="name"><c:out value="${firstname} ${lastname}" /></span></div>
 	<div class="container">
 	<div class="navbar" style="height:150px; display:${hide ? 'block' : 'none'}">
 								<form action="/TasckhProgect/login" method="post">
@@ -55,7 +56,7 @@
 								
 							</div>
 	<div class="container2">
-	<h1>Gestione Documenti</h1>
+	<h1>Gestione Documenti <c:out value="${nomeCognome}" /></h1>
 	<div class="divTop">
 	<form method="POST"
 		action="/TasckhProgect/user/filtraDocumenti">
@@ -152,7 +153,7 @@
 	<form:form method="POST" commandName="formDoc"
 		action="/TasckhProgect/user/inserisciDoc" enctype="multipart/form-data">
 		<form:label path="descrizione">Upload </form:label><input type="file" name="file" />
-			
+			<input type="hidden" name="idUser" value="${idUser}" />
 			
 			
 			<form:label path="descrizione">Descrizione  </form:label><form:input path="descrizione" />
