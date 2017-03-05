@@ -13,10 +13,14 @@
 </head>
 
 <body>
-<div class="logo"><img src="/TasckhProgect/resources/img/Logo1.png"  style="height:60%;
-	width:60%"/></div>
-	<div><span class="name"><c:out value="${firstname} ${lastname}" /></span></div>
+	<div class="divHeader">
+	<div class="logo"><img src="/TasckhProgect/resources/img/Logo1.png"  style="height:60%;
+	width:60%"/></div><div class="divUserLog"><div class="divUserTitle">Benvenuto</div><div class="divUserPhoto"><img src="/TasckhProgect/resources/img/avatar.jpg" alt="Profile Avatar" style="height:50px;width:50px;-moz-border-radius: 9px 9px 9px 9px;
+  -webkit-border-radius: 9px 9px 9px 9px;border-radius: 9px 9px 9px 9px"></div><div class="divUserCont"><c:out value="${firstname} ${lastname}" /></div></div>
+	</div>
 	<div class="container">
+	
+	
 	<div class="navbar" style="height:150px; display:${hide ? 'block' : 'none'}">
 								<form action="/TasckhProgect/login" method="post">
   									<button type="submit" title="Dashboard" class="btn-link-profile"></button>
@@ -56,7 +60,7 @@
 								
 							</div>
 	<div class="container2">
-	<h1>Gestione Documenti <c:out value="${nomeCognome}" /></h1>
+	<h1>Gestione Documenti di <c:out value="${nomeCognome}" /></h1>
 	<div class="divTop">
 	<form method="POST"
 		action="/TasckhProgect/user/filtraDocumenti">
