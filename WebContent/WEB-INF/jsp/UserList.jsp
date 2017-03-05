@@ -31,48 +31,46 @@
 								
 							</div>
 	<div class="containerList">
-	<h1>Lista Users</h1>
+	<h1>Lista Utenti</h1>
 	<table class="rwd-table">
 		<tr>
 			
-			
+			<th>Ruolo</th>
 			<th>Nome</th>
 			<th>Cognome</th>
 			<th>Mail</th>
 			<th>Password</th>			
-			<th>Admin</th>
-			<th>Timesheet</th>
-			<th>Gestione Doc</th>
-			<th>Edit</th>
-			<th>Delete</th>
+			<th style="width:50px"></th>
+			<th style="width:50px"></th>
+			<th style="width:50px"></th>
+			<th style="width:50px"></th>
 			
 		</tr>
 		<c:forEach var="user" items="${list}">
 			<tr >
 				
-				
+				<td data-th="Ruolo">${user.salutation}</td>
 				<td data-th="Nome">${user.firstname}</td>
 				<td data-th="Cognome">${user.lastname}</td>
 				<td data-th="Mail">${user.email}</td>
 				<td data-th="Password">${user.password}</td>
-				<td data-th="Admin">${user.admin}</td>
 				<td data-th="TimeSheet"><form:form action="/TasckhProgect/admin/compileTimesheet/${user.id}"
 						method="GET">
 						<input Type="hidden" name="currMonth" value ="${currMonth}">
-						<input type="submit" value="TimeSheet" />
+						<button type="submit" class="btn-link"><img src="/TasckhProgect/resources/img/time.png" title="Timesheet"></button>
 					</form:form></td>
 				<td data-th="Gestione Doc"><form:form action="/TasckhProgect/admin/loadDoc/${user.id}"
 						method="POST">
-						<input type="submit" value="Documenti" />
+						<button type="submit" class="btn-link"><img src="/TasckhProgect/resources/img/upload.png" title="Gestione Documenti"></button>
 					</form:form></td>
 				<td data-th="Edit"><form:form action="/TasckhProgect/admin/ModUser/${user.id}"
 						method="POST">
-						<input type="submit" value="Update" />
+						<button type="submit" class="btn-link"> <img src="/TasckhProgect/resources/img/update.png" title="Modifica">  </button>
 					</form:form></td>
 				<!--  <td><button type="submit" onClick='confirm("Sei sicuro etcetc?")'>Delete </button></td> -->
 				<td data-th="Delete"><form:form action="/TasckhProgect/admin/delUser/${user.id}"
 						method="POST">
-						<input type="submit" value="Delete" onClick='return confirm("sei sicuro di voler eliminare?")' />
+						<button type="submit" class="btn-link" onClick='return confirm("sei sicuro di voler eliminare?")'/><img src="/TasckhProgect/resources/img/delete.png" title="Cancella">
 					</form:form></td>
 					
 			</tr>
@@ -86,11 +84,7 @@
 			<input type="submit" value="Insert" />
 
 		</form:form></td>
-		<td><form:form action="/TasckhProgect/logout" method="GET">
-
-			<input type="submit" value="Logout" />
-
-		</form:form></td>
+		
 		</tr>
 		</table>
 		</div>

@@ -62,10 +62,10 @@
 			<tr>
 				<th><label> Data<span class="req">*</span>
 				</label></th>
-				<th>Start</th>
-				<th>End</th>
-				<th>Start</th>
-				<th>End</th>
+				<th>Inizio</th>
+				<th>Fine</th>
+				<th>Inizio</th>
+				<th>Fine</th>
 				<th><label>Codice Permesso <span class="req"></span>
 				</label></th>
 			</tr>
@@ -105,20 +105,20 @@
 	
 		<form method="POST" action="/TasckhProgect/user/compileTimesheet">
 			<select name="currMonth" onchange="submit()">
-				<option value="0" <c:if test="${defaultMonth eq 0}">selected</c:if>>January</option>
-				<option value="1" <c:if test="${defaultMonth eq 1}">selected</c:if>>February</option>
-				<option value="2" <c:if test="${defaultMonth eq 2}">selected</c:if>>March</option>
-				<option value="3" <c:if test="${defaultMonth eq 3}">selected</c:if>>April</option>
-				<option value="4" <c:if test="${defaultMonth eq 4}">selected</c:if>>May</option>
-				<option value="5" <c:if test="${defaultMonth eq 5}">selected</c:if>>June</option>
-				<option value="6" <c:if test="${defaultMonth eq 6}">selected</c:if>>July</option>
-				<option value="7" <c:if test="${defaultMonth eq 7}">selected</c:if>>August</option>
-				<option value="8" <c:if test="${defaultMonth eq 8}">selected</c:if>>September</option>
-				<option value="9" <c:if test="${defaultMonth eq 9}">selected</c:if>>October</option>
+				<option value="0" <c:if test="${defaultMonth eq 0}">selected</c:if>>Gennaio</option>
+				<option value="1" <c:if test="${defaultMonth eq 1}">selected</c:if>>Febbraio</option>
+				<option value="2" <c:if test="${defaultMonth eq 2}">selected</c:if>>Marzo</option>
+				<option value="3" <c:if test="${defaultMonth eq 3}">selected</c:if>>Aprile</option>
+				<option value="4" <c:if test="${defaultMonth eq 4}">selected</c:if>>Maggio</option>
+				<option value="5" <c:if test="${defaultMonth eq 5}">selected</c:if>>Giugno</option>
+				<option value="6" <c:if test="${defaultMonth eq 6}">selected</c:if>>Luglio</option>
+				<option value="7" <c:if test="${defaultMonth eq 7}">selected</c:if>>Agosto</option>
+				<option value="8" <c:if test="${defaultMonth eq 8}">selected</c:if>>Settembre</option>
+				<option value="9" <c:if test="${defaultMonth eq 9}">selected</c:if>>Ottobre</option>
 				<option value="10"
-					<c:if test="${defaultMonth eq 10}">selected</c:if>>November</option>
+					<c:if test="${defaultMonth eq 10}">selected</c:if>>Novembre</option>
 				<option value="11"
-					<c:if test="${defaultMonth eq 11}">selected</c:if>>December</option>
+					<c:if test="${defaultMonth eq 11}">selected</c:if>>Dicembre</option>
 			</select>
 		</form>
 	</div>
@@ -128,11 +128,11 @@
 	<table class="rwd-table">
 		<tr>
 			<th style="border-bottom: none"></th>
-			<th colspan="2" style="border-bottom: none"><label> First Shift<span
+			<th colspan="2" style="border-bottom: none"><label> Primo Turno<span
 					class="req"></span>
 			</label></th>
 			
-			<th colspan="2" style="border-bottom: none"><label> Second Shift<span
+			<th colspan="2" style="border-bottom: none"><label> Secondo Turno<span
 					class="req"></span>
 			</label></th>
 			<th style="border-bottom: none"></th>
@@ -140,13 +140,13 @@
 		</tr>
 
 		<tr>
-			<th><label> Date<span class="req"></span>
+			<th><label> Data<span class="req"></span>
 			</label></th>
-			<th>Start</th>
-			<th>End</th>
-			<th>Start</th>
-			<th>End</th>
-			<th><label>Permit Code <span class="req"></span>
+			<th>Inizio</th>
+			<th>Fine</th>
+			<th>Inizio</th>
+			<th>Fine</th>
+			<th><label>Codice Permesso<span class="req"></span>
 			</label></th>
 		</tr>
 		
@@ -161,7 +161,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<button type="submit" class="button button-block"> <img title="Export Timesheet in Excel File" src="/TasckhProgect/resources/img/ms_excel.png">  </button>
+	<button type="submit" class="button button-block" style="margin-bottom:30px;"> <img title="Export Timesheet in Excel File" src="/TasckhProgect/resources/img/ms_excel.png">  </button>
 	
 	</form:form>
 	</div>
