@@ -110,7 +110,6 @@
 		<input type="hidden" name="id_editabile" value="${id_editable}" />
 		 <button type="submit" class="button button-block"> <img title="Salva Modifiche" src="/TasckhProgect/resources/img/saveUpdate.png">  </button>
 </form>
-
 	<div class="divBottom" style="display:${hide ? 'none' : 'block'}">
 	<h1>Documenti Globali</h1>
 		<table class="rwd-table" >
@@ -125,7 +124,6 @@
 				
 				
 			</tr>
-			
 			<c:forEach var="doc" items="${listaDocAdmin}">
 				<tr>
 					
