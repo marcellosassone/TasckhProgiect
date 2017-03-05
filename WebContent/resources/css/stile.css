@@ -97,8 +97,8 @@ label .req {
 }
 
 label.active {
-  -webkit-transform: translateY(50px);
-          transform: translateY(50px);
+  -webkit-transform: translateY(-20px);
+          transform: translateY(-20px);
   left: 2px;
   font-size: 14px;
 }
@@ -329,9 +329,67 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .logo{
 	
-	margin-left:2%;
-	position:left;
+	
+	float:left;
 	width:400px;
+	
+	
+}
+
+.divUserLog{
+	
+	float:right;
+	width:200px;
+	height:85px;
+	-moz-border-radius: 9px 9px 9px 9px;
+  -webkit-border-radius: 9px 9px 9px 9px;
+  border-radius: 9px 9px 9px 9px;
+  box-shadow: 1px 1px 11px #330033;	
+	
+	
+}
+
+.divUserPhoto{
+	float:left;
+	width:50px;
+	height:50px;
+	margin-left:5px;
+	
+	-moz-border-radius: 9px 9px 9px 9px;
+  -webkit-border-radius: 9px 9px 9px 9px;
+  border-radius: 9px 9px 9px 9px;
+  box-shadow: 1px 1px 11px #330033;	
+}
+
+.divUserTitle{
+	text-align:center;
+	width:200px;
+	height:23px;
+	margin-bottom:10px;
+	-moz-border-radius: 9px 9px 9px 9px;
+  -webkit-border-radius: 9px 9px 9px 9px;
+  border-radius: 9px 9px 9px 9px;
+  box-shadow: 1px 1px 11px #330033;	
+  font-size:18px;
+  letter-spacing: -1px;
+  color: #34495E;
+	
+}
+.divUserCont{
+	
+	float:right;
+	margin-right:20px;
+	margin-top:15px;
+	
+  letter-spacing: -1px;
+  color: #34495E;
+	
+	
+}
+.divHeader{
+	
+	height:100px;
+	width:auto;
 	
 	
 }

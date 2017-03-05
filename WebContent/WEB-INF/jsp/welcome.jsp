@@ -70,7 +70,7 @@
 			<div class="span7 homeabout">
 				<div class="person">
 					<span class="name"><c:out value="${firstname} ${lastname}" /></span>
-					<div class="font16">Co-founder at <span class="greentext"><a href="#">EGrappler.com</a></span></div>
+					<div class="font16"><c:out value="${salutation}" /> presso <span class="greentext"><a href="#">Begear</a></span></div>
 				</div>
 				<div class="desciption home">
 					<p>Known as Johny, I am a web designer and <span class="rotate greentext">WordPress Theme Designer, WordPress Theme Developer</span> living in Pakistan with my wife and two kids. I‘m an active author at Themeforest where I enjoy spending my day in Photoshop converting custom designs into fancy pants <span class="greentext">Custom WordPress Themes</span>.</p>

@@ -60,7 +60,7 @@
 								
 							</div>
 	<div class="container2">
-	<h1>Gestione Documenti di <c:out value="${nomeCognome}" /></h1>
+	<h1>Gestione Documenti <c:out value="${nomeCognome}" /></h1>
 	<div class="divTop">
 	<form method="POST"
 		action="/TasckhProgect/user/filtraDocumenti">
@@ -150,8 +150,9 @@
 	
 	</div>
 	
-	<h1>Upload file</h1>
+	
 	<div class="divBottom">
+	<h1>Carica file</h1>
 	<form:form method="POST" commandName="formDoc"
 		action="/TasckhProgect/user/inserisciDoc" enctype="multipart/form-data">
 		<form:label path="descrizione">Upload </form:label><input type="file" name="file" />
