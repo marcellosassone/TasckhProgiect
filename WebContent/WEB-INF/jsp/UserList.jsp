@@ -10,8 +10,11 @@
 <title>Lista User</title>
 </head>
 <body>
-<div class="logo"><img src="/TasckhProgect/resources/img/Logo1.png"  style="height:60%;
-	width:60%"/></div>
+<div class="divHeader">
+	<div class="logo"><img src="/TasckhProgect/resources/img/Logo1.png"  style="height:60%;
+	width:60%"/></div><div class="divUserLog"><div class="divUserTitle">Benvenuto</div><div class="divUserPhoto"><img src="/TasckhProgect/resources/img/avatar.jpg" alt="Profile Avatar" style="height:50px;width:50px;-moz-border-radius: 9px 9px 9px 9px;
+  -webkit-border-radius: 9px 9px 9px 9px;border-radius: 9px 9px 9px 9px"></div><div class="divUserCont"><c:out value="${firstname} ${lastname}" /></div></div>
+	</div>
 	<div class="container">
 	<div class="navbar" style="height:150px">
 								<form action="/TasckhProgect/login" method="post">
