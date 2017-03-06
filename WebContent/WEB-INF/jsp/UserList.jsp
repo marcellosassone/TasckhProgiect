@@ -71,7 +71,7 @@
 				<!--  <td><button type="submit" onClick='confirm("Sei sicuro etcetc?")'>Delete </button></td> -->
 				<td data-th="Delete"><form:form action="/TasckhProgect/admin/delUser/${user.id}"
 						method="POST">
-						<button type="submit" class="btn-link" onClick='return confirm("sei sicuro di voler eliminare?")'/><img src="/TasckhProgect/resources/img/delete.png" title="Cancella">
+						<button type="submit" class="btn-link" onClick='return confirm("sei sicuro di voler eliminare?")'><img src="/TasckhProgect/resources/img/delete.png" title="Cancella"></button>
 					</form:form></td>
 					
 			</tr>
