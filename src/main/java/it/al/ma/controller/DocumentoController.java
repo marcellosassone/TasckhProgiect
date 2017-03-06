@@ -270,7 +270,8 @@ public class DocumentoController {
 				return arg0.getNome().compareTo(arg1.getNome());
 			}
 		});
-		
+		//setto l'id user a 0 quando sono loggato come utente user
+		model.addAttribute("idUser",0);
 		return new ModelAndView("gestioneDoc", "formDoc", new Documento());
 	}
 
@@ -303,11 +304,16 @@ public class DocumentoController {
 	}
 
 	@RequestMapping(value = "/user/sortDoc/name/{flag}", method = RequestMethod.GET)
-	public ModelAndView sortDocName(@PathVariable("flag") String flag, ModelMap model,HttpServletRequest req , HttpSession session) {
+	public ModelAndView sortDocName(@PathVariable("flag") String flag, @RequestParam(value= "idUser",required=false) int idUser, ModelMap model,HttpServletRequest req , HttpSession session) {
 
-		int id = (int) session.getAttribute("id");
+		if (session.getAttribute("admin").equals("admin"))
+			model.addAttribute("hide","True");
+		model.addAttribute("idUser",idUser);
+		
 		User user=new User();
-		user.setId(id);
+		if (idUser==0)
+			idUser = (int) session.getAttribute("id");
+		user.setId(idUser);
 		
 		List<Documento> myOrdyyyList = new ArrayList<>(documentoDao.listaPrivata(user));
 		myOrdyyyList = ordinaLista(myOrdyyyList, flag,"nome");
@@ -384,11 +390,17 @@ public class DocumentoController {
 	}
 	
 	@RequestMapping(value = "/user/sortDoc/date/{flag}", method = RequestMethod.GET)
-	public ModelAndView sortDocDate(@PathVariable("flag") String flag, ModelMap model, HttpSession session) {
-
-		int id = (int) session.getAttribute("id");
+	public ModelAndView sortDocDate(@PathVariable("flag") String flag, @RequestParam(value= "idUser",required=false) int idUser, ModelMap model, HttpSession session) {
+		
+		if (session.getAttribute("admin").equals("admin"))
+			model.addAttribute("hide","True");
+		model.addAttribute("idUser",idUser);
+		
 		User user=new User();
-		user.setId(id);
+		if (idUser==0)
+			idUser = (int) session.getAttribute("id");
+		user.setId(idUser);
+		
 		List<Documento> myOrdyyyList = null;
 		if(flag.equalsIgnoreCase("ASC")) {
 			model.addAttribute("dateSort", false);
@@ -421,7 +433,6 @@ public class DocumentoController {
 //				}
 //
 //			});
-		
 		return new ModelAndView("gestioneDoc", "formDoc", new Documento());
 	}
 

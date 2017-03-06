@@ -60,7 +60,7 @@
 								
 							</div>
 	<div class="container2">
-	<h1>Gestione Documenti <c:out value="${nomeCognome}" /></h1>
+	<h1>Gestione Documenti <c:out value="${nomeCognome} ${idUser}" /></h1>
 	<div class="divTop">
 	<form method="POST"
 		action="/TasckhProgect/user/filtraDocumenti">
@@ -79,10 +79,10 @@
 		<table class="rwd-table">
 			<tr>
 				
-				<th>Data<a
-					href="/TasckhProgect/user/sortDoc/date/${dateSort eq null or dateSort eq true ? 'ASC' : 'DESC'}"><img Title="Ordina" src="/TasckhProgect/resources/img/sort.png"></a></th>
+				<th>Data <a
+					href="/TasckhProgect/user/sortDoc/date/${dateSort eq null or dateSort eq true ? 'ASC' : 'DESC'}?idUser=${idUser}"><img Title="Ordina" src="/TasckhProgect/resources/img/sort.png"></a></th>
 				<th>Nome<a
-					href="/TasckhProgect/user/sortDoc/name/${nameSort eq null or nameSort eq true ? 'ASC' : 'DESC'}"><img Title="Ordina" src="/TasckhProgect/resources/img/sort.png"></a></th>
+					href="/TasckhProgect/user/sortDoc/name/${nameSort eq null or nameSort eq true ? 'ASC' : 'DESC'}?idUser=${idUser}"><img Title="Ordina" src="/TasckhProgect/resources/img/sort.png"></a></th>
 				<th>Descrizione</th>
 				<th style="width:50px"></th>
 				<th style="width:50px"></th>
@@ -119,10 +119,10 @@
 		<table class="rwd-table" >
 			<tr>
 				
-				<th>Data<a
-					href="/TasckhProgect/user/sortDoc/date/${dateSort eq null or dateSort eq true ? 'ASC' : 'DESC'}"><img Title="Ordina" src="/TasckhProgect/resources/img/sort.png"></a></th>
+				<th>Data ${idUser}<a
+					href="/TasckhProgect/user/sortDoc/date/${dateSort eq null or dateSort eq true ? 'ASC' : 'DESC'}?idUser=${idUser}"><img Title="Ordina" src="/TasckhProgect/resources/img/sort.png"></a></th>
 				<th>Nome<a
-					href="/TasckhProgect/user/sortDoc/name/${nameSort eq null or nameSort eq true ? 'ASC' : 'DESC'}"><img Title="Ordina" src="/TasckhProgect/resources/img/sort.png"></a></th>
+					href="/TasckhProgect/user/sortDoc/name/${nameSort eq null or nameSort eq true ? 'ASC' : 'DESC'}?idUser=${idUser}"><img Title="Ordina" src="/TasckhProgect/resources/img/sort.png"></a></th>
 				<th>Descrizione</th>
 				<th style="width:50px"></th>
 				

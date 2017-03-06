@@ -1,5 +1,7 @@
 package it.al.ma.controller;
 
+import java.util.Calendar;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -141,6 +143,8 @@ public class UserController {
 		model.addAttribute("list", userDao.findAllUser());
 		model.addAttribute("listcountry", userDao.getCountryMap());
 		model.addAttribute("currMonth", 0);
+		Calendar now = Calendar.getInstance();
+		model.addAttribute("currYear", now.get(Calendar.YEAR));
 		return new ModelAndView("UserList", "formUser", new User());
 	}
 

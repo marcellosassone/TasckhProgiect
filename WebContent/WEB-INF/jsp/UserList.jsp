@@ -57,6 +57,7 @@
 				<td data-th="TimeSheet"><form:form action="/TasckhProgect/admin/compileTimesheet/${user.id}"
 						method="GET">
 						<input Type="hidden" name="currMonth" value ="${currMonth}">
+						<input Type="hidden" name="currYear" value ="${currYear}">
 						<button type="submit" class="btn-link"><img src="/TasckhProgect/resources/img/time.png" title="Timesheet"></button>
 					</form:form></td>
 				<td data-th="Gestione Doc"><form:form action="/TasckhProgect/admin/loadDoc/${user.id}"
