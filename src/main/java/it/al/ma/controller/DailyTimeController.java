@@ -63,41 +63,76 @@ public class DailyTimeController {
 		req.setAttribute("defaultMonth", now.get(Calendar.MONTH));
 		ModelAndView modelV= new ModelAndView("compileDT","formDailyTime", daily);
 		modelV.getModelMap().addAttribute("listTimesheet", dailyDao.findByIdUser(user, start, end));
+		
+		int anno= now.get(Calendar.YEAR);
+		modelV.getModelMap().addAttribute("currYear", anno);
+		modelV.getModelMap().addAttribute("prevYear", anno-1);
 		modelV.getModelMap().addAttribute("currMonth", now.get(Calendar.MONTH));
+		modelV.getModelMap().addAttribute("user", user);
 		return modelV;
 	}
 	
 	@RequestMapping(value = "user/compileTimesheet", method = RequestMethod.POST)
-	public ModelAndView compileTimesheet(@RequestParam("currMonth") int month, HttpServletRequest req) {
+	public ModelAndView compileTimesheet(@RequestParam("currMonth") int month,@RequestParam("currYear") int year,@RequestParam(value= "idUser",required=false) int idUser,  HttpServletRequest req) {
+		if (req.getSession().getAttribute("admin").equals("admin"))
+			return viewTimesheet(idUser,month,year,req);
 		DailyTime daily = new DailyTime();
+		daily.setData(new Date(new java.util.Date().getTime()));
+		daily.setFirstshiftstart("09:00");
+		daily.setFirstshiftstop("13:00");
+		daily.setSecondshiftstart("14:00");
+		daily.setSecondshiftstop("18:00");
+//		if (user==null)
 		User user= new User();
-		user.setId((int) req.getSession().getAttribute("id"));
+		//user.setId((int) req.getSession().getAttribute("id"));
+		user.setId(idUser);
 		
 		Calendar now = Calendar.getInstance();
+		int annocorrente=now.get(Calendar.YEAR);
 		now.set(Calendar.DAY_OF_MONTH, 1);
 		now.set(Calendar.MONTH,month);
+		now.set(Calendar.YEAR,year);
+		
 		Date start=new Date(now.toInstant().toEpochMilli());	
 		now.set(Calendar.DAY_OF_MONTH, now.getActualMaximum(Calendar.DAY_OF_MONTH));
 		Date end=new Date(now.toInstant().toEpochMilli());
 		
 		req.setAttribute("defaultMonth", month);
+		
 		ModelAndView modelV= new ModelAndView("compileDT","formDailyTime", daily);
 		modelV.getModelMap().addAttribute("listTimesheet", dailyDao.findByIdUser(user, start, end));
 		modelV.getModelMap().addAttribute("currMonth", month);
+		modelV.getModelMap().addAttribute("user", user);
+		
+		int prevyear = (annocorrente==year)?year-1:year+1;
+		modelV.getModelMap().addAttribute("currYear", year);
+		modelV.getModelMap().addAttribute("prevYear",prevyear );
+		if (req.getSession().getAttribute("admin").equals("admin"))
+			modelV.getModelMap().addAttribute("hide","True");
 		modelV.getModelMap().addAttribute("hide","False");
+		
 		return modelV;
 	}
 	
 	@RequestMapping(value = "admin/compileTimesheet/{id}", method = RequestMethod.GET)
-	public ModelAndView viewTimesheet(@PathVariable int id, HttpServletRequest req) {
+	public ModelAndView viewTimesheet(@PathVariable int id, @RequestParam("currMonth") int month,@RequestParam("currYear") int year, HttpServletRequest req) {
 		DailyTime daily = new DailyTime();
+
+		System.out.println(month);
+		System.out.println(year);
 		User user= new User();
 		user.setId(id);
+		user=userDao.findByIdUser(user);
 		
 		Calendar now = Calendar.getInstance();
-		int month=now.get(Calendar.MONTH);
+		int annocorrente=now.get(Calendar.YEAR);
+		
+		if (month==0)
+			month=now.get(Calendar.MONTH);
 		now.set(Calendar.DAY_OF_MONTH, 1);
 		now.set(Calendar.MONTH,month);
+		if (year!=0) 
+			now.set(Calendar.YEAR,year);
 		Date start=new Date(now.toInstant().toEpochMilli());	
 		now.set(Calendar.DAY_OF_MONTH, now.getActualMaximum(Calendar.DAY_OF_MONTH));
 		Date end=new Date(now.toInstant().toEpochMilli());
@@ -105,15 +140,22 @@ public class DailyTimeController {
 		req.setAttribute("defaultMonth", month);
 		ModelAndView modelV= new ModelAndView("compileDT","formDailyTime", daily);
 		modelV.getModelMap().addAttribute("listTimesheet", dailyDao.findByIdUser(user, start, end));
+		modelV.getModelMap().addAttribute("user", user);
+		
 		modelV.getModelMap().addAttribute("currMonth", month);
+		int prevyear = (annocorrente==year)?year-1:year+1;
+		modelV.getModelMap().addAttribute("currYear", year);
+		modelV.getModelMap().addAttribute("prevYear",prevyear );	
 		modelV.getModelMap().addAttribute("hide","True");
 		return modelV;
 	}
+	
+	
 	@RequestMapping(value = "user/finalizeCompile", method=RequestMethod.POST)
 	public String insertDaily(DailyTime daily,HttpServletRequest req) {
 		daily.setIduser((int) req.getSession().getAttribute("id"));
 		dailyDao.insertDaily(daily);
-		return "redirect:/user/compileTimesheet";
+		return "redirect:/user/compileTimesheet/";
 	}
 	
 //	@RequestMapping(value = "timesheetStamp/{id}", method=RequestMethod.POST)
