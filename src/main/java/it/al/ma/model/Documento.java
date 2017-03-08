@@ -47,7 +47,7 @@ public class Documento {
 		this.id = id;
 		this.data = data;
 		this.nome = nome;
-		this.descrizione = descrizione;
+		this.descrizione = descrizione.toUpperCase();
 	}
 	public int getId() {
 		return id;
@@ -72,14 +72,14 @@ public class Documento {
 	}
 
 	public void setTipo(String tipo) {
-		this.tipo = tipo;
+		this.tipo = tipo.toUpperCase();
 	}
 
 	public String getDescrizione() {
 		return descrizione;
 	}
 	public void setDescrizione(String descrizione) {
-		this.descrizione = descrizione;
+		this.descrizione = descrizione.toUpperCase();
 	}
 	public Blob getFile() {
 		return file;

@@ -110,7 +110,8 @@ public class DailyTimeController {
 		modelV.getModelMap().addAttribute("prevYear",prevyear );
 		if (req.getSession().getAttribute("admin").equals("admin"))
 			modelV.getModelMap().addAttribute("hide","True");
-		modelV.getModelMap().addAttribute("hide","False");
+		else
+			modelV.getModelMap().addAttribute("hide","False");
 		
 		return modelV;
 	}
