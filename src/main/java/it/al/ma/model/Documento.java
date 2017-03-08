@@ -24,6 +24,8 @@ public class Documento {
 	private Date data;
 	@Column(name="nome")
 	private String nome;
+	@Column(name="tipo")
+	private String tipo;
 	@Column(name="descrizione")
 	private String descrizione;
 	@Column(name="file")
@@ -65,6 +67,14 @@ public class Documento {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
 	public String getDescrizione() {
 		return descrizione;
 	}

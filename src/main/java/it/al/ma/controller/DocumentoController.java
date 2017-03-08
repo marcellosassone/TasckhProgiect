@@ -34,6 +34,7 @@ import it.al.ma.dao.DocumentoDAO;
 import it.al.ma.dao.UserDao;
 import it.al.ma.model.Documento;
 import it.al.ma.model.User;
+import types.DocType;
 
 
 @Controller
@@ -241,9 +242,12 @@ public class DocumentoController {
 			user.setAdmin(1);
 			model.addAttribute("hide","True");
 			req.getSession().setAttribute("admin", "admin");
+			model.addAttribute("doctypeList",new DocType[]{DocType.TIMESHEET,DocType.ALTRO});
 		}
-		else
+		else{
 			model.addAttribute("hide","False");
+			model.addAttribute("doctypeList",new DocType[]{DocType.PERSONALE,DocType.AVATAR,DocType.ALTRO});
+		}
 		model.addAttribute("listaDoc", documentoDao.listaPrivata(user));
 
 		List<User> listAdmin = userDao.findAdmin(admin);
@@ -254,7 +258,7 @@ public class DocumentoController {
 		}
 		
 		model.addAttribute("listaDocAdmin", listaDocAdm);
-
+		
 		List<Documento> myOrdyyyList = new ArrayList<>(documentoDao.listaPrivata(user));
 		Collections.sort(myOrdyyyList, new Comparator<Documento>() {
 			@Override
@@ -289,7 +293,7 @@ public class DocumentoController {
 		model.addAttribute("listaDoc", listaDocAdm);
 		model.addAttribute("idUser",id);
 		model.addAttribute("nomeCognome",user.getFirstname()+" " +user.getLastname());
-
+		model.addAttribute("doctypeList",new DocType[]{DocType.BUSTAPAGA,DocType.COMUNICAZIONE,DocType.ALTRO});
 		List<Documento> myOrdyyyList = new ArrayList<>(listaDocAdm);
 		Collections.sort(myOrdyyyList, new Comparator<Documento>() {
 
@@ -309,7 +313,7 @@ public class DocumentoController {
 		if (session.getAttribute("admin").equals("admin"))
 			model.addAttribute("hide","True");
 		model.addAttribute("idUser",idUser);
-		
+
 		User user=new User();
 		if (idUser==0)
 			idUser = (int) session.getAttribute("id");
@@ -469,6 +473,8 @@ public class DocumentoController {
 
 	@RequestMapping(value = "/user/filtraDocumenti", method = RequestMethod.POST)
 	public ModelAndView filtaDocumenti(@RequestParam("ricerca") String ricerca, HttpSession session, ModelMap model) {
+		if (session.getAttribute("admin").equals("admin"))
+			model.addAttribute("hide","True");
 		int id = (int) session.getAttribute("id");
 		User user=new User();
 		user.setId(id);

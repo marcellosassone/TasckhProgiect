@@ -29,6 +29,7 @@ import it.al.ma.model.DailyTime;
 import it.al.ma.model.Documento;
 import it.al.ma.model.User;
 import it.al.ma.util.XLSXReaderWriter;
+import types.DocType;
 
 @Controller
 public class DailyTimeController {
@@ -118,8 +119,8 @@ public class DailyTimeController {
 	public ModelAndView viewTimesheet(@PathVariable int id, @RequestParam("currMonth") int month,@RequestParam("currYear") int year, HttpServletRequest req) {
 		DailyTime daily = new DailyTime();
 
-		System.out.println(month);
-		System.out.println(year);
+//		System.out.println(month);
+//		System.out.println(year);
 		User user= new User();
 		user.setId(id);
 		user=userDao.findByIdUser(user);
@@ -189,8 +190,7 @@ public class DailyTimeController {
 		for(User adm:listAdmin){
 			listDoc = documentoDao.listaPrivata(adm);
 			for(Documento d:listDoc){
-				if (d.getDescrizione().equals("TIME")){
-					
+				if (DocType.valueOf(d.getTipo())==DocType.TIMESHEET){
 					res.setHeader("Content-Disposition", "inline;filename=\"" +user.getLastname()+ "_" + d.getNome()+ "\"");
 			
 					InputStream is = d.getFile().getBinaryStream();

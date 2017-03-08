@@ -139,6 +139,7 @@ public class UserDaoImpl implements UserDao{
 		return user1;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> findAdmin(User admin) {
 		Session session = null;
