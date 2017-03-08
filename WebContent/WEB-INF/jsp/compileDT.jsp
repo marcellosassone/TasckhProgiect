@@ -33,7 +33,7 @@
 		</div>
 	</div>
 	<div class="container">
-		<div class="navbar" style="height:150px">
+		<div class="navbar" style="height:150px; display:${hide ? 'none' : 'block'}">
 
 			<form action="/TasckhProgect/login" method="post">
 				<button type="submit" title="Dashboard" class="btn-link-profile"></button>
@@ -45,15 +45,34 @@
 					class="btn-link-document"></button>
 			</form>
 
-<!--		<form action="" method="post">
+<%--		<form action="" method="post">
 				<button type="submit" title="Contact" class="btn-link-contact"></button>
 			</form>
- -->
+ --%>
 			<form action="/TasckhProgect/logout" method="get">
 				<button type="submit" title="Logout" class="btn-link-logout"></button>
 			</form>
 		</div>
+		<div class="navbar" style="display:${hide ? 'block' : 'none'}">
 
+			<form action="/TasckhProgect/login" method="post">
+				<button type="submit" title="Dashboard" class="btn-link-profile"></button>
+			</form>
+
+
+ 			<form action="/TasckhProgect/user/loadDoc" method="get">
+				<button type="submit" title="Gestione Documenti"
+					class="btn-link-document"></button>
+			</form>
+
+			<form action="/TasckhProgect/admin/load" method="get">
+						<button type="submit" title="Lista Utenti" class="btn-link-contact"></button>
+			</form>
+ 
+			<form action="/TasckhProgect/logout" method="get">
+				<button type="submit" title="Logout" class="btn-link-logout"></button>
+			</form>
+		</div>
 		<div class="containerDT">
 
 			<div class="divTop" style="display:${hide ? 'none' : 'block'}">
@@ -115,7 +134,7 @@
 			<br> <br>
 
 			<div class="divBottom">
-				<h1>Timesheet Mensile ${user.firstname} ${user.lastname}</h1>
+				<h1>Timesheet Mensile<br>${user.firstname} ${user.lastname}</h1>
 				<div style="width:320px;margin:auto">
 				<form method="POST" action="/TasckhProgect/user/compileTimesheet">
 				<input Type="hidden" name="idUser" value="${user.id}">
