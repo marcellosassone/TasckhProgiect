@@ -70,5 +70,4 @@ public class LoginController {
 		String welcomePage = (req.getSession().getAttribute(ADMIN) == ADMIN) ? "welcomeAdmin" :"welcome";
 		return new ModelAndView(welcomePage, FORMUSER, new User());
 	}
-
 }

@@ -10,25 +10,10 @@
 <title>Lista User</title>
 </head>
 <body>
-	<div class="divHeader">
-		<div class="logo">
-			<img src="/TasckhProgect/resources/img/Logo1.png"
-				style="height: 60%; width: 60%" />
-		</div>
-		<div class="divUserLog">
-			<div class="divUserTitle">Benvenuto</div>
-			<div class="divUserPhoto">
-				<img src="/TasckhProgect/resources/img/avatar.jpg"
-					alt="Profile Avatar"
-					style="height: 50px; width: 50px; -moz-border-radius: 9px 9px 9px 9px; -webkit-border-radius: 9px 9px 9px 9px; border-radius: 9px 9px 9px 9px">
-			</div>
-			<div class="divUserCont">
-				<c:out value="${firstname} ${lastname}" />
-			</div>
-		</div>
-	</div>
+	<jsp:include page="TopDiv.jsp"></jsp:include>
+
 	<div class="container">
-		<div class="navbar" style="height: 150px">
+		<div class="navbar" style="height:150px">
 			<form action="/TasckhProgect/login" method="post">
 				<button type="submit" title="Dashboard" class="btn-link-profile"></button>
 			</form>
@@ -38,6 +23,11 @@
 					class="btn-link-document"></button>
 			</form>
 
+<%-- 			<form action="/TasckhProgect/admin/insertUser" method="get">
+				<button type="submit" title="Inserimento nuovo utente"
+					class="btn-link-newuser"></button>
+			</form> --%>
+			
 			<form action="/TasckhProgect/logout" method="get">
 				<button type="submit" title="Logout" class="btn-link-logout"></button>
 			</form>
@@ -48,15 +38,15 @@
 			<table class="rwd-table">
 				<tr>
 
-					<th>Ruolo</th>
-					<th>Nome</th>
-					<th>Cognome</th>
-					<th>Mail</th>
-					<th>Password</th>
-					<th style="width: 50px"></th>
-					<th style="width: 50px"></th>
-					<th style="width: 50px"></th>
-					<th style="width: 50px"></th>
+					<th style="width: 15%">Ruolo</th>
+					<th style="width: 15%">Nome</th>
+					<th style="width: 15%">Cognome</th>
+					<th style="width: 15%">Mail</th>
+					<th style="width: 15%">Password</th>
+					<th style="width: -5%"></th>
+					<th style="width: -5%"></th>
+					<th style="width: -5%"></th>
+					<th style="width: -5%"></th>
 
 				</tr>
 				<c:forEach var="user" items="${list}">
@@ -103,19 +93,14 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<br />
-			<table>
-				<tr>
-					<td><form:form action="/TasckhProgect/admin/insertUser"
-							method="GET">
-
-							<input type="submit" value="Insert" />
-
-						</form:form></td>
-
-				</tr>
-			</table>
+			<br>
 		</div>
+		<br>
+<form:form action="/TasckhProgect/admin/insertUser"
+						method="GET">
+<!-- 						<input type="submit" value="Insert" /> -->
+						<button type="submit" class="button" >Inserisci nuovo</button>
+					</form:form>
 	</div>
 </body>
 </html>
