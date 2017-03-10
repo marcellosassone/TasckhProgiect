@@ -25,6 +25,8 @@ public class User {
  @Column(name = "id", nullable=false)
  @GeneratedValue(strategy = GenerationType.IDENTITY)
  private int id;
+@Column(name = "matricola")
+ private String matricola; 
  @Column(name = "salutation")
  private String salutation;
  @Column(name = "firstname")
@@ -92,7 +94,13 @@ public class User {
  public void setId(int id) {
   this.id = id;
  }
+ public String getMatricola() {
+	return matricola;
+}
 
+public void setMatricola(String matricola) {
+	this.matricola = matricola;
+}
  public String getSalutation() {
   return salutation;
  }

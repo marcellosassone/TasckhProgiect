@@ -13,8 +13,7 @@
 <title>Compile TimeSheet</title>
 </head>
 <body>
-
-
+<%-- 
 	<div class="divHeader">
 		<div class="logo">
 			<img src="/TasckhProgect/resources/img/Logo1.png"
@@ -23,7 +22,7 @@
 		<div class="divUserLog">
 			<div class="divUserTitle">Benvenuto</div>
 			<div class="divUserPhoto">
-				<img src="/TasckhProgect/resources/img/avatar.jpg"
+				<img src="/TasckhProgect/user/downloadDoc/20"
 					alt="Profile Avatar"
 					style="height: 50px; width: 50px; -moz-border-radius: 9px 9px 9px 9px; -webkit-border-radius: 9px 9px 9px 9px; border-radius: 9px 9px 9px 9px">
 			</div>
@@ -32,6 +31,8 @@
 			</div>
 		</div>
 	</div>
+--%>
+<jsp:include page="TopDiv.jsp"></jsp:include>
 	<div class="container">
 		<div class="navbar" style="height:150px; display:${hide ? 'none' : 'block'}">
 
@@ -124,7 +125,7 @@
 
 					</table>
 
-					<button type="submit" class="button button-block">
+					<button type="submit" class="">
 						<img title="SAVE TIMESHEET"
 							src="/TasckhProgect/resources/img/floppy.png">
 					</button>
@@ -182,7 +183,9 @@
 					<input Type="hidden" name="currMonth" value="${currMonth}">
 					<table class="rwd-table">
 						<tr>
-							<th style="border-bottom: none"></th>
+							<th rowspan="2" style="width: 15%"><label> Data<span class="req"></span>
+							</label></th>
+<!-- 							<th style="border-bottom: none"></th> -->
 							<th colspan="2" style="border-bottom: none"><label>
 									Primo Turno<span class="req"></span>
 							</label></th>
@@ -190,19 +193,21 @@
 							<th colspan="2" style="border-bottom: none"><label>
 									Secondo Turno<span class="req"></span>
 							</label></th>
-							<th style="border-bottom: none"></th>
+							<th rowspan="2" style="width: -15%"><label>Cod. Permesso<span class="req"></span>
+							</label></th>
+<!-- 							<th style="border-bottom: none"></th> -->
 							<th style="border-bottom: none"></th>
 						</tr>
 
 						<tr>
-							<th><label> Data<span class="req"></span>
-							</label></th>
-							<th>Inizio</th>
-							<th>Fine</th>
-							<th>Inizio</th>
-							<th>Fine</th>
-							<th><label>Codice Permesso<span class="req"></span>
-							</label></th>
+<!-- 							<th style="width: 15%"><label> Data<span class="req"></span> -->
+<!-- 							</label></th> -->
+							<th style="width: 15%">Inizio</th>
+							<th style="width: 15%">Fine</th>
+							<th style="width: 15%">Inizio</th>
+							<th style="width: 15%">Fine</th>
+<!-- 							<th rowspan="2" style="width: -15%"><label>Codice Permesso<span class="req"></span> -->
+<!-- 							</label></th> -->
 						</tr>
 
 						<c:forEach var="daily" items="${listTimesheet}">
@@ -221,7 +226,7 @@
 							</tr>
 						</c:forEach>
 					</table>
-					<button type="submit" class="button button-block"
+					<button type="submit" class=""
 						style="margin-bottom: 30px;">
 						<img title="Export Timesheet in Excel File"
 							src="/TasckhProgect/resources/img/ms_excel.png">

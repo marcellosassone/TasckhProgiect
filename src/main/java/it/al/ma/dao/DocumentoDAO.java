@@ -15,5 +15,5 @@ public interface DocumentoDAO {
 	public void eliminaDoc(Documento doc);
 	public void modificaDoc(Documento doc);
 	public List<Documento> listaDoc();
-	public Set<Documento> listaPrivata(User user);
+	public Set<Documento> listaPrivata(User user);;
 }

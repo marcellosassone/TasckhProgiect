@@ -37,7 +37,7 @@
 		<div class="row-fluid">
 
 			<div class="span5">
-				<img src="/TasckhProgect/resources/img/avatar.jpg" alt="Profile Avatar" class="avatar">
+				<img src="/TasckhProgect/user/loadAvatar/${id}" alt="Profile Avatar" class="avatar">
 
 				<div class="navigation">
 					<div>

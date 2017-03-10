@@ -13,7 +13,7 @@
 </head>
 
 <body>
-	<div class="divHeader">
+	<%--<div class="divHeader">
 		<div class="logo">
 			<img src="/TasckhProgect/resources/img/Logo1.png"
 				style="height: 60%; width: 60%" />
@@ -29,7 +29,9 @@
 				<c:out value="${firstname} ${lastname}" />
 			</div>
 		</div>
-	</div>
+	</div> --%>
+	<jsp:include page="TopDiv.jsp"></jsp:include>
+	
 	<div class="container">
 
 		<%-- GESTIONE MENU ADMIN --%>
@@ -135,7 +137,7 @@
 					</table>
 
 					<input type="hidden" name="id_editabile" value="${id_editable}" />
-					<button type="submit" class="button button-block">
+					<button type="submit" class="">
 						<img title="Salva Modifiche"
 							src="/TasckhProgect/resources/img/saveUpdate.png">
 					</button>
@@ -200,7 +202,7 @@
 					<form:label path="descrizione">Descrizione  </form:label>
 					<form:input path="descrizione" />
 
-					<button type="submit" class="button button-block">
+					<button type="submit" class="">
 						<img title="Upload" src="/TasckhProgect/resources/img/upload2.png">
 					</button>
 

@@ -10,14 +10,14 @@
 
 .rwd-table th {
   display: none;
-  border-bottom: 1px solid #dd5;
+  border-bottom: 1px solid #ff8000;
   padding:1px;
   white-space:nowrap;
   text-align:center;
 }
 .rwd-table td {
   display: block;
-  border-bottom: 1px solid #dd5;
+  border-bottom: 1px solid #999999;
   padding:1px;
   white-space:nowrap;
   text-align:center;
@@ -75,8 +75,8 @@ h1 {
 }
 
 .rwd-table {
-  background: #34495E;
-  color: #fff;
+  background: #edeeed;
+  color: #333333;
   border-radius: .4em;
   overflow: hidden;
 }
@@ -92,7 +92,7 @@ h1 {
   }
 }
 .rwd-table th, .rwd-table td:before {
-  color: #dd5;
+  color: #46637f;
 }
 
 h1 {
@@ -158,7 +158,7 @@ margin: 0 auto;
   
   
 .rwd-table a:link, table a:visited, table a:active {
- color: #dd5;
+ color: #46637f;
   text-decoration: none;
   text-align:center;
 }
@@ -311,6 +311,25 @@ margin: 0 auto;
 .btn-link-document:hover{
 	  background-image:url(/TasckhProgect/resources/img/doc-bg_hover.png);
 }
+
+.btn-link-newuser{
+  background-image:url(/TasckhProgect/resources/img/new_user_bg.png);
+  height:40px;
+  width:40px;	
+  margin-top:6px;
+  border:none;
+  outline:none;
+  cursor:pointer;
+  background-color: Transparent;
+  text-decoration:underline;
+  font-family:inherit;
+  font-size:inherit;
+}
+
+.btn-link-newuser:hover{
+	  background-image:url(/TasckhProgect/resources/img/new_user_bg_hover.png);
+}
+
 .btn-link-listUser{
   background-image:url(/TasckhProgect/resources/img/userList-bg.png);
   height:42px;
@@ -382,11 +401,10 @@ margin: 0 auto;
 	
 	
 }
-.divHeader{
-	
+
+.divHeader{	
 	height:130px;
 	width:auto;
-	
 }
 .btn-link{
   border:none;
@@ -398,4 +416,47 @@ margin: 0 auto;
   text-decoration:underline;
   font-family:inherit;
   font-size:inherit;
+}
+
+.button {
+	border: 0;
+	outline: none;
+	border-radius: 0;
+	padding: 10px 10px;
+	font-size: 1.2rem;
+	font-weight: 300;
+	margin-left: 42%;
+	letter-spacing: .1em;
+	background: #ff8000;
+	color: #ffffff;
+	-webkit-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+	-webkit-appearance: none;
+	-moz-border-radius: 9px 9px 9px 9px;
+	-webkit-border-radius: 9px 9px 9px 9px;
+	border-radius: 9px 9px 9px 9px;
+	box-shadow: 1px 1px 11px #330033;
+}
+
+.button:hover, .button:focus {
+	background: #fdbf2f;
+}
+
+.button-block {
+	display: block;
+	width: 50%;
+	float: center;
+}
+
+.forgot {
+	margin-top: -20px;
+	text-align: right;
+}
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button
+	{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	margin: 0;
 }

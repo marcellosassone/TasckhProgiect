@@ -12,7 +12,7 @@
 <title>Nuovo Utente</title>
 </head>
 <body>
-	<div class="divHeader">
+	<%-- 	<div class="divHeader">
 		<div class="logo">
 			<img src="/TasckhProgect/resources/img/Logo1.png"
 				style="height: 60%; width: 60%" />
@@ -28,7 +28,8 @@
 				<c:out value="${firstname} ${lastname}" />
 			</div>
 		</div>
-	</div>
+	</div> --%>
+	<jsp:include page="TopDiv.jsp"></jsp:include>
 	<div class="container">
 		<%-- menu admin --%>
 		<div class="navbar">
@@ -40,11 +41,11 @@
 				<button type="submit" title="Gestione Documenti"
 					class="btn-link-document"></button>
 			</form>
-			
+
 			<form action="/TasckhProgect/admin/load" method="get">
 				<button type="submit" title="Lista Utenti" class="btn-link-contact"></button>
 			</form>
-			
+
 			<form action="/TasckhProgect/logout" method="get">
 				<button type="submit" title="Logout" class="btn-link-logout"></button>
 			</form>
@@ -65,6 +66,12 @@
 								<form:input type="text" path="salutation" />
 							</div>
 							<div class="field-wrap">
+								<label class="active"> Matricola <span class="req">*</span>
+								</label>
+								<form:input type="text" required="true" autocomplete="off"
+									path="matricola" />
+							</div>
+							<div class="field-wrap">
 								<label> Nome<span class="req">*</span>
 								</label>
 								<form:input type="text" required="true" autocomplete="off"
@@ -83,8 +90,8 @@
 								<form:input type="text" required="true" autocomplete="off"
 									path="cf"
 									pattern="^[a-zA-Z]{6}[0-9]{2}[a-zA-Z][0-9]{2}[a-zA-Z][0-9]{3}[a-zA-Z]$"
-									oninvalid="this.setCustomValidity('Codice fiscale non corretto')" 
-									style="text-transform:uppercase"/>
+									oninvalid="this.setCustomValidity('Codice fiscale non corretto')"
+									style="text-transform:uppercase" />
 
 
 							</div>
