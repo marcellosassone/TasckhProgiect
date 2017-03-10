@@ -478,6 +478,7 @@ public class DocumentoController {
 		int id = (int) session.getAttribute("id");
 		User user=new User();
 		user.setId(id);
+		
 		Set<Documento> unfilteredDocuments = documentoDao.listaPrivata(user);
 		Set<Documento> filteredDocuments = new HashSet<>();
 		for (Documento doc : unfilteredDocuments) {
@@ -485,7 +486,7 @@ public class DocumentoController {
 				filteredDocuments.add(doc);
 			}
 		}
-
+		model.addAttribute("idUser",id);
 		model.addAttribute("listaDoc", filteredDocuments);
 		return new ModelAndView("gestioneDoc", "formDoc", new Documento());
 	}

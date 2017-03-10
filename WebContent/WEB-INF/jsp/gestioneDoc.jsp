@@ -32,17 +32,19 @@
 	</div>
 	<div class="container">
 
-
+		<%-- GESTIONE MENU ADMIN --%>
 		<div class="navbar"
 			style="height:150px; display:${hide ? 'block' : 'none'}">
 			<form action="/TasckhProgect/login" method="post">
 				<button type="submit" title="Dashboard" class="btn-link-profile"></button>
 			</form>
 
-
-			<%-- <form action="/TasckhProgect/user/compileTimesheet" method="get">
-  									<button type="submit" title="Timesheet"  class="btn-link-timesheet"></button>
-								</form> --%>
+<%--
+			<form action="/TasckhProgect/user/loadDoc" method="get">
+				<button type="submit" title="Gestione Documenti"
+					class="btn-link-document"></button>
+			</form> 
+--%>
 
 			<form action="/TasckhProgect/admin/load" method="get">
 				<button type="submit" title="Lista Utenti" class="btn-link-contact"></button>
@@ -53,20 +55,20 @@
 			</form>
 
 		</div>
-		<div class="navbar" style="display:${hide ? 'none' : 'block'}">
+		<%-- GESTIONE MENU USER --%>
+		<div class="navbar" style="height:150px;display:${hide ? 'none' : 'block'}">
 			<form action="/TasckhProgect/login" method="post">
 				<button type="submit" title="Dashboard" class="btn-link-profile"></button>
 			</form>
 
-
 			<form action="/TasckhProgect/user/compileTimesheet" method="get">
 				<button type="submit" title="Timesheet" class="btn-link-timesheet"></button>
 			</form>
-
+<%-- 
 			<form action="/TasckhProgect/admin/load" method="get">
 				<button type="submit" title="Lista Utenti" class="btn-link-contact"></button>
 			</form>
-
+--%>
 			<form action="/TasckhProgect/logout" method="get">
 				<button type="submit" title="Logout" class="btn-link-logout"></button>
 			</form>
@@ -181,29 +183,33 @@
 
 			<div class="divBottom">
 				<h1>Carica file</h1>
+				
 				<form:form method="POST" commandName="formDoc"
 					action="/TasckhProgect/user/inserisciDoc"
 					enctype="multipart/form-data">
 					<form:label path="descrizione">Upload </form:label>
 					<input type="file" name="file" />
 					<input type="hidden" name="idUser" value="${idUser}" />
-					<form:label path="tipo">Tipo documento  </form:label>
+					
+					<form:label path="tipo">Tipo documento  </form:label>					
 					<form:select path="tipo"> 
-						<form:option value="NONE" label="--- Select ---" />
+						<form:option value="NONE" label="-- Select --" />
 						<form:options items="${doctypeList}" />
 					</form:select><br><br>
+					
 					<form:label path="descrizione">Descrizione  </form:label>
 					<form:input path="descrizione" />
 
 					<button type="submit" class="button button-block">
 						<img title="Upload" src="/TasckhProgect/resources/img/upload2.png">
 					</button>
+
 					<br>
 					<br>
 
 				</form:form>
+				</div>
 			</div>
 		</div>
-	</div>
 </body>
 </html>

@@ -29,13 +29,13 @@ public class UserController {
 	@RequestMapping(value="/insertUser", method=RequestMethod.POST)
 	public String insertUser(User user, ModelMap model, HttpServletRequest req) {
 		userDao.insertUser(user);
-		req.getSession().setAttribute("firstname", user.getFirstname());
-		req.getSession().setAttribute("lastname", user.getLastname());
-		user.setId(userDao.findByMailAndPassword(user).getId());
-		req.getSession().setAttribute("id", user.getId());
-		model.addAttribute(user.getId());
+		//req.getSession().setAttribute("firstname", user.getFirstname());
+		//req.getSession().setAttribute("lastname", user.getLastname());
+		//user.setId(userDao.findByMailAndPassword(user).getId());
+		//req.getSession().setAttribute("id", user.getId());
+		//model.addAttribute(user.getId());
 
-		return "welcome";
+		return "redirect:/admin/load";
 	}
 	
 	@RequestMapping(value="/insertUserFromAdmin", method=RequestMethod.POST)
@@ -105,25 +105,29 @@ public class UserController {
 	}
 
 	@RequestMapping(value="admin/ModUser/{id}", method=RequestMethod.POST)
-	public ModelAndView updateUserFromAdmin(@PathVariable int id,ModelMap model) {
+	public ModelAndView updateUserFromAdmin(@PathVariable int id,ModelMap model,HttpServletRequest req) {
 		model.addAttribute("ListaCountry", userDao.getCountryMap());
 		User user=new User();
 		user.setId(id);
-		user.setAdmin(1);
+		
+		//user.setAdmin(1);
 		//System.out.println(user);
 
 		User user1=userDao.findByIdUser(user);
 		//System.out.println(user);
-
+		if (req.getSession().getAttribute("admin").equals("admin"))
+			model.addAttribute("hide","True");
+		else 
+			model.addAttribute("hide","False");
 		return new ModelAndView("ModUser", "formUserMod", user1);
 	}
 
 	@RequestMapping(value="finalizeUpdateUser", method=RequestMethod.POST)
 	public String finalizeUpdate(User user, ModelMap model,HttpServletRequest req) {
 		userDao.updateUser(user);
-		req.getSession().setAttribute("firstname", user.getFirstname());
-		req.getSession().setAttribute("lastname", user.getLastname());
-		System.out.println(req.getSession().getAttribute("admin"));
+		//req.getSession().setAttribute("firstname", user.getFirstname());
+		//req.getSession().setAttribute("lastname", user.getLastname());
+		//System.out.println(req.getSession().getAttribute("admin"));
 		if (req.getSession().getAttribute("admin").equals("admin"))
 			return "redirect:/admin/load";
 		return "welcome";
