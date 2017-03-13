@@ -1,98 +1,109 @@
 @import "http://fonts.googleapis.com/css?family=Montserrat:300,400,700";
+
 .rwd-table {
-  margin: 1em 0;
-  min-width: 300px;
-  border-collapse: collapse;
-  margin-left:auto;
-  margin-right:auto;
-  text-align:center;
+	margin: 1em 0;
+	min-width: 300px;
+	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
 }
 
 .rwd-table th {
-  display: none;
-  border-bottom: 1px solid #ff8000;
-  padding:1px;
-  white-space:nowrap;
-  text-align:center;
+	display: none;
+	border-bottom: 1px solid #ff8000;
+	padding: 1px;
+	white-space: nowrap;
+	text-align: center;
 }
+
 .rwd-table td {
-  display: block;
-  border-bottom: 1px solid #999999;
-  padding:1px;
-  white-space:nowrap;
-  text-align:center;
+	display: block;
+	border-bottom: 1px solid #999999;
+	padding: 1px;
+	white-space: nowrap;
+	text-align: center;
 }
+
 .rwd-table td:first-child {
-  padding-top: .5em;
-  text-align:center;
+	padding-top: .5em;
+	text-align: center;
 }
+
 .rwd-table td:last-child {
-  padding-bottom: .5em;
-  text-align:center;
+	padding-bottom: .5em;
+	text-align: center;
 }
+
 .rwd-table td:before {
-  content: attr(data-th) ": ";
-  font-weight: bold;
-  width: 6.5em;
-  display: inline-block;
-  text-align:center;
+	content: attr(data-th) ": ";
+	font-weight: bold;
+	width: 6.5em;
+	display: inline-block;
+	text-align: center;
 }
-@media (min-width: 480px) {
-  .rwd-table td:before {
-    display: none;
-  }
+
+@media ( min-width : 480px) {
+	.rwd-table td:before {
+		display: none;
+	}
 }
+
 .rwd-table th, .rwd-table td {
-  
-  text-align:center;
+	text-align: center;
 }
-@media (min-width: 480px) {
-  .rwd-table th, .rwd-table td {
-    display: table-cell;
-    padding: .25em .5em;
-  }
-  .rwd-table th:first-child, .rwd-table td:first-child {
-    padding-left: 0;
-  }
-  .rwd-table th:last-child, .rwd-table td:last-child {
-    padding-right: 0;
-  }
+
+@media ( min-width : 480px) {
+	.rwd-table th, .rwd-table td {
+		display: table-cell;
+		padding: .25em .5em;
+	}
+	.rwd-table th:first-child, .rwd-table td:first-child {
+		padding-left: 0;
+	}
+	.rwd-table th:last-child, .rwd-table td:last-child {
+		padding-right: 0;
+	}
 }
 
 body {
-  padding: 0 2em;
-  font-family: Montserrat, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  color: #444;
-  background: #eee;
+	padding: 0 2em;
+	font-family: Montserrat, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	color: #444;
+	background: #eee;
 }
 
 h1 {
-  font-weight: normal;
-  letter-spacing: -1px;
-  color: #34495E;
+	font-weight: normal;
+	letter-spacing: -1px;
+	color: #34495E;
 }
 
 .rwd-table {
-  background: #edeeed;
-  color: #333333;
-  border-radius: .4em;
-  overflow: hidden;
+	background: #edeeed;
+	color: #333333;
+	border-radius: .4em;
+	overflow: hidden;
 }
+
 .rwd-table tr {
-  border-color: #46637f;
+	border-color: #46637f;
 }
+
 .rwd-table th, .rwd-table td {
-  margin: .5em 1em;
+	margin: .5em 1em;
 }
-@media (min-width: 480px) {
-  .rwd-table th, .rwd-table td {
-    padding: 0.4em !important;
-  }
+
+@media ( min-width : 480px) {
+	.rwd-table th, .rwd-table td {
+		padding: 0.4em !important;
+	}
 }
+
 .rwd-table th, .rwd-table td:before {
-  color: #46637f;
+	color: #46637f;
 }
 
 h1 {
@@ -104,318 +115,288 @@ h2 {
 	text-align: center;
 	font-family: Segoe UI;
 	font-weight: normal;
-  letter-spacing: -1px;
-  color: #34495E;
-}
-.divTop{
-	
-	margin:auto;
-	text-align:center;
+	letter-spacing: -1px;
+	color: #34495E;
 }
 
-.divBottom{
-	
-	margin:auto;
-	text-align:center;
+.divTop {
+	margin: auto;
+	text-align: center;
 }
 
-.logo{
-	
-	
-	float:left;
-	width:400px;
-	
-	
+.divBottom {
+	margin: auto;
+	text-align: center;
 }
 
-
+.logo {
+	float: left;
+	width: 400px;
+}
 
 #mainselection select {
-
-  border: 0;
-  color: #400040;
-  background: transparent;
-  font-size: 20px;
-   text-align:center;
-  padding: 2px 10px;
-  width: 328px;
-  *width: 300px;
-  *background: transparent;
-  -webkit-appearance: none;
+	border: 0;
+	color: #400040;
+	background: transparent;
+	font-size: 20px;
+	text-align: center;
+	padding: 2px 10px;
+	width: 328px;
+	*width: 300px;
+	*background: transparent;
+	-webkit-appearance: none;
 }
+
 #mainselection {
- display: block;
-margin: 0 auto;
-  overflow: hidden;
- 
-  width: 150px;
-  -moz-border-radius: 9px 9px 9px 9px;
-  -webkit-border-radius: 9px 9px 9px 9px;
-  border-radius: 9px 9px 9px 9px;
-  box-shadow: 1px 1px 11px #330033;
-  background: transparent url("http://i62.tinypic.com/15xvbd5.png") no-repeat scroll 119px center;
+	display: block;
+	margin: 0 auto;
+	overflow: hidden;
+	width: 150px;
+	-moz-border-radius: 9px 9px 9px 9px;
+	-webkit-border-radius: 9px 9px 9px 9px;
+	border-radius: 9px 9px 9px 9px;
+	box-shadow: 1px 1px 11px #330033;
+	background: transparent url("http://i62.tinypic.com/15xvbd5.png")
+		no-repeat scroll 119px center;
 }
-  
-  
+
 .rwd-table a:link, table a:visited, table a:active {
- color: #46637f;
-  text-decoration: none;
-  text-align:center;
+	color: #46637f;
+	text-decoration: none;
+	text-align: center;
 }
 
-  
- .container2{
-	
-	margin:0 auto;
-  width:750px;
-  -moz-border-radius: 9px 9px 9px 9px;
-  -webkit-border-radius: 9px 9px 9px 9px;
-  border-radius: 9px 9px 9px 9px;
-  box-shadow: 1px 1px 11px #330033;
-	
-	
-	
-} 
-.container{
-	
-	margin:0 auto;
-	
-	
-	
-	
-	
-	
+.container2 {
+	margin: 0 auto;
+	width: 750px;
+	-moz-border-radius: 9px 9px 9px 9px;
+	-webkit-border-radius: 9px 9px 9px 9px;
+	border-radius: 9px 9px 9px 9px;
+	box-shadow: 1px 1px 11px #330033;
 }
-.containerList{
-	
-	margin:0 auto;
-  width:900px;
-  -moz-border-radius: 9px 9px 9px 9px;
-  -webkit-border-radius: 9px 9px 9px 9px;
-  border-radius: 9px 9px 9px 9px;
-  box-shadow: 1px 1px 11px #330033;
-	
-	
-	
-} 
 
-.containerDT{
-	
-	margin:0 auto;
-  width:900px;
-  -moz-border-radius: 9px 9px 9px 9px;
-  -webkit-border-radius: 9px 9px 9px 9px;
-  border-radius: 9px 9px 9px 9px;
-  box-shadow: 1px 1px 11px #330033;
-	
-	
-	
-} 
+.container {
+	margin: 0 auto;
+}
 
+.containerList {
+	margin: 0 auto;
+	width: 900px;
+	-moz-border-radius: 9px 9px 9px 9px;
+	-webkit-border-radius: 9px 9px 9px 9px;
+	border-radius: 9px 9px 9px 9px;
+	box-shadow: 1px 1px 11px #330033;
+}
 
-.navbar{
-	
-	text-align:center;
-	
-	position:fixed;
-	width:50px;
+.containerDT {
+	margin: 0 auto;
+	width: 900px;
+	-moz-border-radius: 9px 9px 9px 9px;
+	-webkit-border-radius: 9px 9px 9px 9px;
+	border-radius: 9px 9px 9px 9px;
+	box-shadow: 1px 1px 11px #330033;
+}
+
+.navbar {
+	text-align: center;
+	position: fixed;
+	width: 50px;
 	height: 200px;
 	-moz-border-radius: 9px 9px 9px 9px;
-  -webkit-border-radius: 9px 9px 9px 9px;
-  border-radius: 9px 9px 9px 9px;
-  box-shadow: 1px 1px 11px #330033;
-	
+	-webkit-border-radius: 9px 9px 9px 9px;
+	border-radius: 9px 9px 9px 9px;
+	box-shadow: 1px 1px 11px #330033;
 }
 
-.btn-link-profile{
-  background-image:url(/TasckhProgect/resources/img/profilo.png);
-  height:46px;
-  width:46px;	
-  border:none;
-  outline:none;
-  cursor:pointer;
-  background-color: Transparent;
-  text-decoration:underline;
-  font-family:inherit;
-  font-size:inherit;
+.btn-link-profile {
+	background-image: url(/TasckhProgect/resources/img/profilo.png);
+	height: 46px;
+	width: 46px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	background-color: Transparent;
+	text-decoration: underline;
+	font-family: inherit;
+	font-size: inherit;
 }
 
-.btn-link-profile:hover{
-	  background-image:url(/TasckhProgect/resources/img/profilo_hover.png);
-}
-.btn-link-timesheet{
-	margin-left:5px;
-	margin-top:8px;
-  background-image:url(/TasckhProgect/resources/img/timesheet-bg.png);
-  height:42px;
-  width:46px;	
-  background-repeat:no-repeat;
-  border:none;
-  outline:none;
-  cursor:pointer;
-  background-color: Transparent;
-  text-decoration:underline;
-  font-family:inherit;
-  font-size:inherit;
+.btn-link-profile:hover {
+	background-image: url(/TasckhProgect/resources/img/profilo_hover.png);
 }
 
-.btn-link-timesheet:hover{
-	  background-image:url(/TasckhProgect/resources/img/timesheet-bg_hover.png);
-}
-.btn-link-contact{
-  background-image:url(/TasckhProgect/resources/img/contact-bg.png);
-  height:46px;
-  width:48px;	
-  border:none;
-  outline:none;
-  cursor:pointer;
-  background-color: Transparent;
-  text-decoration:underline;
-  font-family:inherit;
-  font-size:inherit;
-}
-
-.btn-link-contact:hover{
-	  background-image:url(/TasckhProgect/resources/img/contact-bg_hover.png);
-}
-.btn-link-logout{
-  background-image:url(/TasckhProgect/resources/img/logout-bg.png);
-  height:46px;
-  width:48px;	
-  border:none;
-  outline:none;
-  cursor:pointer;
-  background-color: Transparent;
-  text-decoration:underline;
-  font-family:inherit;
-  font-size:inherit;
+.btn-link-timesheet {
+	margin-left: 5px;
+	margin-top: 8px;
+	background-image: url(/TasckhProgect/resources/img/timesheet-bg.png);
+	height: 42px;
+	width: 46px;
+	background-repeat: no-repeat;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	background-color: Transparent;
+	text-decoration: underline;
+	font-family: inherit;
+	font-size: inherit;
 }
 
-.btn-link-logout:hover{
-	  background-image:url(/TasckhProgect/resources/img/logout-bg_hover.png);
-}
-.btn-link-document{
-  background-image:url(/TasckhProgect/resources/img/doc-bg.png);
-  height:40px;
-  width:40px;	
-  margin-top:6px;
-  border:none;
-  outline:none;
-  cursor:pointer;
-  background-color: Transparent;
-  text-decoration:underline;
-  font-family:inherit;
-  font-size:inherit;
+.btn-link-timesheet:hover {
+	background-image:
+		url(/TasckhProgect/resources/img/timesheet-bg_hover.png);
 }
 
-.btn-link-document:hover{
-	  background-image:url(/TasckhProgect/resources/img/doc-bg_hover.png);
+.btn-link-contact {
+	background-image: url(/TasckhProgect/resources/img/contact-bg.png);
+	height: 46px;
+	width: 48px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	background-color: Transparent;
+	text-decoration: underline;
+	font-family: inherit;
+	font-size: inherit;
 }
 
-.btn-link-newuser{
-  background-image:url(/TasckhProgect/resources/img/new_user_bg.png);
-  height:40px;
-  width:40px;	
-  margin-top:6px;
-  border:none;
-  outline:none;
-  cursor:pointer;
-  background-color: Transparent;
-  text-decoration:underline;
-  font-family:inherit;
-  font-size:inherit;
+.btn-link-contact:hover {
+	background-image: url(/TasckhProgect/resources/img/contact-bg_hover.png);
 }
 
-.btn-link-newuser:hover{
-	  background-image:url(/TasckhProgect/resources/img/new_user_bg_hover.png);
+.btn-link-logout {
+	background-image: url(/TasckhProgect/resources/img/logout-bg.png);
+	height: 46px;
+	width: 48px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	background-color: Transparent;
+	text-decoration: underline;
+	font-family: inherit;
+	font-size: inherit;
 }
 
-.btn-link-listUser{
-  background-image:url(/TasckhProgect/resources/img/userList-bg.png);
-  height:42px;
-  width:42px;	
-  border:none;
-  outline:none;
-  cursor:pointer;
-  background-color: Transparent;
-  text-decoration:underline;
-  font-family:inherit;
-  font-size:inherit;
-  margin-bottom:3px;
-  margin-top:5px;
-  margin-left:2px;
+.btn-link-logout:hover {
+	background-image: url(/TasckhProgect/resources/img/logout-bg_hover.png);
 }
 
-.btn-link-listUser:hover{
-	  background-image:url(/TasckhProgect/resources/img/userList-bg_hover.png);
+.btn-link-document {
+	background-image: url(/TasckhProgect/resources/img/doc-bg.png);
+	height: 40px;
+	width: 40px;
+	margin-top: 6px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	background-color: Transparent;
+	text-decoration: underline;
+	font-family: inherit;
+	font-size: inherit;
 }
 
-.divUserLog{
-	
-	float:right;
-	min-width:200px;
-	height:85px;
+.btn-link-document:hover {
+	background-image: url(/TasckhProgect/resources/img/doc-bg_hover.png);
+}
+
+.btn-link-newuser {
+	background-image: url(/TasckhProgect/resources/img/new_user_bg.png);
+	height: 40px;
+	width: 40px;
+	margin-top: 6px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	background-color: Transparent;
+	text-decoration: underline;
+	font-family: inherit;
+	font-size: inherit;
+}
+
+.btn-link-newuser:hover {
+	background-image:
+		url(/TasckhProgect/resources/img/new_user_bg_hover.png);
+}
+
+.btn-link-listUser {
+	background-image: url(/TasckhProgect/resources/img/userList-bg.png);
+	height: 42px;
+	width: 42px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	background-color: Transparent;
+	text-decoration: underline;
+	font-family: inherit;
+	font-size: inherit;
+	margin-bottom: 3px;
+	margin-top: 5px;
+	margin-left: 2px;
+}
+
+.btn-link-listUser:hover {
+	background-image:
+		url(/TasckhProgect/resources/img/userList-bg_hover.png);
+}
+
+.divUserLog {
+	float: right;
+	width: auto;
+	height: 85px;
 	-moz-border-radius: 9px 9px 9px 9px;
-  -webkit-border-radius: 9px 9px 9px 9px;
-  border-radius: 9px 9px 9px 9px;
-  box-shadow: 1px 1px 11px #330033;	
-	
-	
+	-webkit-border-radius: 9px 9px 9px 9px;
+	border-radius: 9px 9px 9px 9px;
+	box-shadow: 1px 1px 11px #330033;
 }
 
-.divUserPhoto{
-	float:left;
-	width:50px;
-	height:50px;
-	margin-left:5px;
-	margin-right:10px;
-	
+.divUserPhoto {
+	float: left;
+	width: 50px;
+	height: 50px;
+	margin-left: 5px;
+	margin-right: 10px;
 	-moz-border-radius: 9px 9px 9px 9px;
-  -webkit-border-radius: 9px 9px 9px 9px;
-  border-radius: 9px 9px 9px 9px;
-  box-shadow: 1px 1px 11px #330033;	
+	-webkit-border-radius: 9px 9px 9px 9px;
+	border-radius: 9px 9px 9px 9px;
+	box-shadow: 1px 1px 11px #330033;
 }
 
-.divUserTitle{
-	text-align:center;
-	width:auto;
-	height:23px;
-	margin-bottom:10px;
+.divUserTitle {
+	text-align: center;
+	width: auto;
+	height: 23px;
+	margin-bottom: 10px;
 	-moz-border-radius: 9px 9px 9px 9px;
-  -webkit-border-radius: 9px 9px 9px 9px;
-  border-radius: 9px 9px 9px 9px;
-  box-shadow: 1px 1px 11px #330033;	
-  font-size:18px;
-  letter-spacing: -1px;
-  color: #34495E;
-	
-}
-.divUserCont{
-	
-	float:right;
-	margin-right:20px;
-	margin-top:15px;
-	
-  letter-spacing: -1px;
-  color: #34495E;
-	
-	
+	-webkit-border-radius: 9px 9px 9px 9px;
+	border-radius: 9px 9px 9px 9px;
+	box-shadow: 1px 1px 11px #330033;
+	font-size: 18px;
+	letter-spacing: -1px;
+	color: #34495E;
 }
 
-.divHeader{	
-	height:130px;
-	width:auto;
+.divUserCont {
+	float: right;
+	margin-right: 20px;
+	margin-top: 15px;
+	letter-spacing: -1px;
+	color: #34495E;
 }
-.btn-link{
-  border:none;
-  outline:none;
-  background:none;
-  cursor:pointer;
-  color:#0000EE;
-  padding:0;
-  text-decoration:underline;
-  font-family:inherit;
-  font-size:inherit;
+
+.divHeader {
+	height: 130px;
+	width: auto;
+}
+
+.btn-link {
+	border: none;
+	outline: none;
+	background: none;
+	cursor: pointer;
+	color: #0000EE;
+	padding: 0;
+	text-decoration: underline;
+	font-family: inherit;
+	font-size: inherit;
 }
 
 .button {

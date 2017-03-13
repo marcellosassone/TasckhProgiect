@@ -43,7 +43,7 @@
 					<div>
 						<ul>
 							<li>
-								<img src="/TasckhProgect/resources/img/upload.png">
+								<img src="/TasckhProgect/resources/img/uploadW.png">
 								<a href="/TasckhProgect/user/loadDoc">Gestione Documenti Globale</a>
 							</li>
 							

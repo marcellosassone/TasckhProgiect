@@ -112,6 +112,10 @@ public class UserController {
 		User user=new User();
 		user.setId((int)req.getSession().getAttribute("id"));
 		User user1=userDao.findByIdUser(user);
+		if (req.getSession().getAttribute("admin").equals("admin"))
+			model.addAttribute("hide","True");
+		else 
+			model.addAttribute("hide","False");
 		return new ModelAndView("ModUser", "formUserMod", user1);
 	}
 
@@ -121,11 +125,8 @@ public class UserController {
 		User user=new User();
 		user.setId(id);
 
-		//user.setAdmin(1);
-		//System.out.println(user);
-
 		User user1=userDao.findByIdUser(user);
-		//System.out.println(user);
+
 		if (req.getSession().getAttribute("admin").equals("admin"))
 			model.addAttribute("hide","True");
 		else 
@@ -136,11 +137,12 @@ public class UserController {
 	@RequestMapping(value="finalizeUpdateUser", method=RequestMethod.POST)
 	public String finalizeUpdate(User user, ModelMap model,HttpServletRequest req) {
 		userDao.updateUser(user);
-		//req.getSession().setAttribute("firstname", user.getFirstname());
-		//req.getSession().setAttribute("lastname", user.getLastname());
-		//System.out.println(req.getSession().getAttribute("admin"));
 		if (req.getSession().getAttribute("admin").equals("admin"))
 			return "redirect:/admin/load";
+		else{
+			req.getSession().setAttribute("firstname", user.getFirstname());
+			req.getSession().setAttribute("lastname", user.getLastname());
+		}
 		return "welcome";
 
 	}

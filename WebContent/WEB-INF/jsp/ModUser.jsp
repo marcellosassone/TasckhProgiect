@@ -10,26 +10,10 @@
 <link rel="stylesheet" href="/TasckhProgect/resources/css/stile.css">
 </head>
 <body>
-	<%--	<div class="divHeader">
-		<div class="logo">
-			<img src="/TasckhProgect/resources/img/Logo1.png"
-				style="height: 60%; width: 60%" />
-		</div>
-		<div class="divUserLog">
-			<div class="divUserTitle">Benvenuto</div>
-			<div class="divUserPhoto">
-				<img src="/TasckhProgect/resources/img/avatar.jpg"
-					alt="Profile Avatar"
-					style="height: 50px; width: 50px; -moz-border-radius: 9px 9px 9px 9px; -webkit-border-radius: 9px 9px 9px 9px; border-radius: 9px 9px 9px 9px">
-			</div>
-			<div class="divUserCont">
-				<c:out value="${firstname} ${lastname}" />
-			</div>
-		</div>
-	</div>
-	--%>
 	<jsp:include page="TopDiv.jsp"></jsp:include>
+	
 	<div class="container">
+	
 		<%-- menu user --%>
 		<div class="navbar" style="display:${hide ? 'none' : 'block'}">
 			<form action="/TasckhProgect/login" method="post">

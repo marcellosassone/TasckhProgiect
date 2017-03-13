@@ -47,11 +47,11 @@
 								<a href="/TasckhProgect/user/ModUser">Modifica Profilo</a>
 							</li>
 							<li>
-								<img src="/TasckhProgect/resources/img/time.png">
+								<img src="/TasckhProgect/resources/img/timeW.png">
 								<a href="/TasckhProgect/user/compileTimesheet">Timesheet</a>
 							</li>
 							<li>
-								<img src="/TasckhProgect/resources/img/upload.png">
+								<img src="/TasckhProgect/resources/img/uploadW.png">
 								<a href="/TasckhProgect/user/loadDoc">Gestione Documenti</a>
 							</li>
 							<li>
