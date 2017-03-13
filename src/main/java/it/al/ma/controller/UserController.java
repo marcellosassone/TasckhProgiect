@@ -146,6 +146,7 @@ public class UserController {
 		return "welcome";
 	}
 
+	
 	//	@RequestMapping(value="finalizeUpdateUser", method=RequestMethod.POST)
 	//	public String finalizeUpdateFromAdmin(User user, ModelMap model,HttpServletRequest req) {
 	//		userDao.updateUser(user);
