@@ -144,7 +144,6 @@ public class UserController {
 			req.getSession().setAttribute("lastname", user.getLastname());
 		}
 		return "welcome";
-
 	}
 
 	//	@RequestMapping(value="finalizeUpdateUser", method=RequestMethod.POST)
